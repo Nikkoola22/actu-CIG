@@ -11,6 +11,9 @@ const DIRECTORY_URL = 'https://fncdg.com/annuaire_cdg/';
 const KNOWN_URLS = {
     '01': 'https://cdg01.fr/section-216',
     '04': 'https://cdg04.fr/actualites/',
+    '07': 'https://www.cdg07.com/actualites/',
+    '09': 'https://www.cdg09.fr/actualites/',
+    '12': 'https://www.cdg12.fr/actualites/',
     '67': 'https://www.cdg67.fr/actualites/',
     '15': 'https://www.cdg15.fr/2024/index.php/home/actualites-du-cdg/',
     '16': 'https://www.cdg16.fr/copie-de-actualites/',
@@ -23,6 +26,8 @@ const KNOWN_URLS = {
     '28': 'https://www.cdg28.fr/',
     '30': 'https://www.cdg30.fr/a-la-une',
     '33': 'https://www.cdg33.fr/cdg-33/actualites/',
+    '34': 'https://www.cdg34.fr/actualites/',
+    '37': 'https://www.cdg37.fr/actualites/',
     '68': 'https://www.cdg68.fr/categories/actualites/',
     '31': 'https://www.cdg31.fr/actualites',
     '43': 'https://www.cdg43.fr/actualites/',
@@ -31,10 +36,15 @@ const KNOWN_URLS = {
     '76': 'https://www.cdg76.fr/actualites-juridiques',
     '73': 'https://www.cdg73.fr/actualites/',
     '66': 'https://cdg66.fr/toutes-les-actualites/',
+    '65': 'https://www.cdg65.fr/actualites/',
     '63': 'https://www.cdg63.fr/connaitre-le-cdg-63/actualites/',
+    '62': 'https://www.cdg62.fr/actualites/',
     '61': 'https://www.cdg61.fr/cdg61_toutes_actualites.php',
     '60': 'https://www.cdg60.com/actualites/',
+    '58': 'https://www.cdg58.fr/actualites/',
     '57': 'https://www.cdg57.fr/le-centre-de-gestion/actualites/',
+    '55': 'https://www.cdg55.fr/actualites/',
+    '54': 'https://www.cdg54.fr/actualites/',
     '51': 'https://51.cdgplus.fr/category/actualites/',
     '48': 'https://www.cdg48.fr/toute-lactualite-du-centre-de-gestion/',
     '47': 'https://www.cdg47.fr/actualites.php',
@@ -116,6 +126,23 @@ async function scrapeNewsFromWebsite(websiteUrl) {
                     source: 'RSS'
                 }));
             }
+        } else {
+            // Explicit fallback for WordPress /feed/
+            try {
+                const urlObj = new URL(websiteUrl);
+                const explicitFeedUrl = urlObj.origin + '/feed/';
+                const feed = await parser.parseURL(explicitFeedUrl);
+                if (feed.items && feed.items.length > 0) {
+                    return feed.items.slice(0, 3).map(item => ({
+                        title: item.title,
+                        link: item.link,
+                        pubDate: item.pubDate,
+                        source: 'RSS'
+                    }));
+                }
+            } catch (e) {
+                // Ignore fallback
+            }
         }
         
         // Custom Scrapers for Specific CDs
@@ -127,7 +154,7 @@ async function scrapeNewsFromWebsite(websiteUrl) {
             if (news04.length > 0) return news04.slice(0, 3);
         }
         
-        if (websiteUrl.includes('cdg24.fr') || websiteUrl.includes('cdg19.fr') || websiteUrl.includes('cdg23.fr')) {
+        if (websiteUrl.includes('cdg24.fr') || websiteUrl.includes('cdg19.fr') || websiteUrl.includes('cdg23.fr') || websiteUrl.includes('cdg47.fr')) {
             const newsCustom = [];
             const urlObj = new URL(websiteUrl);
             const baseOrigin = urlObj.origin + '/';
@@ -140,33 +167,8 @@ async function scrapeNewsFromWebsite(websiteUrl) {
             if (newsCustom.length > 0) return newsCustom.slice(0, 3);
         }
         
-        if (websiteUrl.includes('cdg33.fr') || websiteUrl.includes('cdg28.fr') || websiteUrl.includes('cdg68.fr')) {
-            try {
-                const urlObj = new URL(websiteUrl);
-                const feedUrl = urlObj.origin + '/feed/';
-                const feed = await parser.parseURL(feedUrl);
-                if (feed.items && feed.items.length > 0) {
-                    return feed.items.slice(0, 3).map(item => ({
-                        title: item.title,
-                        link: item.link,
-                        pubDate: item.pubDate,
-                        source: 'RSS'
-                    }));
-                }
-            } catch (e) {
-                // Ignore and fallthrough to HTML
-            }
-            const newsCustom = [];
-            $('.elementor-post__title a, .post-title a, h2 a, h3 a').each((i, el) => {
-                const text = $(el).text().trim();
-                const link = $(el).attr('href');
-                if (text.length > 10 && link && !newsCustom.find(n => n.link === link)) {
-                    newsCustom.push({ title: text, link: link, source: 'HTML' });
-                }
-            });
-            if (newsCustom.length > 0) return newsCustom.slice(0, 3);
-        }
-        
+        // Remove old cdg33/28/68 hardcoded block as we generalized it
+
         // Attempt 2: HTML Heuristics (News links)
         const news = [];
         $('a').each((i, el) => {
@@ -197,6 +199,28 @@ async function scrapeNewsFromWebsite(websiteUrl) {
             }
         });
         
+        if (news.length > 0) {
+            return news.slice(0, 3);
+        }
+
+        // Attempt 3: Aggressive CSS selectors for articles
+        $('.elementor-post__title a, .post-title a, h2 a, h3 a, article a').each((i, el) => {
+            const href = $(el).attr('href');
+            const text = $(el).text().trim();
+            if (href && text.length > 10 && !news.find(n => n.link === href)) {
+                let fullHref = href;
+                if (!fullHref.startsWith('http')) {
+                    const urlObj = new URL(websiteUrl);
+                    fullHref = urlObj.origin + (fullHref.startsWith('/') ? '' : '/') + fullHref;
+                }
+                news.push({
+                    title: text,
+                    link: fullHref,
+                    source: 'HTML Fallback'
+                });
+            }
+        });
+
         if (news.length > 0) {
             return news.slice(0, 3);
         }
