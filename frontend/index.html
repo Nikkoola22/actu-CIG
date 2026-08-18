@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actualités CDG</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <div class="header-content">
+          <h1>Actualités des Centres de Gestion</h1>
+          <p>Agrégateur des 3 dernières publications des CDG territoriaux</p>
+          <div class="actions">
+            <button id="refresh-btn" class="btn primary">Rafraîchir les données</button>
+            <span id="status-text" class="status-text"></span>
+          </div>
+        </div>
+      </header>
+      
+      <main>
+        <div id="loading" class="loading-state" style="display: none;">
+          <div class="spinner"></div>
+          <p>Chargement des actualités...</p>
+        </div>
+        
+        <div id="news-container" class="grid-container">
+          <!-- Cards will be injected here -->
+        </div>
+      </main>
+
+      <footer>
+        <p>Généré via FNCDG Annuaire</p>
+      </footer>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
