@@ -85,11 +85,11 @@
 
             <!-- View Switcher -->
             <div class="view-switcher" role="group" aria-label="Type de vue">
-              <button id="view-grid-btn" class="view-btn active" title="Vue Grille (Cartes modernes)">
+              <button id="view-grid-btn" class="view-btn" title="Vue Grille (Cartes modernes)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
                 <span>Grille</span>
               </button>
-              <button id="view-table-btn" class="view-btn" title="Vue Tableau (Liste synthétique)">
+              <button id="view-table-btn" class="view-btn active" title="Vue Tableau (Liste synthétique)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
                 <span>Tableau</span>
               </button>
@@ -184,10 +184,10 @@
         <!-- Results Container (Grid or Table) -->
         <div id="results-wrapper">
           <!-- Grid View -->
-          <div id="news-container" class="grid-container"></div>
+          <div id="news-container" class="grid-container hidden"></div>
 
           <!-- Table View -->
-          <div id="table-container" class="table-container hidden">
+          <div id="table-container" class="table-container">
             <table class="saas-table">
               <thead>
                 <tr>

@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // State
   let allData = [];
   let currentFilter = 'all'; // 'all', 'favorites', 'has-news', 'empty'
-  let currentView = localStorage.getItem('veille_view_mode') || 'grid';
+  let currentView = localStorage.getItem('veille_view_mode') || 'table';
   let favorites = JSON.parse(localStorage.getItem('veille_cdg_favs') || '[]');
   let activeTopic = null;
 

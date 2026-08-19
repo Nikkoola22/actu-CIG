@@ -1,6 +1,7 @@
 [
   {
     "cdg": "(01) AIN",
+    "dept": "01",
     "officialUrl": "http://www.cdg01.fr",
     "news": [
       {
@@ -22,6 +23,7 @@
   },
   {
     "cdg": "(02) AISNE",
+    "dept": "02",
     "officialUrl": "http://www.cdg02.fr",
     "news": [
       {
@@ -33,6 +35,7 @@
   },
   {
     "cdg": "(03) ALLIER",
+    "dept": "03",
     "officialUrl": "http://www.cdg03.fr",
     "news": [
       {
@@ -57,6 +60,7 @@
   },
   {
     "cdg": "(04) ALPES DE HAUTE PROVENCE",
+    "dept": "04",
     "officialUrl": "http://www.cdg04.fr",
     "news": [
       {
@@ -77,7 +81,30 @@
     ]
   },
   {
+    "cdg": "(05) HAUTES-ALPES",
+    "dept": "05",
+    "officialUrl": "http://www.cdg05.fr",
+    "news": [
+      {
+        "title": "Toutes les actualités",
+        "link": "http://www.cdg05.fr/actualites",
+        "source": "HTML"
+      },
+      {
+        "title": "Tous les événements",
+        "link": "http://www.cdg05.fr/agenda",
+        "source": "HTML"
+      },
+      {
+        "title": "Nos missions",
+        "link": "http://www.cdg05.fr/propos-cdg05/missions",
+        "source": "HTML"
+      }
+    ]
+  },
+  {
     "cdg": "(06) ALPES MARITIMES",
+    "dept": "06",
     "officialUrl": "http://www.cdg06.fr",
     "news": [
       {
@@ -109,6 +136,7 @@
   },
   {
     "cdg": "(07) ARDECHE",
+    "dept": "07",
     "officialUrl": "http://www.cdg07.com",
     "news": [
       {
@@ -120,6 +148,7 @@
   },
   {
     "cdg": "(08) ARDENNES",
+    "dept": "08",
     "officialUrl": "http://www.cdg08.fr",
     "news": [
       {
@@ -144,6 +173,7 @@
   },
   {
     "cdg": "(09) ARIÈGE",
+    "dept": "09",
     "officialUrl": "http://www.cdg09.fr",
     "news": [
       {
@@ -168,6 +198,7 @@
   },
   {
     "cdg": "(10) AUBE",
+    "dept": "10",
     "officialUrl": "http://www.cdg10.fr",
     "news": [
       {
@@ -192,6 +223,7 @@
   },
   {
     "cdg": "(11) AUDE",
+    "dept": "11",
     "officialUrl": "http://www.cdg11.fr",
     "news": [
       {
@@ -216,7 +248,8 @@
   },
   {
     "cdg": "(12) AVEYRON",
-    "officialUrl": null,
+    "dept": "12",
+    "officialUrl": "",
     "news": [
       {
         "title": "Voir les actualités sur le site officiel",
@@ -226,28 +259,8 @@
     ]
   },
   {
-    "cdg": "(67) BAS-RHIN",
-    "officialUrl": "http://www.cdg67.fr",
-    "news": [
-      {
-        "title": "ARCHIVES – ENQUÊTES DE BESOINS",
-        "link": "https://www.cdg67.fr/actualites/archives-enquetes-de-besoins/",
-        "source": "HTML"
-      },
-      {
-        "title": "Campagne RSU 2026",
-        "link": "https://www.cdg67.fr/actualites/campagne-rsu-2026/",
-        "source": "HTML"
-      },
-      {
-        "title": "Gestion des absences, des conflits, des archives… Consultez nos dix vidéos pratiques",
-        "link": "https://www.cdg67.fr/actualites/gestion-des-absences-des-conflits-des-archives-consultez-nous-dix-videos-pratiques/",
-        "source": "HTML"
-      }
-    ]
-  },
-  {
     "cdg": "(13) BOUCHES-DU-RHÔNE",
+    "dept": "13",
     "officialUrl": "http://www.cdg13.com",
     "news": [
       {
@@ -279,6 +292,7 @@
   },
   {
     "cdg": "(14) CALVADOS",
+    "dept": "14",
     "officialUrl": "http://www.cdg14.fr",
     "news": [
       {
@@ -315,6 +329,7 @@
   },
   {
     "cdg": "(15) CANTAL",
+    "dept": "15",
     "officialUrl": "http://www.cdg15.fr",
     "news": [
       {
@@ -339,6 +354,7 @@
   },
   {
     "cdg": "(16) CHARENTE",
+    "dept": "16",
     "officialUrl": "http://www.cdg16.fr",
     "news": [
       {
@@ -363,6 +379,7 @@
   },
   {
     "cdg": "(17) CHARENTE-MARITIME",
+    "dept": "17",
     "officialUrl": "http://www.cdg17.fr",
     "news": [
       {
@@ -384,6 +401,7 @@
   },
   {
     "cdg": "(18) CHER",
+    "dept": "18",
     "officialUrl": "http://www.cdg18.fr",
     "news": [
       {
@@ -405,6 +423,7 @@
   },
   {
     "cdg": "(19) CORRÈZE",
+    "dept": "19",
     "officialUrl": "http://www.cdg19.fr",
     "news": [
       {
@@ -426,6 +445,7 @@
   },
   {
     "cdg": "(21) CÔTE D’OR",
+    "dept": "21",
     "officialUrl": "http://www.cdg21.fr",
     "news": [
       {
@@ -450,6 +470,7 @@
   },
   {
     "cdg": "(22) CÔTES D’ARMOR",
+    "dept": "22",
     "officialUrl": "http://www.cdg22.fr",
     "news": [
       {
@@ -461,6 +482,7 @@
   },
   {
     "cdg": "(23) CREUSE",
+    "dept": "23",
     "officialUrl": "http://www.cdg23.fr",
     "news": [
       {
@@ -481,38 +503,8 @@
     ]
   },
   {
-    "cdg": "(79) DEUX-SÈVRES",
-    "officialUrl": "http://www.cdg79.fr",
-    "news": [
-      {
-        "title": "Recrutement des agents contractuels de droit privé",
-        "link": "https://www.cdg79.fr/page/43-les-agents-contractuels",
-        "source": "HTML"
-      },
-      {
-        "title": "Recrutement des agents contractuels de droit public",
-        "link": "https://www.cdg79.fr/page/722-contractuel-droit-public",
-        "source": "HTML"
-      },
-      {
-        "title": "Dispositifs de formations",
-        "link": "https://www.cdg79.fr/actualite/326",
-        "source": "HTML"
-      },
-      {
-        "title": "Université des Maires - Jeudi 10 septembre 2026 - La Crèche",
-        "link": "https://www.cdg79.fr/actualite/809",
-        "source": "HTML"
-      },
-      {
-        "title": "Rupture conventionnelle : De nouveaux textes règlementaires pérennisent et font évoluer le dispositif de rupture conventionnelle",
-        "link": "https://www.cdg79.fr/actualite/813",
-        "source": "HTML"
-      }
-    ]
-  },
-  {
     "cdg": "(24) DORDOGNE",
+    "dept": "24",
     "officialUrl": "http://www.cdg24.fr",
     "news": [
       {
@@ -534,6 +526,7 @@
   },
   {
     "cdg": "(25) DOUBS",
+    "dept": "25",
     "officialUrl": "http://www.cdg25.org",
     "news": [
       {
@@ -558,6 +551,7 @@
   },
   {
     "cdg": "(26) DRÔME",
+    "dept": "26",
     "officialUrl": "http://www.cdg26.fr",
     "news": [
       {
@@ -567,7 +561,7 @@
         "source": "RSS"
       },
       {
-        "title": "AUTORISATIONS SPÉCIALES D’ABSENCE (ASA) : LES RÈGLES ÉVOLUENT EN 2027",
+        "title": "AUTORISATIONS SPÉCIALES D’ABSENCE (ASA) : LES RÈGLES ÉVOLUENT EN 2027",
         "link": "https://www.cdg26.fr/autorisations-speciales-dabsence-asa-les-regles-evoluent-en-2027/",
         "pubDate": "Fri, 10 Jul 2026 15:12:00 +0000",
         "source": "RSS"
@@ -582,6 +576,7 @@
   },
   {
     "cdg": "(27) EURE",
+    "dept": "27",
     "officialUrl": "http://www.cdg27.fr",
     "news": [
       {
@@ -606,6 +601,7 @@
   },
   {
     "cdg": "(28) EURE-ET-LOIR",
+    "dept": "28",
     "officialUrl": "http://www.cdg28.fr",
     "news": [
       {
@@ -630,6 +626,7 @@
   },
   {
     "cdg": "(29) FINISTÈRE",
+    "dept": "29",
     "officialUrl": "http://www.cdg29.fr",
     "news": [
       {
@@ -661,6 +658,7 @@
   },
   {
     "cdg": "(30) GARD",
+    "dept": "30",
     "officialUrl": "http://www.cdg30.fr",
     "news": [
       {
@@ -681,86 +679,8 @@
     ]
   },
   {
-    "cdg": "GERS (32)",
-    "officialUrl": "http://www.cdg32.fr",
-    "news": [
-      {
-        "title": "Actualités statut",
-        "link": "https://cdg32.fr/gerer-le-personnel/actualites-statut/",
-        "source": "HTML"
-      },
-      {
-        "title": "Statut 20/07/26 Élections professionnelles 2026 Étape 2 : Validation des pré-listes électorales",
-        "link": "https://cdg32.fr/actualites/elections-professionnelles-2026-2/",
-        "source": "HTML"
-      },
-      {
-        "title": "Le CDG 06/07/26 Guide d’accueil du nouvel agent territorial Nous mettons à votre disposition un livret d'accueil du nouvel agent territorial !",
-        "link": "https://cdg32.fr/actualites/guide-daccueil-du-nouvel-agent-territorial/",
-        "source": "HTML"
-      },
-      {
-        "title": "Statut 10/06/26 Augmentation du SMIC au 1er juin 2026 Le montant du SMIC est revalorisé à compter du 1er juin 2026",
-        "link": "https://cdg32.fr/actualites/augmentation-du-smic-au-1er-juin-2026/",
-        "source": "HTML"
-      },
-      {
-        "title": "Statut 03/06/26 Indemnités kilométriques : Majoration temporaire Majoration temporaire : pour les déplacements effectués entre le 01/06/2026 et le 31/12/2026",
-        "link": "https://cdg32.fr/actualites/majoration-temporaire-des-taux-des-indemnites-kilometriques/",
-        "source": "HTML"
-      }
-    ]
-  },
-  {
-    "cdg": "(33) GIRONDE",
-    "officialUrl": "http://www.cdg33.fr",
-    "news": [
-      {
-        "title": "Permanences sur le territoire – 2éme semestre 2026",
-        "link": "https://www.cdg33.fr/cdg-33/actualites/permanences-sur-le-territoire-2eme-semestre-2026/",
-        "pubDate": "Tue, 18 Aug 2026 08:28:26 +0000",
-        "source": "RSS"
-      },
-      {
-        "title": "Congé annuel : droit à l’information en cas de report des congés",
-        "link": "https://www.cdg33.fr/cdg-33/actualites/conge-annuel-droit-a-linformation-en-cas-de-report-des-conges/",
-        "pubDate": "Thu, 13 Aug 2026 08:49:56 +0000",
-        "source": "RSS"
-      },
-      {
-        "title": "Pérennisation de la rupture conventionnelle",
-        "link": "https://www.cdg33.fr/cdg-33/actualites/perennisation-de-la-rupture-conventionnelle/",
-        "pubDate": "Fri, 07 Aug 2026 14:12:54 +0000",
-        "source": "RSS"
-      }
-    ]
-  },
-  {
-    "cdg": "(68) HAUT-RHIN",
-    "officialUrl": "http://www.cdg68.fr",
-    "news": [
-      {
-        "title": "Point info : Juillet / Août 2026",
-        "link": "https://www.cdg68.fr/blog/2026/08/04/point-info-juillet-aout-2026/",
-        "pubDate": "Tue, 04 Aug 2026 09:23:23 +0000",
-        "source": "RSS"
-      },
-      {
-        "title": "PSC – Débat d’orientation obligatoire",
-        "link": "https://www.cdg68.fr/blog/2026/07/24/psc-debat-dorientation-obligatoire/",
-        "pubDate": "Fri, 24 Jul 2026 10:06:44 +0000",
-        "source": "RSS"
-      },
-      {
-        "title": "Transmission des arrêts de travail à la CPAM pour les agents mis à disposition",
-        "link": "https://www.cdg68.fr/blog/2026/07/03/transmission-des-arrets-de-travail-a-la-cpam-pour-les-agents-mis-a-disposition/",
-        "pubDate": "Fri, 03 Jul 2026 08:58:16 +0000",
-        "source": "RSS"
-      }
-    ]
-  },
-  {
     "cdg": "(31) HAUTE-GARONNE",
+    "dept": "31",
     "officialUrl": "http://www.cdg31.fr",
     "news": [
       {
@@ -784,170 +704,33 @@
     ]
   },
   {
-    "cdg": "(43) HAUTE-LOIRE",
-    "officialUrl": "http://www.cdg43.fr",
+    "cdg": "(33) GIRONDE",
+    "dept": "33",
+    "officialUrl": "http://www.cdg33.fr",
     "news": [
       {
-        "title": "Une parenthèse estivale bienvenue !",
-        "link": "https://www.cdg43.fr/une-parenthese-estivale-bienvenue/",
-        "pubDate": "Thu, 30 Jul 2026 12:11:22 +0000",
+        "title": "Permanences sur le territoire – 2éme semestre 2026",
+        "link": "https://www.cdg33.fr/cdg-33/actualites/permanences-sur-le-territoire-2eme-semestre-2026/",
+        "pubDate": "Tue, 18 Aug 2026 08:28:26 +0000",
         "source": "RSS"
       },
       {
-        "title": "Les Rencontres du CDG43 : un rendez-vous à ne pas manquer le 1er octobre 2026",
-        "link": "https://www.cdg43.fr/les-rencontres-du-cdg43-un-rendez-vous-a-ne-pas-manquer-le-1er-octobre-2026/",
-        "pubDate": "Wed, 22 Jul 2026 08:44:13 +0000",
+        "title": "Congé annuel : droit à l’information en cas de report des congés",
+        "link": "https://www.cdg33.fr/cdg-33/actualites/conge-annuel-droit-a-linformation-en-cas-de-report-des-conges/",
+        "pubDate": "Thu, 13 Aug 2026 08:49:56 +0000",
         "source": "RSS"
       },
       {
-        "title": "Le nouveau conseil d’administration du CDG43",
-        "link": "https://www.cdg43.fr/le-nouveau-conseil-dadministration-du-cdg43/",
-        "pubDate": "Mon, 20 Jul 2026 14:17:24 +0000",
+        "title": "Pérennisation de la rupture conventionnelle",
+        "link": "https://www.cdg33.fr/cdg-33/actualites/perennisation-de-la-rupture-conventionnelle/",
+        "pubDate": "Fri, 07 Aug 2026 14:12:54 +0000",
         "source": "RSS"
-      }
-    ]
-  },
-  {
-    "cdg": "HAUTE-MARNE (52)",
-    "officialUrl": "http://www.cdg52.fr",
-    "news": [
-      {
-        "title": "Élection du nouveau Président du CDG 52",
-        "link": "https://www.cdg52.fr/election-du-nouveau-president-du-cdg-52/",
-        "source": "HTML (Spécifique)"
-      },
-      {
-        "title": "Autorisations Spéciales d’Absence",
-        "link": "https://www.cdg52.fr/autorisations-speciales-dabsence/",
-        "source": "HTML (Spécifique)"
-      },
-      {
-        "title": "Nouvelles notes d’information en ligne !",
-        "link": "https://www.cdg52.fr/nouvelles-notes-dinformation-en-ligne-2/",
-        "source": "HTML (Spécifique)"
-      }
-    ]
-  },
-  {
-    "cdg": "(70) HAUTE-SAÔNE",
-    "officialUrl": "https://70.cdgplus.fr",
-    "news": [
-      {
-        "title": "Télédéclaration des cotisations CDG 70 — Notice 2026 disponible",
-        "link": "https://70.cdgplus.fr/teledeclaration-des-cotisations-cdg-70-notice-2026-disponible/",
-        "pubDate": "Mon, 29 Jun 2026 09:24:44 +0000",
-        "source": "RSS"
-      },
-      {
-        "title": "Suspension de la réforme des retraites : ce qui change au 1er septembre 2026",
-        "link": "https://70.cdgplus.fr/suspension-de-la-reforme-des-retraites-ce-qui-change-au-1er-septembre-2026/",
-        "pubDate": "Thu, 05 Mar 2026 15:00:23 +0000",
-        "source": "RSS"
-      },
-      {
-        "title": "Promotion interne 2026 : listes d’aptitude",
-        "link": "https://70.cdgplus.fr/promotion-interne-2025-listes-daptitude/",
-        "pubDate": "Tue, 24 Feb 2026 08:00:00 +0000",
-        "source": "RSS"
-      }
-    ]
-  },
-  {
-    "cdg": "(74) HAUTE-SAVOIE",
-    "officialUrl": "http://www.cdg74.fr",
-    "news": [
-      {
-        "title": "Précisions sur les modalités d’application du congé supplémentaire de naissance",
-        "link": "https://www.cdg74.fr/precisions-sur-les-modalites-dapplication-du-conge-supplementaire-de-naissance/",
-        "source": "HTML (Spécifique)"
-      },
-      {
-        "title": "Information du fonctionnaire sur les modalités de report de jours de congé annuel non pris",
-        "link": "https://www.cdg74.fr/information-du-fonctionnaire-sur-les-modalites-de-report-de-jours-de-conge-annuel-non-pris/",
-        "source": "HTML (Spécifique)"
-      },
-      {
-        "title": "Rupture conventionnelle : nouveaux décrets publiés",
-        "link": "https://www.cdg74.fr/rupture-conventionnelle-nouveaux-decrets-publies/",
-        "source": "HTML (Spécifique)"
-      }
-    ]
-  },
-  {
-    "cdg": "(87) HAUTE-VIENNE",
-    "officialUrl": "http://www.cdg87.fr",
-    "news": [
-      {
-        "title": "Élus locaux : Amélioration du statut",
-        "link": "http://www.cdg87.fr/actualites.php?num=230",
-        "source": "HTML"
-      },
-      {
-        "title": "Newsletter - Juin 2025",
-        "link": "http://www.cdg87.fr/actualites.php?num=205",
-        "source": "HTML"
-      },
-      {
-        "title": "Newsletter - Mars 2025",
-        "link": "http://www.cdg87.fr/actualites.php?num=190",
-        "source": "HTML"
-      }
-    ]
-  },
-  {
-    "cdg": "(05) HAUTES-ALPES",
-    "officialUrl": "http://www.cdg05.fr",
-    "news": [
-      {
-        "title": "Toutes les actualités",
-        "link": "http://www.cdg05.fr/actualites",
-        "source": "HTML"
-      },
-      {
-        "title": "Tous les événements",
-        "link": "http://www.cdg05.fr/agenda",
-        "source": "HTML"
-      },
-      {
-        "title": "Nos missions",
-        "link": "http://www.cdg05.fr/propos-cdg05/missions",
-        "source": "HTML"
-      }
-    ]
-  },
-  {
-    "cdg": "(65) HAUTES-PYRÉNÉES",
-    "officialUrl": "http://www.cdg65.fr",
-    "news": [
-      {
-        "title": "Un référent unique au service des collectivités",
-        "link": "https://www.cdg65.fr/actualites.php?num=688",
-        "source": "HTML"
-      },
-      {
-        "title": "Salon des communes et des intercommunalités des Hautes-Pyrénées 2026",
-        "link": "https://www.cdg65.fr/actualites.php?num=689",
-        "source": "HTML"
-      },
-      {
-        "title": "« Le Maire, employeur territorial » : le guide 2025",
-        "link": "https://www.cdg65.fr/actualites.php?num=655",
-        "source": "HTML"
-      },
-      {
-        "title": "Auxiliaire de puériculture",
-        "link": "https://www.emploi-territorial.fr/offre/o065260817000057-auxiliaire-puericulture?mtm_campaign=rss",
-        "source": "HTML"
-      },
-      {
-        "title": "Chef de production (h/f)",
-        "link": "https://www.emploi-territorial.fr/offre/o065260814000388-chef-production?mtm_campaign=rss",
-        "source": "HTML"
       }
     ]
   },
   {
     "cdg": "(34) HÉRAULT",
+    "dept": "34",
     "officialUrl": "http://www.cdg34.fr",
     "news": [
       {
@@ -969,6 +752,7 @@
   },
   {
     "cdg": "(35) ILLE-ET-VILAINE",
+    "dept": "35",
     "officialUrl": "http://www.cdg35.fr",
     "news": [
       {
@@ -1000,6 +784,7 @@
   },
   {
     "cdg": "(36) INDRE",
+    "dept": "36",
     "officialUrl": "http://www.cdg36.fr",
     "news": [
       {
@@ -1023,31 +808,8 @@
     ]
   },
   {
-    "cdg": "INDRE-ET-LOIRE (37)",
-    "officialUrl": "http://www.cdg37.fr",
-    "news": [
-      {
-        "title": "De nouveaux élus au Conseil d’administration du CDG 37",
-        "link": "https://www.cdg37.fr/de-nouveaux-elus-au-conseil-dadministration-du-cdg-37/",
-        "pubDate": "Wed, 15 Jul 2026 13:14:43 +0000",
-        "source": "RSS"
-      },
-      {
-        "title": "Elections et représentation au Conseil d’administration du CDG 37",
-        "link": "https://www.cdg37.fr/elections-et-representation-au-conseil-dadministration-du-25-juin-2026/",
-        "pubDate": "Mon, 29 Jun 2026 07:30:19 +0000",
-        "source": "RSS"
-      },
-      {
-        "title": "Nos expertises à votre service !",
-        "link": "https://www.cdg37.fr/decouvrez-les-prestations-du-cdg-37/",
-        "pubDate": "Tue, 07 Apr 2026 12:30:57 +0000",
-        "source": "RSS"
-      }
-    ]
-  },
-  {
     "cdg": "(38) ISÈRE",
+    "dept": "38",
     "officialUrl": "http://www.cdg38.fr",
     "news": [
       {
@@ -1066,6 +828,7 @@
   },
   {
     "cdg": "(39) JURA",
+    "dept": "39",
     "officialUrl": "http://www.cdgjura.fr/",
     "news": [
       {
@@ -1089,28 +852,8 @@
     ]
   },
   {
-    "cdg": "LANDES (40)",
-    "officialUrl": "http://www.cdg40.fr",
-    "news": [
-      {
-        "title": "Résultats de l' élection des représentants du Conseil d'administration du CDG",
-        "link": "https://www.cdg40.fr/actualites.php?num=1227",
-        "source": "HTML"
-      },
-      {
-        "title": "Election des membres du conseil d’administration du Centre de gestion des Landes",
-        "link": "https://www.cdg40.fr/actualites.php?num=1218",
-        "source": "HTML"
-      },
-      {
-        "title": "Elus locaux : Création d'une « reconnaissance des attributions exercées par le maire au nom de l'Etat »",
-        "link": "https://www.cdg40.fr/actualites.php?num=1196",
-        "source": "HTML"
-      }
-    ]
-  },
-  {
     "cdg": "(41) LOIR ET CHER",
+    "dept": "41",
     "officialUrl": "http://www.cdg41.org",
     "news": [
       {
@@ -1120,7 +863,7 @@
         "source": "RSS"
       },
       {
-        "title": "ELECTION DU PRÉSIDENT ET  DES VICE-PRESIDENT.E.S – CONSEIL D’ADMINISTRATION",
+        "title": "ELECTION DU PRÉSIDENT ET DES VICE-PRESIDENT.E.S – CONSEIL D’ADMINISTRATION",
         "link": "https://www.cdg-41.org/2026/07/10/election-du-president-et-des-vice-president-e-s-conseil-dadministration/",
         "pubDate": "Fri, 10 Jul 2026 05:53:29 +0000",
         "source": "RSS"
@@ -1135,6 +878,7 @@
   },
   {
     "cdg": "(42) LOIRE",
+    "dept": "42",
     "officialUrl": "http://www.cdg42.org",
     "news": [
       {
@@ -1158,7 +902,33 @@
     ]
   },
   {
+    "cdg": "(43) HAUTE-LOIRE",
+    "dept": "43",
+    "officialUrl": "http://www.cdg43.fr",
+    "news": [
+      {
+        "title": "Une parenthèse estivale bienvenue !",
+        "link": "https://www.cdg43.fr/une-parenthese-estivale-bienvenue/",
+        "pubDate": "Thu, 30 Jul 2026 12:11:22 +0000",
+        "source": "RSS"
+      },
+      {
+        "title": "Les Rencontres du CDG43 : un rendez-vous à ne pas manquer le 1er octobre 2026",
+        "link": "https://www.cdg43.fr/les-rencontres-du-cdg43-un-rendez-vous-a-ne-pas-manquer-le-1er-octobre-2026/",
+        "pubDate": "Wed, 22 Jul 2026 08:44:13 +0000",
+        "source": "RSS"
+      },
+      {
+        "title": "Le nouveau conseil d’administration du CDG43",
+        "link": "https://www.cdg43.fr/le-nouveau-conseil-dadministration-du-cdg43/",
+        "pubDate": "Mon, 20 Jul 2026 14:17:24 +0000",
+        "source": "RSS"
+      }
+    ]
+  },
+  {
     "cdg": "(44) LOIRE-ATLANTIQUE",
+    "dept": "44",
     "officialUrl": "http://www.cdg44.fr",
     "news": [
       {
@@ -1179,52 +949,8 @@
     ]
   },
   {
-    "cdg": "LOIRET (45)",
-    "officialUrl": "http://www.cdg45.fr",
-    "news": [
-      {
-        "title": "URGENT : Lignes Directrices de Gestion",
-        "link": "https://www.cdg45.fr/urgent-lignes-directrices-de-gestion/",
-        "pubDate": "Thu, 30 Jul 2026 07:51:43 +0000",
-        "source": "RSS"
-      },
-      {
-        "title": "Retraite : Traitement des dossiers des agents ayant accompli des services de sapeur-pompier volontaire.",
-        "link": "https://www.cdg45.fr/retraite-traitement-des-dossiers-des-agents-ayant-accompli-des-services-de-sapeur-pompier-volontaire/",
-        "pubDate": "Fri, 24 Jul 2026 12:57:43 +0000",
-        "source": "RSS"
-      },
-      {
-        "title": "Un nouveau simulateur “retraite progressive”",
-        "link": "https://www.cdg45.fr/un-nouveau-simulateur-retraite-progressive/",
-        "pubDate": "Thu, 23 Jul 2026 10:22:22 +0000",
-        "source": "RSS"
-      }
-    ]
-  },
-  {
-    "cdg": "LOT (46)",
-    "officialUrl": "http://www.cdg46.fr",
-    "news": [
-      {
-        "title": "Rupture conventionnelle : actualisation des documents en ligne",
-        "link": "https://www.cdg46.fr/detail/rupture-conventionnelle-actualisation-des-documents",
-        "source": "HTML (Spécifique)"
-      },
-      {
-        "title": "Dans notre actualité du 1er juillet 2026",
-        "link": "https://www.cdg46.fr/detail/conseil-detat-du-16-06-2026-et-annulation-de-larticle-4-du-decret-du-21-juin-2025",
-        "source": "HTML (Spécifique)"
-      },
-      {
-        "title": "Modalités de report des jours de congés annuels non pris",
-        "link": "https://www.cdg46.fr/detail/modalites-de-report-des-jours-de-conges-annuels-non-pris",
-        "source": "HTML (Spécifique)"
-      }
-    ]
-  },
-  {
     "cdg": "(47) LOT ET GARONNE",
+    "dept": "47",
     "officialUrl": "http://www.cdg47.fr",
     "news": [
       {
@@ -1238,7 +964,7 @@
         "source": "HTML (Spécifique)"
       },
       {
-        "title": "Retour sur la réunion « Bien démarrer le mandat »",
+        "title": "Retour sur la réunion « Bien démarrer le mandat »",
         "link": "https://www.cdg47.fr/actualites.php?num=1121",
         "source": "HTML (Spécifique)"
       }
@@ -1246,6 +972,7 @@
   },
   {
     "cdg": "(48) LOZÈRE",
+    "dept": "48",
     "officialUrl": "http://www.cdg48.fr",
     "news": [
       {
@@ -1269,55 +996,8 @@
     ]
   },
   {
-    "cdg": "MAINE ET LOIRE (49)",
-    "officialUrl": "http://www.cdg49.fr",
-    "news": [
-      {
-        "title": "Congés annuels non pris et droit à l’information de l’agent public (Màj)",
-        "link": "https://cdg49.fr/conges-annuels-non-pris-et-droit-a-linformation-de-lagent-public/",
-        "pubDate": "Wed, 12 Aug 2026 07:10:25 +0000",
-        "source": "RSS"
-      },
-      {
-        "title": "Note DGCL relative à la mise en place du régime indemnitaire des emplois administratifs supérieurs",
-        "link": "https://cdg49.fr/note-dgcl-relative-a-la-mise-en-place-du-regime-indemnitaire-des-emplois-administratifs-superieurs/",
-        "pubDate": "Fri, 07 Aug 2026 07:52:59 +0000",
-        "source": "RSS"
-      },
-      {
-        "title": "Nouveaux Concours et Examens",
-        "link": "https://cdg49.fr/nouveaux-concours-et-examens/",
-        "pubDate": "Mon, 27 Jul 2026 06:00:43 +0000",
-        "source": "RSS"
-      }
-    ]
-  },
-  {
-    "cdg": "MANCHE (50)",
-    "officialUrl": "http://www.cdg50.fr",
-    "news": [
-      {
-        "title": "Report des congés annuels : obligation d’informer l’agent",
-        "link": "https://cdg50.fr/report-des-conges-annuels-obligation-dinformer-lagent/",
-        "pubDate": "Wed, 19 Aug 2026 13:33:15 +0000",
-        "source": "RSS"
-      },
-      {
-        "title": "Congés et arrêts maladie : les évolutions au 1er septembre",
-        "link": "https://cdg50.fr/conges-arrets-maladie-changement-septembre/",
-        "pubDate": "Wed, 19 Aug 2026 06:35:16 +0000",
-        "source": "RSS"
-      },
-      {
-        "title": "Découvrez les webinaires « 1h pour en parler » du second semestre 2026",
-        "link": "https://cdg50.fr/decouvrez-les-webinaires-1h-pour-en-parler-du-second-semestre-2026/",
-        "pubDate": "Wed, 12 Aug 2026 13:41:27 +0000",
-        "source": "RSS"
-      }
-    ]
-  },
-  {
     "cdg": "(51) MARNE",
+    "dept": "51",
     "officialUrl": "http://51.cdgplus.fr",
     "news": [
       {
@@ -1342,6 +1022,7 @@
   },
   {
     "cdg": "(53) MAYENNE",
+    "dept": "53",
     "officialUrl": "http://www.cdg53.fr",
     "news": [
       {
@@ -1358,6 +1039,7 @@
   },
   {
     "cdg": "(54) MEURTHE ET MOSELLE",
+    "dept": "54",
     "officialUrl": "http://www.cdg54.fr",
     "news": [
       {
@@ -1369,6 +1051,7 @@
   },
   {
     "cdg": "(55) MEUSE",
+    "dept": "55",
     "officialUrl": "http://www.cdg55.fr",
     "news": [
       {
@@ -1380,6 +1063,7 @@
   },
   {
     "cdg": "(56) MORBIHAN",
+    "dept": "56",
     "officialUrl": "http://www.cdg56.fr",
     "news": [
       {
@@ -1411,6 +1095,7 @@
   },
   {
     "cdg": "(57) MOSELLE",
+    "dept": "57",
     "officialUrl": "http://www.cdg57.fr",
     "news": [
       {
@@ -1435,6 +1120,7 @@
   },
   {
     "cdg": "(58) NIÈVRE",
+    "dept": "58",
     "officialUrl": "http://www.cdg58.fr",
     "news": [
       {
@@ -1456,6 +1142,7 @@
   },
   {
     "cdg": "(59) NORD",
+    "dept": "59",
     "officialUrl": "http://www.cdg59.fr",
     "news": [
       {
@@ -1477,6 +1164,7 @@
   },
   {
     "cdg": "(60) OISE",
+    "dept": "60",
     "officialUrl": "http://www.cdg60.com",
     "news": [
       {
@@ -1501,6 +1189,7 @@
   },
   {
     "cdg": "(61) ORNE",
+    "dept": "61",
     "officialUrl": "http://www.cdg61.fr",
     "news": [
       {
@@ -1521,38 +1210,8 @@
     ]
   },
   {
-    "cdg": "PAS DE CALAIS (62)",
-    "officialUrl": "http://www.cdg62.fr",
-    "news": [
-      {
-        "title": "Conseil prévention : Le risque routier professionnel",
-        "link": "https://www.cdg62.fr/toutes-les-actualites/1189-conseil-prevention-le-risque-routier-professionnel",
-        "source": "HTML"
-      },
-      {
-        "title": "Inauguration du CdG62, réservez votre 10 septembre !",
-        "link": "https://www.cdg62.fr/toutes-les-actualites/1177-inauguration-du-cdg62-reservez-votre-10-septembre",
-        "source": "HTML"
-      },
-      {
-        "title": "Appréhender la gestion des ressources humaines dans les collectivités territoriales : Consulter le guide des nouveaux élus",
-        "link": "https://www.cdg62.fr/toutes-les-actualites/1179-apprehender-la-gestion-des-ressources-humaines-dans-les-collectivites-territoriales-consulter-le-guide-des-nouveaux-elus",
-        "source": "HTML"
-      },
-      {
-        "title": "Élections professionnelles, le processus continue",
-        "link": "https://www.cdg62.fr/toutes-les-actualites/1178-elections-professionnelles-le-processus-continue",
-        "source": "HTML"
-      },
-      {
-        "title": "Décrets : Pérennisation de la rupture conventionnelle dans la fonction publique",
-        "link": "https://www.cdg62.fr/toute-la-veille-juridique/1188-decrets-perennisation-de-la-rupture-conventionnelle-dans-la-fonction-publique",
-        "source": "HTML"
-      }
-    ]
-  },
-  {
     "cdg": "(63) PUY DE DÔME",
+    "dept": "63",
     "officialUrl": "http://www.cdg63.fr",
     "news": [
       {
@@ -1574,10 +1233,11 @@
   },
   {
     "cdg": "(64) PYRÉNÉES-ATLANTIQUES",
+    "dept": "64",
     "officialUrl": "http://www.cdg-64.fr",
     "news": [
       {
-        "title": "Arrêts de travail et temps partiel thérapeutique : de nouvelles règles s’appliquent dans la fonction publique ",
+        "title": "Arrêts de travail et temps partiel thérapeutique : de nouvelles règles s’appliquent dans la fonction publique",
         "link": "http://www.cdg-64.fr/accueil/actualites/news/detail/News/arrets-de-travail-et-temps-partiel-therapeutique-de-nouvelles-regles-sappliquent-dans-la-fonction-1/",
         "pubDate": "Wed, 19 Aug 2026 11:34:33 +0200",
         "source": "RSS"
@@ -1597,11 +1257,44 @@
     ]
   },
   {
+    "cdg": "(65) HAUTES-PYRÉNÉES",
+    "dept": "65",
+    "officialUrl": "http://www.cdg65.fr",
+    "news": [
+      {
+        "title": "Un référent unique au service des collectivités",
+        "link": "https://www.cdg65.fr/actualites.php?num=688",
+        "source": "HTML"
+      },
+      {
+        "title": "Salon des communes et des intercommunalités des Hautes-Pyrénées 2026",
+        "link": "https://www.cdg65.fr/actualites.php?num=689",
+        "source": "HTML"
+      },
+      {
+        "title": "« Le Maire, employeur territorial » : le guide 2025",
+        "link": "https://www.cdg65.fr/actualites.php?num=655",
+        "source": "HTML"
+      },
+      {
+        "title": "Auxiliaire de puériculture",
+        "link": "https://www.emploi-territorial.fr/offre/o065260817000057-auxiliaire-puericulture?mtm_campaign=rss",
+        "source": "HTML"
+      },
+      {
+        "title": "Chef de production (h/f)",
+        "link": "https://www.emploi-territorial.fr/offre/o065260814000388-chef-production?mtm_campaign=rss",
+        "source": "HTML"
+      }
+    ]
+  },
+  {
     "cdg": "(66) PYRÉNÉES-ORIENTALES",
+    "dept": "66",
     "officialUrl": "http://www.cdg66.fr",
     "news": [
       {
-        "title": "Formation assistant de prévention par le biais de l’assurance statutaire « CNP »",
+        "title": "Formation assistant de prévention par le biais de l’assurance statutaire « CNP »",
         "link": "https://cdg66.fr/formation-assistant-de-prevention-par-le-biais-de-lassurance-statutaire-cnp/",
         "pubDate": "Fri, 31 Jul 2026 06:27:02 +0000",
         "source": "RSS"
@@ -1621,7 +1314,55 @@
     ]
   },
   {
+    "cdg": "(67) BAS-RHIN",
+    "dept": "67",
+    "officialUrl": "http://www.cdg67.fr",
+    "news": [
+      {
+        "title": "ARCHIVES – ENQUÊTES DE BESOINS",
+        "link": "https://www.cdg67.fr/actualites/archives-enquetes-de-besoins/",
+        "source": "HTML"
+      },
+      {
+        "title": "Campagne RSU 2026",
+        "link": "https://www.cdg67.fr/actualites/campagne-rsu-2026/",
+        "source": "HTML"
+      },
+      {
+        "title": "Gestion des absences, des conflits, des archives… Consultez nos dix vidéos pratiques",
+        "link": "https://www.cdg67.fr/actualites/gestion-des-absences-des-conflits-des-archives-consultez-nous-dix-videos-pratiques/",
+        "source": "HTML"
+      }
+    ]
+  },
+  {
+    "cdg": "(68) HAUT-RHIN",
+    "dept": "68",
+    "officialUrl": "http://www.cdg68.fr",
+    "news": [
+      {
+        "title": "Point info : Juillet / Août 2026",
+        "link": "https://www.cdg68.fr/blog/2026/08/04/point-info-juillet-aout-2026/",
+        "pubDate": "Tue, 04 Aug 2026 09:23:23 +0000",
+        "source": "RSS"
+      },
+      {
+        "title": "PSC – Débat d’orientation obligatoire",
+        "link": "https://www.cdg68.fr/blog/2026/07/24/psc-debat-dorientation-obligatoire/",
+        "pubDate": "Fri, 24 Jul 2026 10:06:44 +0000",
+        "source": "RSS"
+      },
+      {
+        "title": "Transmission des arrêts de travail à la CPAM pour les agents mis à disposition",
+        "link": "https://www.cdg68.fr/blog/2026/07/03/transmission-des-arrets-de-travail-a-la-cpam-pour-les-agents-mis-a-disposition/",
+        "pubDate": "Fri, 03 Jul 2026 08:58:16 +0000",
+        "source": "RSS"
+      }
+    ]
+  },
+  {
     "cdg": "(69) RHÔNE",
+    "dept": "69",
     "officialUrl": "http://www.cdg69.fr",
     "news": [
       {
@@ -1652,7 +1393,33 @@
     ]
   },
   {
+    "cdg": "(70) HAUTE-SAÔNE",
+    "dept": "70",
+    "officialUrl": "https://70.cdgplus.fr",
+    "news": [
+      {
+        "title": "Télédéclaration des cotisations CDG 70 — Notice 2026 disponible",
+        "link": "https://70.cdgplus.fr/teledeclaration-des-cotisations-cdg-70-notice-2026-disponible/",
+        "pubDate": "Mon, 29 Jun 2026 09:24:44 +0000",
+        "source": "RSS"
+      },
+      {
+        "title": "Suspension de la réforme des retraites : ce qui change au 1er septembre 2026",
+        "link": "https://70.cdgplus.fr/suspension-de-la-reforme-des-retraites-ce-qui-change-au-1er-septembre-2026/",
+        "pubDate": "Thu, 05 Mar 2026 15:00:23 +0000",
+        "source": "RSS"
+      },
+      {
+        "title": "Promotion interne 2026 : listes d’aptitude",
+        "link": "https://70.cdgplus.fr/promotion-interne-2025-listes-daptitude/",
+        "pubDate": "Tue, 24 Feb 2026 08:00:00 +0000",
+        "source": "RSS"
+      }
+    ]
+  },
+  {
     "cdg": "(71) SAÔNE-ET-LOIRE",
+    "dept": "71",
     "officialUrl": "http://www.cdg71.fr",
     "news": [
       {
@@ -1684,6 +1451,7 @@
   },
   {
     "cdg": "(72) SARTHE",
+    "dept": "72",
     "officialUrl": "http://www.cdg72.fr",
     "news": [
       {
@@ -1704,43 +1472,30 @@
     ]
   },
   {
-    "cdg": "SAVOIE (73)",
-    "officialUrl": "http://www.cdg73.com",
+    "cdg": "(74) HAUTE-SAVOIE",
+    "dept": "74",
+    "officialUrl": "http://www.cdg74.fr",
     "news": [
       {
-        "title": "Bonjour tout le monde !",
-        "link": "https://www.cdg73.fr/bonjour-tout-le-monde/",
-        "pubDate": "Tue, 08 Nov 2022 15:09:20 +0000",
-        "source": "RSS"
-      }
-    ]
-  },
-  {
-    "cdg": "(77) SEINE-ET-MARNE",
-    "officialUrl": "http://www.cdg77.fr",
-    "news": [
-      {
-        "title": "Réforme de la haute fonction publique territoriale : ce qui change au 1er juillet 2026",
-        "link": "https://www.cdg77.fr/actualite/reforme-de-la-haute-fonction-publique-territoriale-ce-qui-change-au-1er-juillet-2026/",
-        "pubDate": "Wed, 22 Jul 2026 12:39:05 +0000",
-        "source": "RSS"
+        "title": "Précisions sur les modalités d’application du congé supplémentaire de naissance",
+        "link": "https://www.cdg74.fr/precisions-sur-les-modalites-dapplication-du-conge-supplementaire-de-naissance/",
+        "source": "HTML (Spécifique)"
       },
       {
-        "title": "Arrêts de travail : ce qui change en 2026",
-        "link": "https://www.cdg77.fr/actualite/arrets-de-travail-ce-qui-change-en-2026/",
-        "pubDate": "Mon, 20 Jul 2026 13:49:05 +0000",
-        "source": "RSS"
+        "title": "Information du fonctionnaire sur les modalités de report de jours de congé annuel non pris",
+        "link": "https://www.cdg74.fr/information-du-fonctionnaire-sur-les-modalites-de-report-de-jours-de-conge-annuel-non-pris/",
+        "source": "HTML (Spécifique)"
       },
       {
-        "title": "Autorisations d’absence liées à la parentalité et à certains événements familiaux",
-        "link": "https://www.cdg77.fr/actualite/autorisations-dabsence-liees-a-la-parentalite-et-a-certains-evenements-familiaux/",
-        "pubDate": "Mon, 20 Jul 2026 13:48:32 +0000",
-        "source": "RSS"
+        "title": "Rupture conventionnelle : nouveaux décrets publiés",
+        "link": "https://www.cdg74.fr/rupture-conventionnelle-nouveaux-decrets-publies/",
+        "source": "HTML (Spécifique)"
       }
     ]
   },
   {
     "cdg": "(76) SEINE-MARITIME",
+    "dept": "76",
     "officialUrl": "http://www.cdg76.fr",
     "news": [
       {
@@ -1764,7 +1519,65 @@
     ]
   },
   {
+    "cdg": "(77) SEINE-ET-MARNE",
+    "dept": "77",
+    "officialUrl": "http://www.cdg77.fr",
+    "news": [
+      {
+        "title": "Réforme de la haute fonction publique territoriale : ce qui change au 1er juillet 2026",
+        "link": "https://www.cdg77.fr/actualite/reforme-de-la-haute-fonction-publique-territoriale-ce-qui-change-au-1er-juillet-2026/",
+        "pubDate": "Wed, 22 Jul 2026 12:39:05 +0000",
+        "source": "RSS"
+      },
+      {
+        "title": "Arrêts de travail : ce qui change en 2026",
+        "link": "https://www.cdg77.fr/actualite/arrets-de-travail-ce-qui-change-en-2026/",
+        "pubDate": "Mon, 20 Jul 2026 13:49:05 +0000",
+        "source": "RSS"
+      },
+      {
+        "title": "Autorisations d’absence liées à la parentalité et à certains événements familiaux",
+        "link": "https://www.cdg77.fr/actualite/autorisations-dabsence-liees-a-la-parentalite-et-a-certains-evenements-familiaux/",
+        "pubDate": "Mon, 20 Jul 2026 13:48:32 +0000",
+        "source": "RSS"
+      }
+    ]
+  },
+  {
+    "cdg": "(79) DEUX-SÈVRES",
+    "dept": "79",
+    "officialUrl": "http://www.cdg79.fr",
+    "news": [
+      {
+        "title": "Recrutement des agents contractuels de droit privé",
+        "link": "https://www.cdg79.fr/page/43-les-agents-contractuels",
+        "source": "HTML"
+      },
+      {
+        "title": "Recrutement des agents contractuels de droit public",
+        "link": "https://www.cdg79.fr/page/722-contractuel-droit-public",
+        "source": "HTML"
+      },
+      {
+        "title": "Dispositifs de formations",
+        "link": "https://www.cdg79.fr/actualite/326",
+        "source": "HTML"
+      },
+      {
+        "title": "Université des Maires - Jeudi 10 septembre 2026 - La Crèche",
+        "link": "https://www.cdg79.fr/actualite/809",
+        "source": "HTML"
+      },
+      {
+        "title": "Rupture conventionnelle : De nouveaux textes règlementaires pérennisent et font évoluer le dispositif de rupture conventionnelle",
+        "link": "https://www.cdg79.fr/actualite/813",
+        "source": "HTML"
+      }
+    ]
+  },
+  {
     "cdg": "(80) SOMME",
+    "dept": "80",
     "officialUrl": "http://www.cdg80.fr",
     "news": [
       {
@@ -1789,6 +1602,7 @@
   },
   {
     "cdg": "(81) TARN",
+    "dept": "81",
     "officialUrl": "http://www.cdg81.fr",
     "news": [
       {
@@ -1813,6 +1627,7 @@
   },
   {
     "cdg": "(82) TARN-ET-GARONNE",
+    "dept": "82",
     "officialUrl": "http://www.cdg82.fr",
     "news": [
       {
@@ -1833,38 +1648,8 @@
     ]
   },
   {
-    "cdg": "VAR (83)",
-    "officialUrl": "http://www.cdg83.fr",
-    "news": [
-      {
-        "title": "Actualités",
-        "link": "https://www.cdg83.fr/le-cdg/actualites",
-        "source": "HTML"
-      },
-      {
-        "title": "Dossier rupture conventionnelle Emploi, organisation, formation , Juridique Décret n° 2026-745 du 6 août 2026 relatif à la procédure de rupture conventionnelle dans la fonction… En savoir plus",
-        "link": "https://www.cdg83.fr/le-cdg/actualites/detail/dossier-rupture-conventionnelle",
-        "source": "HTML"
-      },
-      {
-        "title": "Harcèlement moral: des faits isolés et insuffisamment étayés ne suffisent pas à engager la… Prévention des risques, santé , Juridique S'agissant de l'événement du 7 février 2020, si le major de police en cause conteste avoir été à… En savoir plus",
-        "link": "https://www.cdg83.fr/le-cdg/actualites/detail/harcelement-moral-des-faits-isoles-et-insuffisamment-etayes-ne-suffisent-pas-a-engager-la-responsabilite-de-ladministration",
-        "source": "HTML"
-      },
-      {
-        "title": "Le 10/09/2026 Conseil médical - Formation restreinte 8 Nous contacter Le service « conseil médical » du CDG83 reste à votre disposition pour tout… En savoir plus",
-        "link": "https://www.cdg83.fr/le-cdg/agenda/detail/conseil-medical-formation-restreinte-8",
-        "source": "HTML"
-      },
-      {
-        "title": "Le 22/09/2026 Commission Administrative Paritaire - 2eme… Attention! Date limite de réception des dossiers: Vendredi 21 Aout 2026 En savoir plus",
-        "link": "https://www.cdg83.fr/le-cdg/agenda/detail/commission-administrative-paritaire-2eme-semestre-2026",
-        "source": "HTML"
-      }
-    ]
-  },
-  {
     "cdg": "(84) VAUCLUSE",
+    "dept": "84",
     "officialUrl": "http://www.cdg84.fr",
     "news": [
       {
@@ -1896,6 +1681,7 @@
   },
   {
     "cdg": "(85) VENDÉE",
+    "dept": "85",
     "officialUrl": "http://www.maisondescommunes85.fr",
     "news": [
       {
@@ -1920,6 +1706,7 @@
   },
   {
     "cdg": "(86) VIENNE",
+    "dept": "86",
     "officialUrl": "http://www.cdg86.fr",
     "news": [
       {
@@ -1930,7 +1717,30 @@
     ]
   },
   {
+    "cdg": "(87) HAUTE-VIENNE",
+    "dept": "87",
+    "officialUrl": "http://www.cdg87.fr",
+    "news": [
+      {
+        "title": "Élus locaux : Amélioration du statut",
+        "link": "http://www.cdg87.fr/actualites.php?num=230",
+        "source": "HTML"
+      },
+      {
+        "title": "Newsletter - Juin 2025",
+        "link": "http://www.cdg87.fr/actualites.php?num=205",
+        "source": "HTML"
+      },
+      {
+        "title": "Newsletter - Mars 2025",
+        "link": "http://www.cdg87.fr/actualites.php?num=190",
+        "source": "HTML"
+      }
+    ]
+  },
+  {
     "cdg": "(88) VOSGES",
+    "dept": "88",
     "officialUrl": "https://88.cdgplus.fr/",
     "news": [
       {
@@ -1955,6 +1765,7 @@
   },
   {
     "cdg": "(89) YONNE",
+    "dept": "89",
     "officialUrl": "http://www.cdg89.fr",
     "news": [
       {
@@ -1965,6 +1776,281 @@
       {
         "title": "Actu statutaire Juillet 2026",
         "link": "https://www.cdg89.fr/actu-statutaire-juillet-2026-p85.html",
+        "source": "HTML"
+      }
+    ]
+  },
+  {
+    "cdg": "GERS (32)",
+    "dept": "32",
+    "officialUrl": "http://www.cdg32.fr",
+    "news": [
+      {
+        "title": "Actualités statut",
+        "link": "https://cdg32.fr/gerer-le-personnel/actualites-statut/",
+        "source": "HTML"
+      },
+      {
+        "title": "Statut 20/07/26 Élections professionnelles 2026 Étape 2 : Validation des pré-listes électorales",
+        "link": "https://cdg32.fr/actualites/elections-professionnelles-2026-2/",
+        "source": "HTML"
+      },
+      {
+        "title": "Le CDG 06/07/26 Guide d’accueil du nouvel agent territorial Nous mettons à votre disposition un livret d'accueil du nouvel agent territorial !",
+        "link": "https://cdg32.fr/actualites/guide-daccueil-du-nouvel-agent-territorial/",
+        "source": "HTML"
+      },
+      {
+        "title": "Statut 10/06/26 Augmentation du SMIC au 1er juin 2026 Le montant du SMIC est revalorisé à compter du 1er juin 2026",
+        "link": "https://cdg32.fr/actualites/augmentation-du-smic-au-1er-juin-2026/",
+        "source": "HTML"
+      },
+      {
+        "title": "Statut 03/06/26 Indemnités kilométriques : Majoration temporaire Majoration temporaire : pour les déplacements effectués entre le 01/06/2026 et le 31/12/2026",
+        "link": "https://cdg32.fr/actualites/majoration-temporaire-des-taux-des-indemnites-kilometriques/",
+        "source": "HTML"
+      }
+    ]
+  },
+  {
+    "cdg": "HAUTE-MARNE (52)",
+    "dept": "52",
+    "officialUrl": "http://www.cdg52.fr",
+    "news": [
+      {
+        "title": "Élection du nouveau Président du CDG 52",
+        "link": "https://www.cdg52.fr/election-du-nouveau-president-du-cdg-52/",
+        "source": "HTML (Spécifique)"
+      },
+      {
+        "title": "Autorisations Spéciales d’Absence",
+        "link": "https://www.cdg52.fr/autorisations-speciales-dabsence/",
+        "source": "HTML (Spécifique)"
+      },
+      {
+        "title": "Nouvelles notes d’information en ligne !",
+        "link": "https://www.cdg52.fr/nouvelles-notes-dinformation-en-ligne-2/",
+        "source": "HTML (Spécifique)"
+      }
+    ]
+  },
+  {
+    "cdg": "INDRE-ET-LOIRE (37)",
+    "dept": "37",
+    "officialUrl": "http://www.cdg37.fr",
+    "news": [
+      {
+        "title": "De nouveaux élus au Conseil d’administration du CDG 37",
+        "link": "https://www.cdg37.fr/de-nouveaux-elus-au-conseil-dadministration-du-cdg-37/",
+        "pubDate": "Wed, 15 Jul 2026 13:14:43 +0000",
+        "source": "RSS"
+      },
+      {
+        "title": "Elections et représentation au Conseil d’administration du CDG 37",
+        "link": "https://www.cdg37.fr/elections-et-representation-au-conseil-dadministration-du-25-juin-2026/",
+        "pubDate": "Mon, 29 Jun 2026 07:30:19 +0000",
+        "source": "RSS"
+      },
+      {
+        "title": "Nos expertises à votre service !",
+        "link": "https://www.cdg37.fr/decouvrez-les-prestations-du-cdg-37/",
+        "pubDate": "Tue, 07 Apr 2026 12:30:57 +0000",
+        "source": "RSS"
+      }
+    ]
+  },
+  {
+    "cdg": "LANDES (40)",
+    "dept": "40",
+    "officialUrl": "http://www.cdg40.fr",
+    "news": [
+      {
+        "title": "Résultats de l' élection des représentants du Conseil d'administration du CDG",
+        "link": "https://www.cdg40.fr/actualites.php?num=1227",
+        "source": "HTML"
+      },
+      {
+        "title": "Election des membres du conseil d’administration du Centre de gestion des Landes",
+        "link": "https://www.cdg40.fr/actualites.php?num=1218",
+        "source": "HTML"
+      },
+      {
+        "title": "Elus locaux : Création d'une « reconnaissance des attributions exercées par le maire au nom de l'Etat »",
+        "link": "https://www.cdg40.fr/actualites.php?num=1196",
+        "source": "HTML"
+      }
+    ]
+  },
+  {
+    "cdg": "LOIRET (45)",
+    "dept": "45",
+    "officialUrl": "http://www.cdg45.fr",
+    "news": [
+      {
+        "title": "URGENT : Lignes Directrices de Gestion",
+        "link": "https://www.cdg45.fr/urgent-lignes-directrices-de-gestion/",
+        "pubDate": "Thu, 30 Jul 2026 07:51:43 +0000",
+        "source": "RSS"
+      },
+      {
+        "title": "Retraite : Traitement des dossiers des agents ayant accompli des services de sapeur-pompier volontaire.",
+        "link": "https://www.cdg45.fr/retraite-traitement-des-dossiers-des-agents-ayant-accompli-des-services-de-sapeur-pompier-volontaire/",
+        "pubDate": "Fri, 24 Jul 2026 12:57:43 +0000",
+        "source": "RSS"
+      },
+      {
+        "title": "Un nouveau simulateur “retraite progressive”",
+        "link": "https://www.cdg45.fr/un-nouveau-simulateur-retraite-progressive/",
+        "pubDate": "Thu, 23 Jul 2026 10:22:22 +0000",
+        "source": "RSS"
+      }
+    ]
+  },
+  {
+    "cdg": "LOT (46)",
+    "dept": "46",
+    "officialUrl": "http://www.cdg46.fr",
+    "news": [
+      {
+        "title": "Rupture conventionnelle : actualisation des documents en ligne",
+        "link": "https://www.cdg46.fr/detail/rupture-conventionnelle-actualisation-des-documents",
+        "source": "HTML (Spécifique)"
+      },
+      {
+        "title": "Dans notre actualité du 1er juillet 2026",
+        "link": "https://www.cdg46.fr/detail/conseil-detat-du-16-06-2026-et-annulation-de-larticle-4-du-decret-du-21-juin-2025",
+        "source": "HTML (Spécifique)"
+      },
+      {
+        "title": "Modalités de report des jours de congés annuels non pris",
+        "link": "https://www.cdg46.fr/detail/modalites-de-report-des-jours-de-conges-annuels-non-pris",
+        "source": "HTML (Spécifique)"
+      }
+    ]
+  },
+  {
+    "cdg": "MAINE ET LOIRE (49)",
+    "dept": "49",
+    "officialUrl": "http://www.cdg49.fr",
+    "news": [
+      {
+        "title": "Congés annuels non pris et droit à l’information de l’agent public (Màj)",
+        "link": "https://cdg49.fr/conges-annuels-non-pris-et-droit-a-linformation-de-lagent-public/",
+        "pubDate": "Wed, 12 Aug 2026 07:10:25 +0000",
+        "source": "RSS"
+      },
+      {
+        "title": "Note DGCL relative à la mise en place du régime indemnitaire des emplois administratifs supérieurs",
+        "link": "https://cdg49.fr/note-dgcl-relative-a-la-mise-en-place-du-regime-indemnitaire-des-emplois-administratifs-superieurs/",
+        "pubDate": "Fri, 07 Aug 2026 07:52:59 +0000",
+        "source": "RSS"
+      },
+      {
+        "title": "Nouveaux Concours et Examens",
+        "link": "https://cdg49.fr/nouveaux-concours-et-examens/",
+        "pubDate": "Mon, 27 Jul 2026 06:00:43 +0000",
+        "source": "RSS"
+      }
+    ]
+  },
+  {
+    "cdg": "MANCHE (50)",
+    "dept": "50",
+    "officialUrl": "http://www.cdg50.fr",
+    "news": [
+      {
+        "title": "Report des congés annuels : obligation d’informer l’agent",
+        "link": "https://cdg50.fr/report-des-conges-annuels-obligation-dinformer-lagent/",
+        "pubDate": "Wed, 19 Aug 2026 13:33:15 +0000",
+        "source": "RSS"
+      },
+      {
+        "title": "Congés et arrêts maladie : les évolutions au 1er septembre",
+        "link": "https://cdg50.fr/conges-arrets-maladie-changement-septembre/",
+        "pubDate": "Wed, 19 Aug 2026 06:35:16 +0000",
+        "source": "RSS"
+      },
+      {
+        "title": "Découvrez les webinaires « 1h pour en parler » du second semestre 2026",
+        "link": "https://cdg50.fr/decouvrez-les-webinaires-1h-pour-en-parler-du-second-semestre-2026/",
+        "pubDate": "Wed, 12 Aug 2026 13:41:27 +0000",
+        "source": "RSS"
+      }
+    ]
+  },
+  {
+    "cdg": "PAS DE CALAIS (62)",
+    "dept": "62",
+    "officialUrl": "http://www.cdg62.fr",
+    "news": [
+      {
+        "title": "Conseil prévention : Le risque routier professionnel",
+        "link": "https://www.cdg62.fr/toutes-les-actualites/1189-conseil-prevention-le-risque-routier-professionnel",
+        "source": "HTML"
+      },
+      {
+        "title": "Inauguration du CdG62, réservez votre 10 septembre !",
+        "link": "https://www.cdg62.fr/toutes-les-actualites/1177-inauguration-du-cdg62-reservez-votre-10-septembre",
+        "source": "HTML"
+      },
+      {
+        "title": "Appréhender la gestion des ressources humaines dans les collectivités territoriales : Consulter le guide des nouveaux élus",
+        "link": "https://www.cdg62.fr/toutes-les-actualites/1179-apprehender-la-gestion-des-ressources-humaines-dans-les-collectivites-territoriales-consulter-le-guide-des-nouveaux-elus",
+        "source": "HTML"
+      },
+      {
+        "title": "Élections professionnelles, le processus continue",
+        "link": "https://www.cdg62.fr/toutes-les-actualites/1178-elections-professionnelles-le-processus-continue",
+        "source": "HTML"
+      },
+      {
+        "title": "Décrets : Pérennisation de la rupture conventionnelle dans la fonction publique",
+        "link": "https://www.cdg62.fr/toute-la-veille-juridique/1188-decrets-perennisation-de-la-rupture-conventionnelle-dans-la-fonction-publique",
+        "source": "HTML"
+      }
+    ]
+  },
+  {
+    "cdg": "SAVOIE (73)",
+    "dept": "73",
+    "officialUrl": "http://www.cdg73.com",
+    "news": [
+      {
+        "title": "Bonjour tout le monde !",
+        "link": "https://www.cdg73.fr/bonjour-tout-le-monde/",
+        "pubDate": "Tue, 08 Nov 2022 15:09:20 +0000",
+        "source": "RSS"
+      }
+    ]
+  },
+  {
+    "cdg": "VAR (83)",
+    "dept": "83",
+    "officialUrl": "http://www.cdg83.fr",
+    "news": [
+      {
+        "title": "Actualités",
+        "link": "https://www.cdg83.fr/le-cdg/actualites",
+        "source": "HTML"
+      },
+      {
+        "title": "Dossier rupture conventionnelle Emploi, organisation, formation , Juridique Décret n° 2026-745 du 6 août 2026 relatif à la procédure de rupture conventionnelle dans la fonction… En savoir plus",
+        "link": "https://www.cdg83.fr/le-cdg/actualites/detail/dossier-rupture-conventionnelle",
+        "source": "HTML"
+      },
+      {
+        "title": "Harcèlement moral: des faits isolés et insuffisamment étayés ne suffisent pas à engager la… Prévention des risques, santé , Juridique S'agissant de l'événement du 7 février 2020, si le major de police en cause conteste avoir été à… En savoir plus",
+        "link": "https://www.cdg83.fr/le-cdg/actualites/detail/harcelement-moral-des-faits-isoles-et-insuffisamment-etayes-ne-suffisent-pas-a-engager-la-responsabilite-de-ladministration",
+        "source": "HTML"
+      },
+      {
+        "title": "Le 10/09/2026 Conseil médical - Formation restreinte 8 Nous contacter Le service « conseil médical » du CDG83 reste à votre disposition pour tout… En savoir plus",
+        "link": "https://www.cdg83.fr/le-cdg/agenda/detail/conseil-medical-formation-restreinte-8",
+        "source": "HTML"
+      },
+      {
+        "title": "Le 22/09/2026 Commission Administrative Paritaire - 2eme… Attention! Date limite de réception des dossiers: Vendredi 21 Aout 2026 En savoir plus",
+        "link": "https://www.cdg83.fr/le-cdg/agenda/detail/commission-administrative-paritaire-2eme-semestre-2026",
         "source": "HTML"
       }
     ]
