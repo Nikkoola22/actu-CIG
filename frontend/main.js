@@ -85,18 +85,40 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderFilteredNews() {
     const searchTerm = searchInput.value.toLowerCase().trim();
     
-    const filteredData = allData.filter(cdg => {
-      // Apply Search
-      const matchSearch = cdg.cdg.toLowerCase().includes(searchTerm);
+    const filteredData = [];
+
+    allData.forEach(cdg => {
+      const matchCdgName = cdg.cdg.toLowerCase().includes(searchTerm);
       
-      // Apply Filter
+      // Check if any news titles match the search term
+      let matchingNews = [];
+      if (cdg.news && cdg.news.length > 0) {
+        if (!searchTerm) {
+          matchingNews = [...cdg.news];
+        } else if (matchCdgName) {
+          // If the department name matches, show all its news
+          matchingNews = [...cdg.news];
+        } else {
+          // Otherwise filter to only news whose title matches the search term
+          matchingNews = cdg.news.filter(item => item.title && item.title.toLowerCase().includes(searchTerm));
+        }
+      }
+
+      const hasMatchingNews = matchingNews.length > 0;
+      const isMatch = matchCdgName || hasMatchingNews;
+
+      // Apply Filter Buttons ('all', 'has-news', 'empty')
       let matchFilter = true;
-      const hasNews = cdg.news && cdg.news.length > 0;
-      
-      if (currentFilter === 'has-news') matchFilter = hasNews;
-      if (currentFilter === 'empty') matchFilter = !hasNews;
-      
-      return matchSearch && matchFilter;
+      if (currentFilter === 'has-news') matchFilter = hasMatchingNews;
+      if (currentFilter === 'empty') matchFilter = !hasMatchingNews;
+
+      if (isMatch && matchFilter) {
+        // Clone CDG object and assign filtered news
+        filteredData.push({
+          ...cdg,
+          news: matchingNews
+        });
+      }
     });
     
     renderNews(filteredData);

@@ -9,7 +9,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const DIRECTORY_URL = 'https://fncdg.com/annuaire_cdg/';
 
 const KNOWN_URLS = {
-    '01': 'https://cdg01.fr/section-216',
+    '01': 'https://cdg01.fr/page-1091',
     '04': 'https://cdg04.fr/actualites/',
     '07': 'https://www.cdg07.com/actualites/',
     '09': 'https://www.cdg09.fr/actualites/',
@@ -17,7 +17,7 @@ const KNOWN_URLS = {
     '67': 'https://www.cdg67.fr/actualites/',
     '15': 'https://www.cdg15.fr/2024/index.php/home/actualites-du-cdg/',
     '16': 'https://www.cdg16.fr/copie-de-actualites/',
-    '18': 'https://www.cdg18.fr/le-cdg18/actualites.html#c3088',
+    '18': 'https://www.cdg18.fr/le-cdg18/actualites.html',
     '79': 'https://www.cdg79.fr/actualites',
     '19': 'https://www.cdg19.fr/',
     '23': 'https://www.cdg23.fr/',
@@ -34,14 +34,16 @@ const KNOWN_URLS = {
     '88': 'https://88.cdgplus.fr/liste-des-actualites/',
     '81': 'https://cdg81.fr/actualites/',
     '76': 'https://www.cdg76.fr/actualites-juridiques',
+    '74': 'https://www.cdg74.fr/actualites/',
     '73': 'https://www.cdg73.fr/actualites/',
+    '70': 'https://70.cdgplus.fr/category/actualite/',
     '66': 'https://cdg66.fr/toutes-les-actualites/',
     '65': 'https://www.cdg65.fr/actualites/',
     '63': 'https://www.cdg63.fr/connaitre-le-cdg-63/actualites/',
     '62': 'https://www.cdg62.fr/actualites/',
     '61': 'https://www.cdg61.fr/cdg61_toutes_actualites.php',
     '60': 'https://www.cdg60.com/actualites/',
-    '58': 'https://www.cdg58.fr/actualites/',
+    '58': 'https://www.cdg58.com/',
     '57': 'https://www.cdg57.fr/le-centre-de-gestion/actualites/',
     '55': 'https://www.cdg55.fr/actualites/',
     '54': 'https://www.cdg54.fr/actualites/',
@@ -97,41 +99,175 @@ async function getOfficialWebsiteUrl(subpageUrl) {
 }
 
 async function scrapeNewsFromWebsite(websiteUrl) {
-    // Attempt 1: RSS Feed
     try {
-        const { data } = await axios.get(websiteUrl, { timeout: 5000 });
-        const $ = cheerio.load(data);
-        let rssUrl = null;
-        
-        $('link[type="application/rss+xml"]').each((i, el) => {
-            rssUrl = $(el).attr('href');
-        });
-        
-        if (!rssUrl && $('link[type="application/atom+xml"]').length > 0) {
-            rssUrl = $('link[type="application/atom+xml"]').first().attr('href');
+        const urlObj = new URL(websiteUrl);
+
+        // --- SPECIFIC SCRAPERS ---
+        // CDG 01 (Ain)
+        if (websiteUrl.includes('cdg01.fr')) {
+            try {
+                const { data } = await axios.get('https://cdg01.fr/page-1091', { timeout: 8000 });
+                const $ = cheerio.load(data);
+                const news01 = [];
+                $('a').each((i, el) => {
+                    const text = $(el).text().trim().replace(/\s+/g, ' ');
+                    const href = $(el).attr('href');
+                    if (href && (text.includes('♦') || text.includes('2026') || text.includes('Décret') || href.includes('page-1200') || href.includes('page-1177') || href.includes('page-1201'))) {
+                        if (text.length > 10 && text.length < 150 && !news01.find(r => r.link === href)) {
+                            let link = href;
+                            if (!link.startsWith('http')) link = 'https://www.cdg01.fr/' + link.replace(/^\.\.\//, '').replace(/^\//, '');
+                            news01.push({ title: text, link, source: 'HTML (Spécifique)' });
+                        }
+                    }
+                });
+                if (news01.length > 0) return news01.slice(0, 3);
+            } catch(e) {}
         }
 
-        if (rssUrl) {
-            if (!rssUrl.startsWith('http')) {
-                const urlObj = new URL(websiteUrl);
-                rssUrl = urlObj.origin + (rssUrl.startsWith('/') ? '' : '/') + rssUrl;
-            }
-            
-            const feed = await parser.parseURL(rssUrl);
-            if (feed.items && feed.items.length > 0) {
-                return feed.items.slice(0, 3).map(item => ({
-                    title: item.title,
-                    link: item.link,
-                    pubDate: item.pubDate,
-                    source: 'RSS'
-                }));
-            }
-        } else {
-            // Explicit fallback for WordPress /feed/
+        // CDG 18 (Cher)
+        if (websiteUrl.includes('cdg18.fr')) {
             try {
-                const urlObj = new URL(websiteUrl);
-                const explicitFeedUrl = urlObj.origin + '/feed/';
-                const feed = await parser.parseURL(explicitFeedUrl);
+                const { data } = await axios.get('https://www.cdg18.fr/le-cdg18/actualites.html', { timeout: 8000 });
+                const $ = cheerio.load(data);
+                const news18 = [];
+                $('a').each((i, el) => {
+                    const text = $(el).text().trim().replace(/\s+/g, ' ');
+                    const href = $(el).attr('href');
+                    if (href && (href.includes('Flash_Info') || text.includes('Flash info') || text.includes('Flash spécial'))) {
+                        let link = href.startsWith('http') ? href : 'https://www.cdg18.fr/' + href.replace(/^\//, '');
+                        if (!news18.find(r => r.link === link)) {
+                            news18.push({ title: text, link, source: 'HTML (Spécifique)' });
+                        }
+                    }
+                });
+                if (news18.length > 0) return news18.slice(0, 3);
+            } catch(e) {}
+        }
+
+        // CDG 46 (Lot)
+        if (websiteUrl.includes('cdg46.fr')) {
+            try {
+                const { data } = await axios.get('https://www.cdg46.fr/actualites', { timeout: 8000 });
+                const $ = cheerio.load(data);
+                const news46 = [];
+                $('a[href*="/detail/"]').each((i, el) => {
+                    const href = $(el).attr('href');
+                    const container = $(el).closest('.views-row, .col, .card, div, tr');
+                    const heading = container.find('h1, h2, h3, h4, h5, strong, b, .title').first().text().trim().replace(/\s+/g, ' ');
+                    const title = (heading && heading.length > 5) ? heading : $(el).text().trim().replace(/\s+/g, ' ');
+                    if (title && title.length > 5 && !title.toLowerCase().includes('lire la suite')) {
+                        let link = href.startsWith('http') ? href : 'https://www.cdg46.fr' + (href.startsWith('/') ? '' : '/') + href;
+                        if (!news46.find(r => r.link === link)) {
+                            news46.push({ title, link, source: 'HTML (Spécifique)' });
+                        }
+                    }
+                });
+                if (news46.length > 0) return news46.slice(0, 3);
+            } catch(e) {}
+        }
+
+        // CDG 58 (Nièvre)
+        if (websiteUrl.includes('cdg58.com') || websiteUrl.includes('cdg58.fr')) {
+            try {
+                const { data } = await axios.get('https://www.cdg58.com/', { timeout: 8000, headers: { 'User-Agent': 'Mozilla/5.0' } });
+                const $ = cheerio.load(data);
+                const news58 = [];
+                $('a').each((i, el) => {
+                    const href = $(el).attr('href');
+                    const text = $(el).text().trim().replace(/\s+/g, ' ');
+                    if (href && (href.includes('formation') || href.includes('elections') || href.includes('actus-') || text.includes('Formation') || text.includes('ÉLECTIONS') || text.includes('ELECTIONS'))) {
+                        if (text.length > 10 && !news58.find(r => r.link === href)) {
+                            let link = href.startsWith('http') ? href : 'https://www.cdg58.com' + (href.startsWith('/') ? '' : '/') + href;
+                            news58.push({ title: text, link, source: 'HTML (Spécifique)' });
+                        }
+                    }
+                });
+                if (news58.length > 0) return news58.slice(0, 3);
+            } catch(e) {}
+        }
+
+        // CDG 61 (Orne)
+        if (websiteUrl.includes('cdg61.fr')) {
+            try {
+                const { data } = await axios.get('https://www.cdg61.fr/cdg61_toutes_actualites.php', { timeout: 8000 });
+                const $ = cheerio.load(data);
+                const news61 = [];
+                $('a[href*="actualites_"]').each((i, el) => {
+                    const text = $(el).text().trim().replace(/\s+/g, ' ');
+                    const href = $(el).attr('href');
+                    if (text && text.length > 15 && !text.toUpperCase().includes('ACTUALIT') && !news61.find(r => r.link === href)) {
+                        let link = href.startsWith('http') ? href : 'https://www.cdg61.fr/' + href.replace(/^\//, '');
+                        news61.push({ title: text, link, source: 'HTML (Spécifique)' });
+                    }
+                });
+                if (news61.length > 0) return news61.slice(0, 3);
+            } catch(e) {}
+        }
+
+        // CDG 63 (Puy-de-Dôme)
+        if (websiteUrl.includes('cdg63.fr')) {
+            try {
+                const { data } = await axios.get('https://www.cdg63.fr/connaitre-le-cdg-63/actualites/', { timeout: 8000 });
+                const $ = cheerio.load(data);
+                const news63 = [];
+                $('article, .actu-card, .card, .wp-block-post, div').each((i, el) => {
+                    const h = $(el).find('h2, h3, h4, .entry-title').first().text().trim().replace(/\s+/g, ' ');
+                    const a = $(el).find('a[href*="/actus/"]').first().attr('href') || $(el).find('a').first().attr('href');
+                    if (h && h.length > 8 && a && a.includes('/actus/') && !news63.find(r => r.link === a)) {
+                        news63.push({ title: h, link: a, source: 'HTML (Spécifique)' });
+                    }
+                });
+                if (news63.length > 0) return news63.slice(0, 3);
+            } catch(e) {}
+        }
+
+        // CDG 74 (Haute-Savoie)
+        if (websiteUrl.includes('cdg74.fr')) {
+            try {
+                const { data } = await axios.get('https://www.cdg74.fr/actualites/', { timeout: 8000 });
+                const $ = cheerio.load(data);
+                const news74 = [];
+                $('article, .item, .col-md-4, .actu-item, div').each((i, el) => {
+                    const h = $(el).find('h2, h3, h4, .entry-title, .title').first().text().trim().replace(/\s+/g, ' ');
+                    const a = $(el).find('a[href*="cdg74.fr/"]').first().attr('href');
+                    if (h && h.length > 10 && a && !a.includes('/actualites/') && !h.toLowerCase().includes('en savoir') && !h.toLowerCase().includes('par dates') && !news74.find(r => r.link === a)) {
+                        news74.push({ title: h, link: a, source: 'HTML (Spécifique)' });
+                    }
+                });
+                if (news74.length > 0) return news74.slice(0, 3);
+            } catch(e) {}
+        }
+
+        // CDG 04
+        if (websiteUrl.includes('cdg04.fr')) {
+            const { data } = await axios.get(websiteUrl, { timeout: 8000 });
+            const $ = cheerio.load(data);
+            const news04 = [];
+            $('.pt-cv-title a').each((i, el) => {
+                news04.push({ title: $(el).text().trim(), link: $(el).attr('href'), source: 'HTML (Spécifique)' });
+            });
+            if (news04.length > 0) return news04.slice(0, 3);
+        }
+        
+        // CDG 24, 19, 23, 47
+        if (websiteUrl.includes('cdg24.fr') || websiteUrl.includes('cdg19.fr') || websiteUrl.includes('cdg23.fr') || websiteUrl.includes('cdg47.fr')) {
+            const { data } = await axios.get(websiteUrl, { timeout: 8000 });
+            const $ = cheerio.load(data);
+            const newsCustom = [];
+            const baseOrigin = urlObj.origin + '/';
+            $('a[href^="actualites.php?num="]').each((i, el) => {
+                const text = $(el).text().trim() || 'Actualité';
+                if (text.length > 5 && !newsCustom.find(n => n.link === baseOrigin + $(el).attr('href'))) {
+                    newsCustom.push({ title: text, link: baseOrigin + $(el).attr('href'), source: 'HTML (Spécifique)' });
+                }
+            });
+            if (newsCustom.length > 0) return newsCustom.slice(0, 3);
+        }
+        
+        // CDG 31
+        if (websiteUrl.includes('cdg31.fr')) {
+            try {
+                const feed = await parser.parseURL('https://www.cdg31.fr/rss.xml');
                 if (feed.items && feed.items.length > 0) {
                     return feed.items.slice(0, 3).map(item => ({
                         title: item.title,
@@ -140,83 +276,60 @@ async function scrapeNewsFromWebsite(websiteUrl) {
                         source: 'RSS'
                     }));
                 }
-            } catch (e) {
-                // Ignore fallback
-            }
+            } catch (e) {}
         }
-        
-        // Custom Scrapers for Specific CDs
-        if (websiteUrl.includes('cdg04.fr')) {
-            const news04 = [];
-            $('.pt-cv-title a').each((i, el) => {
-                news04.push({ title: $(el).text().trim(), link: $(el).attr('href'), source: 'HTML' });
-            });
-            if (news04.length > 0) return news04.slice(0, 3);
-        }
-        
-        if (websiteUrl.includes('cdg24.fr') || websiteUrl.includes('cdg19.fr') || websiteUrl.includes('cdg23.fr') || websiteUrl.includes('cdg47.fr')) {
-            const newsCustom = [];
-            const urlObj = new URL(websiteUrl);
-            const baseOrigin = urlObj.origin + '/';
-            $('a[href^="actualites.php?num="]').each((i, el) => {
-                const text = $(el).text().trim() || 'Actualité';
-                if (text.length > 5 && !newsCustom.find(n => n.link === baseOrigin + $(el).attr('href'))) {
-                    newsCustom.push({ title: text, link: baseOrigin + $(el).attr('href'), source: 'HTML' });
-                }
-            });
-            if (newsCustom.length > 0) return newsCustom.slice(0, 3);
-        }
-        
-        // Remove old cdg33/28/68 hardcoded block as we generalized it
 
-        // Attempt 2: HTML Heuristics (News links)
+        // --- RSS AUTO-DISCOVERY & WORDPRESS /feed/ ---
+        try {
+            const feedUrl = urlObj.origin + '/feed/';
+            const feed = await parser.parseURL(feedUrl);
+            if (feed.items && feed.items.length > 0) {
+                return feed.items.slice(0, 3).map(item => ({
+                    title: item.title,
+                    link: item.link,
+                    pubDate: item.pubDate,
+                    source: 'RSS'
+                }));
+            }
+        } catch (e) {}
+
+        // --- GENERIC HTML PARSING ---
+        const { data } = await axios.get(websiteUrl, { timeout: 8000, headers: { 'User-Agent': 'Mozilla/5.0' } });
+        const $ = cheerio.load(data);
+
+        // Check RSS tags in HTML
+        let rssUrl = $('link[type="application/rss+xml"]').attr('href') || $('link[type="application/atom+xml"]').attr('href');
+        if (rssUrl) {
+            if (!rssUrl.startsWith('http')) {
+                rssUrl = urlObj.origin + (rssUrl.startsWith('/') ? '' : '/') + rssUrl;
+            }
+            try {
+                const feed = await parser.parseURL(rssUrl);
+                if (feed.items && feed.items.length > 0) {
+                    return feed.items.slice(0, 3).map(item => ({
+                        title: item.title,
+                        link: item.link,
+                        pubDate: item.pubDate,
+                        source: 'RSS'
+                    }));
+                }
+            } catch(e) {}
+        }
+
+        // HTML heuristics
         const news = [];
-        $('a').each((i, el) => {
+        $('.elementor-post__title a, .post-title a, .entry-title a, h2 a, h3 a, article a').each((i, el) => {
             const href = $(el).attr('href');
-            const text = $(el).text().trim();
-            const parentHtml = $(el).parent().html() || '';
-            const className = ($(el).attr('class') || '') + ' ' + ($(el).parent().attr('class') || '');
-            
-            // Check if it's a news link
-            if (href && (
-                href.includes('/actualites/') || 
-                href.includes('/news/') || 
-                className.toLowerCase().includes('actu') || 
-                className.toLowerCase().includes('news')
-            )) {
-                if (text.length > 10 && !news.find(n => n.link === href)) {
-                    let fullHref = href;
-                    if (!fullHref.startsWith('http')) {
-                        const urlObj = new URL(websiteUrl);
-                        fullHref = urlObj.origin + (fullHref.startsWith('/') ? '' : '/') + fullHref;
-                    }
-                    news.push({
-                        title: text,
-                        link: fullHref,
-                        source: 'HTML'
-                    });
-                }
-            }
-        });
-        
-        if (news.length > 0) {
-            return news.slice(0, 3);
-        }
-
-        // Attempt 3: Aggressive CSS selectors for articles
-        $('.elementor-post__title a, .post-title a, h2 a, h3 a, article a').each((i, el) => {
-            const href = $(el).attr('href');
-            const text = $(el).text().trim();
-            if (href && text.length > 10 && !news.find(n => n.link === href)) {
+            const text = $(el).text().trim().replace(/\s+/g, ' ');
+            if (href && text.length > 10 && !text.toLowerCase().includes('lire la suite') && !text.toLowerCase().includes('en savoir') && !news.find(n => n.link === href)) {
                 let fullHref = href;
                 if (!fullHref.startsWith('http')) {
-                    const urlObj = new URL(websiteUrl);
                     fullHref = urlObj.origin + (fullHref.startsWith('/') ? '' : '/') + fullHref;
                 }
                 news.push({
                     title: text,
                     link: fullHref,
-                    source: 'HTML Fallback'
+                    source: 'HTML'
                 });
             }
         });
@@ -224,7 +337,7 @@ async function scrapeNewsFromWebsite(websiteUrl) {
         if (news.length > 0) {
             return news.slice(0, 3);
         }
-        
+
     } catch (error) {
         // Fallback silently
     }
@@ -278,7 +391,9 @@ async function runScraper() {
 }
 
 module.exports = {
-    runScraper
+    runScraper,
+    scrapeNewsFromWebsite,
+    KNOWN_URLS
 };
 
 // If run directly
