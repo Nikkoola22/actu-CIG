@@ -1,8 +1,19 @@
-// SaaS Frontend Logic
+// SaaS Frontend Logic - High Performance Optimized
 const API_ENDPOINTS = [
   '/api/news',
   '/data.json'
 ];
+
+// Helper to escape HTML characters in strings for security and performance
+function escapeHTML(str) {
+  if (!str) return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements
@@ -87,23 +98,31 @@ document.addEventListener('DOMContentLoaded', () => {
   let favorites = JSON.parse(localStorage.getItem('veille_cdg_favs') || '[]');
   let activeTopic = null;
 
-  // Initialize Theme
+  // Initialize Theme & View
   initTheme();
   initViewMode();
+
+  // Setup Event Delegation for Containers (Attached once for ultra-fast performance)
+  setupEventDelegation();
 
   // Load Data
   fetchNews();
 
   // ----------------- EVENT LISTENERS -----------------
 
-  // Search Input
+  // Search Input with micro-debounce for fluid typing
+  let searchDebounceTimer = null;
   searchInput.addEventListener('input', () => {
-    if (searchInput.value.trim().length > 0) {
+    const val = searchInput.value.trim();
+    if (val.length > 0) {
       clearSearchBtn.classList.remove('hidden');
     } else {
       clearSearchBtn.classList.add('hidden');
     }
-    renderFilteredNews();
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(() => {
+      renderFilteredNews();
+    }, 40);
   });
 
   clearSearchBtn.addEventListener('click', () => {
@@ -133,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Trends & Topics Chips
+  // Trends & Topics Chips (Instant switch)
   trendChips.forEach(chip => {
     chip.addEventListener('click', (e) => {
       const topic = e.currentTarget.dataset.topic;
@@ -208,13 +227,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 showToast('Scraping en cours...', 2000);
               }
             } else {
-              // If status endpoint fails, stop polling and show error
               clearInterval(pollInterval);
               showToast('Erreur de vérification du statut', 3000);
               refreshBtn.disabled = false;
             }
           } catch(e) {
-            console.error('Polling error:', e);
             clearInterval(pollInterval);
             showToast('Erreur lors de la mise à jour', 3000);
             refreshBtn.disabled = false;
@@ -233,7 +250,74 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ----------------- DATA FETCHING -----------------
+  // ----------------- DATA PRE-PROCESSING & FETCHING -----------------
+
+  function processRawData(data) {
+    return data.map(cdg => {
+      const cdgName = cdg.cdg || '';
+      const cdgLower = cdgName.toLowerCase();
+      const deptMatch = cdgName.match(/\d+[A-B]?/) ? cdgName.match(/\d+[A-B]?/)[0] : 'CDG';
+      
+      let host = 'Site officiel';
+      if (cdg.officialUrl) {
+        try {
+          host = new URL(cdg.officialUrl).hostname;
+        } catch(e) {
+          host = 'Site officiel';
+        }
+      }
+
+      const rawNews = cdg.news || [];
+      const processedNews = [];
+      let realCount = 0;
+
+      for (let i = 0; i < rawNews.length; i++) {
+        const item = rawNews[i];
+        const title = item.title || '';
+        const titleLower = title.toLowerCase();
+        const isFallback = item.source === 'Fallback';
+        
+        let formattedDate = '';
+        if (item.pubDate) {
+          try {
+            formattedDate = new Date(item.pubDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+          } catch(e) {}
+        }
+
+        const matchedTopics = [];
+        if (!isFallback) {
+          realCount++;
+          for (const [topKey, topDef] of Object.entries(TRENDING_TOPICS)) {
+            if (topDef.keywords.some(kw => titleLower.includes(kw))) {
+              matchedTopics.push(topKey);
+            }
+          }
+        }
+
+        processedNews.push({
+          title,
+          titleLower,
+          link: item.link || '#',
+          pubDate: item.pubDate,
+          formattedDate,
+          source: item.source || '',
+          isFallback,
+          matchedTopics
+        });
+      }
+
+      return {
+        cdg: cdgName,
+        cdgLower,
+        deptCode: deptMatch,
+        officialUrl: cdg.officialUrl || '',
+        host,
+        logo: cdg.logo || null,
+        news: processedNews,
+        realNewsCount: realCount
+      };
+    });
+  }
 
   async function fetchNews(silent = false) {
     if (!silent) {
@@ -254,9 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
           }
         }
-      } catch (e) {
-        // Try next endpoint
-      }
+      } catch (e) {}
     }
 
     if (!silent) {
@@ -264,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (data && Array.isArray(data)) {
-      allData = data;
+      allData = processRawData(data);
       updateStats();
       renderFilteredNews();
     } else if (!silent) {
@@ -272,7 +354,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ----------------- RENDER FUNCTIONS -----------------
+  // ----------------- FAST EVENT DELEGATION -----------------
+
+  function setupEventDelegation() {
+    // Grid view delegation
+    newsContainer.addEventListener('click', (e) => {
+      const favBtn = e.target.closest('.fav-btn');
+      if (favBtn) {
+        e.stopPropagation();
+        toggleFavorite(favBtn.dataset.cdg);
+        return;
+      }
+
+      const copyBtn = e.target.closest('.copy-btn');
+      if (copyBtn) {
+        e.stopPropagation();
+        const link = copyBtn.dataset.link;
+        if (link) {
+          navigator.clipboard.writeText(link);
+          showToast('Lien copié dans le presse-papier !', 2000);
+        }
+      }
+    });
+
+    // Table view delegation
+    tableContainer.addEventListener('click', (e) => {
+      const favBtn = e.target.closest('.fav-btn');
+      if (favBtn) {
+        e.stopPropagation();
+        toggleFavorite(favBtn.dataset.cdg);
+      }
+    });
+  }
+
+  // ----------------- RENDER & STATS FUNCTIONS -----------------
 
   function updateStats() {
     const totalCdgs = allData.length;
@@ -280,15 +395,29 @@ document.addEventListener('DOMContentLoaded', () => {
     let withNews = 0;
     let emptyCount = 0;
 
-    allData.forEach(c => {
-      const realNews = (c.news || []).filter(n => n.source !== 'Fallback');
-      if (realNews.length > 0) {
+    // Fast loop for stats and topic counters
+    const topicCounts = {};
+    Object.keys(TRENDING_TOPICS).forEach(k => { topicCounts[k] = 0; });
+
+    for (let i = 0; i < allData.length; i++) {
+      const cdg = allData[i];
+      if (cdg.realNewsCount > 0) {
         withNews++;
-        totalArticles += realNews.length;
+        totalArticles += cdg.realNewsCount;
       } else {
         emptyCount++;
       }
-    });
+
+      const newsList = cdg.news;
+      for (let j = 0; j < newsList.length; j++) {
+        const item = newsList[j];
+        if (!item.isFallback) {
+          for (let k = 0; k < item.matchedTopics.length; k++) {
+            topicCounts[item.matchedTopics[k]]++;
+          }
+        }
+      }
+    }
 
     if (statCdgCount) statCdgCount.textContent = totalCdgs;
     if (statNewsCount) statNewsCount.textContent = totalArticles;
@@ -298,75 +427,64 @@ document.addEventListener('DOMContentLoaded', () => {
     if (countEmpty) countEmpty.textContent = emptyCount;
 
     // Update Trending Topic Counter Badges
-    Object.entries(TRENDING_TOPICS).forEach(([topicKey, topicDef]) => {
-      let count = 0;
-      allData.forEach(c => {
-        (c.news || []).forEach(n => {
-          if (n.source !== 'Fallback' && n.title) {
-            const titleLower = n.title.toLowerCase();
-            if (topicDef.keywords.some(kw => titleLower.includes(kw))) {
-              count++;
-            }
-          }
-        });
-      });
+    Object.keys(TRENDING_TOPICS).forEach(topicKey => {
       const badge = document.querySelector(`[data-count-topic="${topicKey}"]`);
       if (badge) {
-        badge.textContent = count;
+        badge.textContent = topicCounts[topicKey] || 0;
       }
     });
   }
 
   function getFilteredData() {
     const searchTerm = searchInput.value.toLowerCase().trim();
-    const topicKeywords = activeTopic && TRENDING_TOPICS[activeTopic] 
-      ? TRENDING_TOPICS[activeTopic].keywords 
-      : null;
+    const activeTop = activeTopic;
+    const favSet = new Set(favorites);
 
     const filtered = [];
 
-    allData.forEach(cdg => {
-      const matchCdgName = searchTerm ? cdg.cdg.toLowerCase().includes(searchTerm) : false;
-      const isFav = favorites.includes(cdg.cdg);
-      
+    for (let i = 0; i < allData.length; i++) {
+      const cdg = allData[i];
+      const matchCdgName = searchTerm ? cdg.cdgLower.includes(searchTerm) : false;
+      const isFav = favSet.has(cdg.cdg);
+
       let matchingNews = [];
-      if (cdg.news && cdg.news.length > 0) {
-        matchingNews = cdg.news.filter(item => {
-          if (!item.title) return false;
-          const titleLower = item.title.toLowerCase();
+      const newsList = cdg.news;
 
-          // If a topic is selected, filter out articles that don't match topic keywords
-          if (topicKeywords && !topicKeywords.some(kw => titleLower.includes(kw))) {
-            return false;
+      if (newsList.length > 0) {
+        for (let j = 0; j < newsList.length; j++) {
+          const item = newsList[j];
+          if (item.isFallback) continue;
+
+          // Topic filter check (O(1) lookup)
+          if (activeTop && !item.matchedTopics.includes(activeTop)) {
+            continue;
           }
 
-          // If a search query is typed
-          if (searchTerm) {
-            if (matchCdgName) return true;
-            return titleLower.includes(searchTerm);
+          // Search term check
+          if (searchTerm && !matchCdgName && !item.titleLower.includes(searchTerm)) {
+            continue;
           }
 
-          return true;
-        });
+          matchingNews.push(item);
+        }
       }
 
-      const hasMatchingNews = matchingNews.filter(n => n.source !== 'Fallback').length > 0;
-      const isMatch = (matchCdgName && !topicKeywords) || hasMatchingNews;
+      const hasMatchingNews = matchingNews.length > 0;
+      const isMatch = (matchCdgName && !activeTop) || hasMatchingNews;
+
+      if (!isMatch) continue;
 
       // Status filter
-      let matchFilter = true;
-      if (currentFilter === 'favorites') matchFilter = isFav;
-      if (currentFilter === 'has-news') matchFilter = hasMatchingNews;
-      if (currentFilter === 'empty') matchFilter = !hasMatchingNews;
+      if (currentFilter === 'favorites' && !isFav) continue;
+      if (currentFilter === 'has-news' && !hasMatchingNews) continue;
+      if (currentFilter === 'empty' && hasMatchingNews) continue;
 
-      if (isMatch && matchFilter) {
-        filtered.push({
-          ...cdg,
-          news: matchingNews,
-          isFav
-        });
-      }
-    });
+      filtered.push({
+        ...cdg,
+        filteredNews: matchingNews,
+        isFav
+      });
+    }
 
     return filtered;
   }
@@ -382,7 +500,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderGridView(data) {
-    newsContainer.innerHTML = '';
     newsContainer.classList.remove('hidden');
     tableContainer.classList.add('hidden');
 
@@ -391,149 +508,76 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    data.forEach(cdg => {
-      const realNews = (cdg.news || []).filter(n => n.source !== 'Fallback');
+    const cardsHtml = [];
+    const len = data.length;
+
+    for (let i = 0; i < len; i++) {
+      const cdg = data[i];
+      const realNews = cdg.filteredNews;
       const hasNews = realNews.length > 0;
+      const isFav = cdg.isFav;
+      const safeCdgName = escapeHTML(cdg.cdg);
+      const safeHost = escapeHTML(cdg.host);
+      const safeUrl = escapeHTML(cdg.officialUrl || '#');
 
-      const card = document.createElement('div');
-      card.className = `cdg-card ${cdg.isFav ? 'is-fav' : ''}`;
-
-      // Header
-      const header = document.createElement('div');
-      header.className = 'cdg-header';
-
-      const left = document.createElement('div');
-      left.className = 'cdg-header-left';
-
-      // Favorite Star Button
-      const favBtn = document.createElement('button');
-      favBtn.className = `fav-btn ${cdg.isFav ? 'active' : ''}`;
-      favBtn.title = cdg.isFav ? 'Retirer des favoris' : 'Ajouter aux favoris';
-      favBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="${cdg.isFav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
-      favBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleFavorite(cdg.cdg);
-      });
-
-      // CDG Logo thumbnail
-      const logoWrap = document.createElement('div');
-      logoWrap.className = 'cdg-logo-wrap';
-      const deptMatch = cdg.cdg.match(/\d+[A-B]?/) || ['CDG'];
+      // Logo thumbnail
+      let logoHtml = '';
       if (cdg.logo) {
-        const img = document.createElement('img');
-        img.className = 'cdg-logo-img';
-        img.src = cdg.logo;
-        img.alt = `Logo ${cdg.cdg}`;
-        img.loading = 'lazy';
-        img.onerror = () => {
-          logoWrap.innerHTML = `<span class="cdg-logo-placeholder">${deptMatch[0]}</span>`;
-        };
-        logoWrap.appendChild(img);
+        logoHtml = `<img src="${escapeHTML(cdg.logo)}" alt="Logo ${safeCdgName}" class="cdg-logo-img" loading="lazy" onerror="this.outerHTML='<span class=\\'cdg-logo-placeholder\\'>${escapeHTML(cdg.deptCode)}</span>'">`;
       } else {
-        logoWrap.innerHTML = `<span class="cdg-logo-placeholder">${deptMatch[0]}</span>`;
+        logoHtml = `<span class="cdg-logo-placeholder">${escapeHTML(cdg.deptCode)}</span>`;
       }
 
-      const titleBlock = document.createElement('div');
-      titleBlock.className = 'cdg-title-block';
+      // News list
+      let newsListHtml = '';
+      if (hasNews) {
+        for (let j = 0; j < realNews.length; j++) {
+          const item = realNews[j];
+          const safeTitle = escapeHTML(item.title);
+          const safeLink = escapeHTML(item.link);
+          const safeDate = item.formattedDate ? `<span class="date-tag">📅 ${item.formattedDate}</span>` : '';
+          const safeSource = item.source ? `<span class="source-tag">${escapeHTML(item.source)}</span>` : '';
 
-      const name = document.createElement('div');
-      name.className = 'cdg-name';
-      name.textContent = cdg.cdg;
-
-      const link = document.createElement('a');
-      link.className = 'cdg-link';
-      link.href = cdg.officialUrl || '#';
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-
-      if (cdg.officialUrl) {
-        try {
-          const host = new URL(cdg.officialUrl).hostname;
-          link.innerHTML = `${host} <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
-        } catch(e) {
-          link.textContent = 'Site officiel';
+          newsListHtml += `
+            <li class="news-item">
+              <a href="${safeLink}" target="_blank" rel="noopener noreferrer" class="news-item-link">${safeTitle}</a>
+              <div class="news-meta">
+                <div class="meta-tags">${safeDate}${safeSource}</div>
+                <button class="copy-btn" data-link="${safeLink}" title="Copier le lien">📋 Copier</button>
+              </div>
+            </li>`;
         }
       } else {
-        link.textContent = 'Site non répertorié';
+        newsListHtml = `<li class="empty-state" style="padding: 0.5rem 0; text-align: left;">Aucune publication récente indexée.</li>`;
       }
 
-      titleBlock.appendChild(name);
-      titleBlock.appendChild(link);
-      left.appendChild(favBtn);
-      left.appendChild(logoWrap);
-      left.appendChild(titleBlock);
-      header.appendChild(left);
+      const badgeText = hasNews ? `${realNews.length} Actu${realNews.length > 1 ? 's' : ''}` : '0 Actu';
+      const badgeClass = hasNews ? '' : 'empty';
 
-      const badge = document.createElement('span');
-      badge.className = `news-badge ${hasNews ? '' : 'empty'}`;
-      badge.textContent = hasNews ? `${realNews.length} Actu${realNews.length > 1 ? 's' : ''}` : '0 Actu';
-      header.appendChild(badge);
-      card.appendChild(header);
+      cardsHtml.push(`
+        <div class="cdg-card ${isFav ? 'is-fav' : ''}">
+          <div class="cdg-header">
+            <div class="cdg-header-left">
+              <button class="fav-btn ${isFav ? 'active' : ''}" data-cdg="${safeCdgName}" title="${isFav ? 'Retirer des favoris' : 'Ajouter aux favoris'}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="${isFav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </button>
+              <div class="cdg-logo-wrap">${logoHtml}</div>
+              <div class="cdg-title-block">
+                <div class="cdg-name">${safeCdgName}</div>
+                ${cdg.officialUrl ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="cdg-link">${safeHost} <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>` : `<span class="cdg-link" style="opacity:0.6;">Site non répertorié</span>`}
+              </div>
+            </div>
+            <span class="news-badge ${badgeClass}">${badgeText}</span>
+          </div>
+          <ul class="news-list">${newsListHtml}</ul>
+        </div>
+      `);
+    }
 
-      // News List
-      const list = document.createElement('ul');
-      list.className = 'news-list';
-
-      if (hasNews) {
-        realNews.forEach(item => {
-          const li = document.createElement('li');
-          li.className = 'news-item';
-
-          const a = document.createElement('a');
-          a.className = 'news-item-link';
-          a.href = item.link;
-          a.target = '_blank';
-          a.rel = 'noopener noreferrer';
-          a.textContent = item.title;
-          li.appendChild(a);
-
-          const meta = document.createElement('div');
-          meta.className = 'news-meta';
-
-          const tags = document.createElement('div');
-          tags.className = 'meta-tags';
-
-          if (item.pubDate) {
-            try {
-              const d = new Date(item.pubDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
-              tags.innerHTML += `<span class="date-tag">📅 ${d}</span>`;
-            } catch(e) {}
-          }
-          if (item.source) {
-            tags.innerHTML += `<span class="source-tag">${item.source}</span>`;
-          }
-
-          const copyBtn = document.createElement('button');
-          copyBtn.className = 'copy-btn';
-          copyBtn.title = 'Copier le lien';
-          copyBtn.innerHTML = '📋 Copier';
-          copyBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navigator.clipboard.writeText(item.link);
-            showToast('Lien copié dans le presse-papier !', 2000);
-          });
-
-          meta.appendChild(tags);
-          meta.appendChild(copyBtn);
-          li.appendChild(meta);
-          list.appendChild(li);
-        });
-      } else {
-        const empty = document.createElement('li');
-        empty.className = 'empty-state';
-        empty.style.padding = '0.5rem 0';
-        empty.style.textAlign = 'left';
-        empty.textContent = 'Aucune publication récente indexée.';
-        list.appendChild(empty);
-      }
-
-      card.appendChild(list);
-      newsContainer.appendChild(card);
-    });
+    newsContainer.innerHTML = cardsHtml.join('');
   }
 
   function renderTableView(data) {
-    tableBody.innerHTML = '';
     newsContainer.classList.add('hidden');
     tableContainer.classList.remove('hidden');
 
@@ -542,59 +586,54 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    data.forEach(cdg => {
-      const realNews = (cdg.news || []).filter(n => n.source !== 'Fallback');
-      const tr = document.createElement('tr');
+    const rowsHtml = [];
+    const len = data.length;
 
-      // Fav col
-      const tdFav = document.createElement('td');
-      const favBtn = document.createElement('button');
-      favBtn.className = `fav-btn ${cdg.isFav ? 'active' : ''}`;
-      favBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="${cdg.isFav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
-      favBtn.addEventListener('click', () => toggleFavorite(cdg.cdg));
-      tdFav.appendChild(favBtn);
+    for (let i = 0; i < len; i++) {
+      const cdg = data[i];
+      const realNews = cdg.filteredNews;
+      const isFav = cdg.isFav;
+      const safeCdgName = escapeHTML(cdg.cdg);
+      const safeUrl = escapeHTML(cdg.officialUrl || '');
 
-      // Name col with logo
-      const tdName = document.createElement('td');
-      const deptMatchTable = cdg.cdg.match(/\d+[A-B]?/) || ['CDG'];
-      const logoImg = cdg.logo ? `<img src="${cdg.logo}" alt="" class="table-cdg-logo" onerror="this.style.display='none'">` : '';
-      tdName.innerHTML = `<div style="display: flex; align-items: center; gap: 0.65rem;">
-        <div class="cdg-logo-wrap table-logo-wrap">${logoImg}<span class="cdg-logo-placeholder">${deptMatchTable[0]}</span></div>
-        <strong style="color: var(--text-primary); font-size: 0.95rem;">${cdg.cdg}</strong>
-      </div>`;
+      const logoImg = cdg.logo ? `<img src="${escapeHTML(cdg.logo)}" alt="" class="table-cdg-logo" onerror="this.style.display='none'">` : '';
 
-      // Actus col
-      const tdActus = document.createElement('td');
+      let actusHtml = '';
       if (realNews.length > 0) {
-        const listDiv = document.createElement('div');
-        listDiv.className = 'table-actu-list';
-
-        realNews.forEach(item => {
-          const row = document.createElement('div');
-          row.className = 'table-actu-row';
-          row.innerHTML = `<a href="${item.link}" target="_blank" rel="noopener noreferrer" class="news-item-link" style="font-size: 0.85rem;">• ${item.title}</a>`;
-          listDiv.appendChild(row);
-        });
-        tdActus.appendChild(listDiv);
+        let itemsHtml = '';
+        for (let j = 0; j < realNews.length; j++) {
+          const item = realNews[j];
+          itemsHtml += `<div class="table-actu-row"><a href="${escapeHTML(item.link)}" target="_blank" rel="noopener noreferrer" class="news-item-link" style="font-size: 0.85rem;">• ${escapeHTML(item.title)}</a></div>`;
+        }
+        actusHtml = `<div class="table-actu-list">${itemsHtml}</div>`;
       } else {
-        tdActus.innerHTML = '<span style="color: var(--text-muted); font-size: 0.825rem;">Aucune publication</span>';
+        actusHtml = '<span style="color: var(--text-muted); font-size: 0.825rem;">Aucune publication</span>';
       }
 
-      // Link col
-      const tdLink = document.createElement('td');
-      tdLink.style.textAlign = 'right';
-      if (cdg.officialUrl) {
-        tdLink.innerHTML = `<a href="${cdg.officialUrl}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.75rem;">Visiter ↗</a>`;
-      } else {
-        tdLink.innerHTML = '<span style="color: var(--text-muted); font-size: 0.75rem;">N/A</span>';
-      }
+      const linkHtml = safeUrl
+        ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.75rem;">Visiter ↗</a>`
+        : '<span style="color: var(--text-muted); font-size: 0.75rem;">N/A</span>';
 
-      tr.appendChild(tdFav);
-      tr.appendChild(tdName);
-      tr.appendChild(tdActus);
-      tr.appendChild(tdLink);
-      tableBody.appendChild(tr);
-    });
+      rowsHtml.push(`
+        <tr>
+          <td>
+            <button class="fav-btn ${isFav ? 'active' : ''}" data-cdg="${safeCdgName}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="${isFav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </button>
+          </td>
+          <td>
+            <div style="display: flex; align-items: center; gap: 0.65rem;">
+              <div class="cdg-logo-wrap table-logo-wrap">${logoImg}<span class="cdg-logo-placeholder">${escapeHTML(cdg.deptCode)}</span></div>
+              <strong style="color: var(--text-primary); font-size: 0.95rem;">${safeCdgName}</strong>
+            </div>
+          </td>
+          <td>${actusHtml}</td>
+          <td style="text-align: right;">${linkHtml}</td>
+        </tr>
+      `);
+    }
+
+    tableBody.innerHTML = rowsHtml.join('');
   }
 
   // ----------------- FAVORITES & SETTINGS -----------------
@@ -670,7 +709,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     data.forEach(cdg => {
-      const realNews = (cdg.news || []).filter(n => n.source !== 'Fallback');
+      const realNews = cdg.filteredNews || [];
       if (realNews.length > 0) {
         realNews.forEach(item => {
           rows.push([
