@@ -155,20 +155,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 showToast('Scraping en cours...', 2000);
               }
             } else {
-              // If status endpoint fails, just wait and clear
+              // If status endpoint fails, stop polling and show error
               clearInterval(pollInterval);
-              setTimeout(async () => {
-                try {
-                  await fetchNews(true);
-                  showToast('Données mises à jour !', 3000);
-                } finally {
-                  refreshBtn.disabled = false;
-                }
-              }, 15000);
+              showToast('Erreur de vérification du statut', 3000);
+              refreshBtn.disabled = false;
             }
           } catch(e) {
             console.error('Polling error:', e);
             clearInterval(pollInterval);
+            showToast('Erreur lors de la mise à jour', 3000);
             refreshBtn.disabled = false;
           }
         }, 5000);
@@ -202,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const response = await fetch(`${endpoint}${cacheBuster}`);
         if (response.ok) {
           data = await response.json();
-          if (Array.isArray(data)) {
+          if (Array.isArray(data) && data.length > 0) {
             break;
           }
         }
