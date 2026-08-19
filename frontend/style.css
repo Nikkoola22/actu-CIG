@@ -666,8 +666,8 @@ button:focus-visible,
 
 .search-box input {
   width: 100%;
-  padding: 0.95rem 6.5rem 0.95rem 3.3rem;
-  font-size: 1rem;
+  padding: 0.85rem 2.8rem 0.85rem 3rem;
+  font-size: 0.95rem;
   font-family: inherit;
   border: 1.5px solid var(--border-color);
   border-radius: var(--radius-md);
@@ -682,23 +682,6 @@ button:focus-visible,
   border-color: var(--primary);
   background-color: var(--bg-surface);
   box-shadow: 0 0 0 4px var(--primary-subtle), inset 0 2px 4px rgba(0, 0, 0, 0.02);
-}
-
-.search-shortcuts {
-  position: absolute;
-  right: 3rem;
-  pointer-events: none;
-}
-
-.kbd-badge {
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  color: var(--text-muted);
-  font-size: 0.725rem;
-  font-weight: 700;
-  padding: 0.25rem 0.55rem;
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
 }
 
 .btn-clear {
@@ -1408,18 +1391,11 @@ button:focus-visible,
   display: none !important;
 }
 
+/* ==================== RESPONSIVE & MOBILE PHONE OPTIMIZATION ==================== */
+
 @media (max-width: 950px) {
-  .hero-section {
-    padding: 2.5rem 1.25rem 1.5rem 1.25rem;
-  }
-
-  .kpi-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .header-inner {
-    flex-direction: column;
-    align-items: stretch;
+  .app-main {
+    padding: 1rem 1.25rem 3.5rem 1.25rem;
   }
 
   .grid-container {
@@ -1427,8 +1403,187 @@ button:focus-visible,
   }
 }
 
-@media (max-width: 600px) {
-  .kpi-grid {
-    grid-template-columns: 1fr;
+@media (max-width: 768px) {
+  .saas-header {
+    position: sticky;
+    top: 0;
+  }
+
+  .header-inner {
+    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .brand-group {
+    gap: 0.75rem;
+  }
+
+  .brand-logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand-name {
+    font-size: 1.15rem;
+  }
+
+  .brand-subtitle {
+    display: none;
+  }
+
+  .header-tools {
+    gap: 0.5rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .command-section {
+    padding: 1rem;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: var(--radius-md);
+  }
+
+  .search-bar-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .view-switcher {
+    width: 100%;
+    display: flex;
+  }
+
+  .view-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 0.55rem;
+    font-size: 0.825rem;
+  }
+
+  .trends-bar {
+    padding: 0.95rem;
+  }
+
+  .trends-chips-track {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  .trends-chips-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .trend-chip {
+    flex-shrink: 0;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.78rem;
+  }
+
+  /* Table Mobile Card Transformation */
+  .table-container {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .saas-table,
+  .saas-table tbody,
+  .saas-table tr,
+  .saas-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .saas-table thead {
+    display: none;
+  }
+
+  .saas-table tr {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.15rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .saas-table tr:hover td {
+    background-color: transparent;
+  }
+
+  .saas-table td {
+    padding: 0;
+    border: none;
+  }
+
+  .saas-table td:last-child {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--border-color-subtle);
+  }
+
+  .table-actu-list {
+    gap: 0.5rem;
+  }
+
+  .table-actu-row {
+    background-color: var(--bg-primary);
+    padding: 0.55rem 0.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color-subtle);
+  }
+
+  .toast {
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-main {
+    padding: 0.75rem 0.65rem 3rem 0.65rem;
+  }
+
+  .header-inner {
+    padding: 0.6rem 0.65rem;
+  }
+
+  .brand-name {
+    font-size: 1.05rem;
+  }
+
+  .badge-pro {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.4rem;
+  }
+
+  .search-box input {
+    font-size: 0.875rem;
+    padding-left: 2.6rem;
+  }
+
+  .icon-search {
+    left: 0.85rem;
+  }
+
+  .cdg-card {
+    padding: 1rem;
   }
 }
