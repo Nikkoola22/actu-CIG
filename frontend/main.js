@@ -42,10 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Stat counters
   const statCdgCount = document.getElementById('stat-cdg-count');
   const statNewsCount = document.getElementById('stat-news-count');
-  const countAll = document.getElementById('count-all');
-  const countFav = document.getElementById('count-fav');
-  const countHasNews = document.getElementById('count-has-news');
-  const countEmpty = document.getElementById('count-empty');
 
   // Trend Topic Definitions
   const TRENDING_TOPICS = {
@@ -392,10 +388,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (statCdgCount) statCdgCount.textContent = totalCdgs;
     if (statNewsCount) statNewsCount.textContent = totalArticles;
-    if (countAll) countAll.textContent = totalCdgs;
-    if (countFav) countFav.textContent = favorites.length;
-    if (countHasNews) countHasNews.textContent = withNews;
-    if (countEmpty) countEmpty.textContent = emptyCount;
 
     // Update Trending Topic Counter Badges
     Object.keys(TRENDING_TOPICS).forEach(topicKey => {
@@ -409,13 +401,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function getFilteredData() {
     const searchTerm = searchInput.value.toLowerCase().trim();
     const activeTop = activeTopic;
-    const favSet = new Set(favorites);
 
     const filtered = [];
 
     for (let i = 0; i < allData.length; i++) {
       const cdg = allData[i];
-      const isFav = favSet.has(cdg.cdg);
       const matchCdg = searchTerm ? cdg.cdgLower.includes(searchTerm) : true;
 
       let matchingNews = [];
@@ -449,8 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       filtered.push({
         ...cdg,
-        filteredNews: matchingNews,
-        isFav
+        filteredNews: matchingNews
       });
     }
 
