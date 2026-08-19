@@ -17,7 +17,6 @@ function escapeHTML(str) {
 
 document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements
-  const refreshBtn = document.getElementById('refresh-btn');
   const statusToast = document.getElementById('status-toast');
   const statusText = document.getElementById('status-text');
   const newsContainer = document.getElementById('news-container');
@@ -26,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const loading = document.getElementById('loading');
   const searchInput = document.getElementById('search-input');
   const clearSearchBtn = document.getElementById('clear-search-btn');
-  const filterBtns = document.querySelectorAll('.filter-btn');
   const trendChips = document.querySelectorAll('.trend-chip');
   const resetTrendBtn = document.getElementById('reset-trend-btn');
   const viewGridBtn = document.getElementById('view-grid-btn');
@@ -181,57 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   exportCsvBtn.addEventListener('click', exportToCSV);
   exportJsonBtn.addEventListener('click', exportToJSON);
-
-  // Refresh Button
-  refreshBtn.addEventListener('click', async () => {
-    try {
-      refreshBtn.disabled = true;
-      showToast('Actualisation en cours...');
-
-      const res = await fetch('/api/scrape', { method: 'POST' }).catch(() => null);
-      if (res && res.ok) {
-        showToast('Scraping lancé. Cette opération peut prendre quelques minutes...', 4000);
-        
-        // Poll for status
-        const pollInterval = setInterval(async () => {
-          try {
-            const statusRes = await fetch('/api/status').catch(() => null);
-            if (statusRes && statusRes.ok) {
-              const { isScraping } = await statusRes.json();
-              if (!isScraping) {
-                clearInterval(pollInterval);
-                try {
-                  await fetchNews(true);
-                  showToast('Données mises à jour !', 3000);
-                } finally {
-                  refreshBtn.disabled = false;
-                }
-              } else {
-                showToast('Scraping en cours...', 2000);
-              }
-            } else {
-              clearInterval(pollInterval);
-              showToast('Erreur de vérification du statut', 3000);
-              refreshBtn.disabled = false;
-            }
-          } catch(e) {
-            clearInterval(pollInterval);
-            showToast('Erreur lors de la mise à jour', 3000);
-            refreshBtn.disabled = false;
-          }
-        }, 5000);
-      } else {
-        // Just refetch data
-        await fetchNews(true);
-        showToast('Données rechargées avec succès !', 3000);
-        refreshBtn.disabled = false;
-      }
-    } catch (err) {
-      showToast('Rechargement des données...', 3000);
-      await fetchNews(true);
-      refreshBtn.disabled = false;
-    }
-  });
 
   // ----------------- DATA PRE-PROCESSING & FETCHING -----------------
 
