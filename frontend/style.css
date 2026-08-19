@@ -367,6 +367,31 @@ body {
   box-shadow: var(--shadow-md);
 }
 
+/* ==================== ULTRA-RESPONSIVE BUTTON INTERACTIONS ==================== */
+button, .trend-chip, .filter-btn, .view-btn, .fav-btn, .copy-btn {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+button:active:not(:disabled),
+.trend-chip:active,
+.filter-btn:active,
+.view-btn:active,
+.fav-btn:active,
+.copy-btn:active,
+.dropdown-item:active {
+  transform: scale(0.95) !important;
+  transition: transform 0.05s ease-out !important;
+}
+
+button:focus-visible,
+.trend-chip:focus-visible,
+.filter-btn:focus-visible,
+.view-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
 /* Dropdown */
 .dropdown {
   position: relative;
