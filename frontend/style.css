@@ -409,6 +409,36 @@ body {
   box-shadow: var(--shadow-md);
 }
 
+/* Red Retour ATLAS Button */
+.btn-atlas {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff !important;
+  border: 1px solid rgba(220, 38, 38, 0.5);
+  padding: 0.6rem 1.05rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.32);
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn-atlas:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.48);
+  transform: translateY(-1px);
+  color: #ffffff !important;
+}
+
+.btn-atlas:active {
+  transform: scale(0.95) !important;
+}
+
 /* ==================== ULTRA-RESPONSIVE BUTTON INTERACTIONS ==================== */
 button, .trend-chip, .filter-btn, .view-btn, .fav-btn, .copy-btn {
   -webkit-tap-highlight-color: transparent;
