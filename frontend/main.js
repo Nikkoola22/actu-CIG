@@ -135,13 +135,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const res = await fetch('/api/scrape', { method: 'POST' }).catch(() => null);
       if (res && res.ok) {
-        showToast('Scraping lancé. Les données actuelles restent affichées pendant la mise à jour.', 4000);
-        // Poll for updated data after the scrape has had time to run
-        setTimeout(async () => {
-          await fetchNews(true);
-          showToast('Données mises à jour !', 3000);
-          refreshBtn.disabled = false;
-        }, 15000);
+        showToast('Scraping lancé. Cette opération peut prendre quelques minutes...', 4000);
+        
+        // Poll for status
+        const pollInterval = setInterval(async () => {
+          try {
+            const statusRes = await fetch('/api/status').catch(() => null);
+            if (statusRes && statusRes.ok) {
+              const { isScraping } = await statusRes.json();
+              if (!isScraping) {
+                clearInterval(pollInterval);
+                await fetchNews(true);
+                showToast('Données mises à jour !', 3000);
+                refreshBtn.disabled = false;
+              } else {
+                showToast('Scraping en cours...', 2000);
+              }
+            } else {
+              // If status endpoint fails, just wait and clear
+              clearInterval(pollInterval);
+              setTimeout(async () => {
+                await fetchNews(true);
+                showToast('Données mises à jour !', 3000);
+                refreshBtn.disabled = false;
+              }, 15000);
+            }
+          } catch(e) {}
+        }, 5000);
       } else {
         // Just refetch data
         await fetchNews(true);
@@ -168,10 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     for (const endpoint of API_ENDPOINTS) {
       try {
-        const response = await fetch(endpoint);
+        const cacheBuster = `?t=${new Date().getTime()}`;
+        const response = await fetch(`${endpoint}${cacheBuster}`);
         if (response.ok) {
           data = await response.json();
-          if (Array.isArray(data) && data.length > 0) {
+          if (Array.isArray(data)) {
             break;
           }
         }
@@ -184,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
       loading.style.display = 'none';
     }
 
-    if (data && Array.isArray(data) && data.length > 0) {
+    if (data && Array.isArray(data)) {
       allData = data;
       updateStats();
       renderFilteredNews();
