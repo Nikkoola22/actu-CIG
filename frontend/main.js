@@ -132,29 +132,37 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       refreshBtn.disabled = true;
       showToast('Actualisation en cours...');
-      
+
       const res = await fetch('/api/scrape', { method: 'POST' }).catch(() => null);
       if (res && res.ok) {
-        showToast('Scraping lancé. Les données se mettent à jour.', 4000);
+        showToast('Scraping lancé. Les données actuelles restent affichées pendant la mise à jour.', 4000);
+        // Poll for updated data after the scrape has had time to run
+        setTimeout(async () => {
+          await fetchNews(true);
+          showToast('Données mises à jour !', 3000);
+          refreshBtn.disabled = false;
+        }, 15000);
       } else {
         // Just refetch data
-        await fetchNews();
+        await fetchNews(true);
         showToast('Données rechargées avec succès !', 3000);
+        refreshBtn.disabled = false;
       }
     } catch (err) {
       showToast('Rechargement des données...', 3000);
-      await fetchNews();
-    } finally {
-      setTimeout(() => { refreshBtn.disabled = false; }, 2000);
+      await fetchNews(true);
+      refreshBtn.disabled = false;
     }
   });
 
   // ----------------- DATA FETCHING -----------------
 
-  async function fetchNews() {
-    loading.style.display = 'flex';
-    newsContainer.innerHTML = '';
-    tableBody.innerHTML = '';
+  async function fetchNews(silent = false) {
+    if (!silent) {
+      loading.style.display = 'flex';
+      newsContainer.innerHTML = '';
+      tableBody.innerHTML = '';
+    }
 
     let data = null;
 
@@ -172,13 +180,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    loading.style.display = 'none';
+    if (!silent) {
+      loading.style.display = 'none';
+    }
 
     if (data && Array.isArray(data) && data.length > 0) {
       allData = data;
       updateStats();
       renderFilteredNews();
-    } else {
+    } else if (!silent) {
       newsContainer.innerHTML = '<div class="empty-state">Aucune donnée disponible.</div>';
     }
   }
