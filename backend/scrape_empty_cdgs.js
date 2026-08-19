@@ -383,11 +383,7 @@ async function runScraperForEmptyCDGs(options = {}) {
         path.join(__dirname, '..', 'data.json'),
         path.join(__dirname, 'data.json'),
         path.join(__dirname, '..', 'frontend', 'public', 'data.json'),
-        path.join(__dirname, '..', 'api', 'data.json'),
-        'U:\\perso\\actu-CIG\\data.json',
-        'U:\\perso\\actu-CIG\\backend\\data.json',
-        'U:\\perso\\actu-CIG\\frontend\\public\\data.json',
-        'U:\\perso\\actu-CIG\\api\\data.json'
+        path.join(__dirname, '..', 'api', 'data.json')
     ];
 
     const jsonStr = JSON.stringify(allData, null, 2);
