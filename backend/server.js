@@ -9,6 +9,8 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+let isScraping = false;
+
 // Endpoint to get the data (supports both /api/news and /news)
 const handleNews = (req, res) => {
     try {
@@ -26,13 +28,29 @@ const handleNews = (req, res) => {
 app.get('/api/news', handleNews);
 app.get('/news', handleNews);
 
+app.get('/api/status', (req, res) => {
+    res.json({ isScraping });
+});
+
 // Endpoint to trigger a new scrape
 app.post('/api/scrape', async (req, res) => {
     try {
+        if (isScraping) {
+            return res.json({ message: 'Scraping already in progress' });
+        }
+        isScraping = true;
         // Run asynchronously, don't wait for completion to respond
-        runScraper().catch(err => console.error('Scraping error:', err));
+        runScraper()
+            .then(() => {
+                isScraping = false;
+            })
+            .catch(err => {
+                console.error('Scraping error:', err);
+                isScraping = false;
+            });
         res.json({ message: 'Scraping started in background' });
     } catch (error) {
+        isScraping = false;
         res.status(500).json({ error: 'Failed to start scraping' });
     }
 });

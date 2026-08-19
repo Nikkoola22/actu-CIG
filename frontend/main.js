@@ -135,13 +135,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const res = await fetch('/api/scrape', { method: 'POST' }).catch(() => null);
       if (res && res.ok) {
-        showToast('Scraping lancé. Les données actuelles restent affichées pendant la mise à jour.', 4000);
-        // Poll for updated data after the scrape has had time to run
-        setTimeout(async () => {
-          await fetchNews(true);
-          showToast('Données mises à jour !', 3000);
-          refreshBtn.disabled = false;
-        }, 15000);
+        showToast('Scraping lancé. Cette opération peut prendre quelques minutes...', 4000);
+        
+        // Poll for status
+        const pollInterval = setInterval(async () => {
+          try {
+            const statusRes = await fetch('/api/status').catch(() => null);
+            if (statusRes && statusRes.ok) {
+              const { isScraping } = await statusRes.json();
+              if (!isScraping) {
+                clearInterval(pollInterval);
+                try {
+                  await fetchNews(true);
+                  showToast('Données mises à jour !', 3000);
+                } finally {
+                  refreshBtn.disabled = false;
+                }
+              } else {
+                showToast('Scraping en cours...', 2000);
+              }
+            } else {
+              // If status endpoint fails, stop polling and show error
+              clearInterval(pollInterval);
+              showToast('Erreur de vérification du statut', 3000);
+              refreshBtn.disabled = false;
+            }
+          } catch(e) {
+            console.error('Polling error:', e);
+            clearInterval(pollInterval);
+            showToast('Erreur lors de la mise à jour', 3000);
+            refreshBtn.disabled = false;
+          }
+        }, 5000);
       } else {
         // Just refetch data
         await fetchNews(true);
@@ -168,7 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     for (const endpoint of API_ENDPOINTS) {
       try {
-        const response = await fetch(endpoint);
+        const cacheBuster = endpoint.includes('?') ? `&t=${Date.now()}` : `?t=${Date.now()}`;
+        const response = await fetch(`${endpoint}${cacheBuster}`);
         if (response.ok) {
           data = await response.json();
           if (Array.isArray(data) && data.length > 0) {
@@ -184,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
       loading.style.display = 'none';
     }
 
-    if (data && Array.isArray(data) && data.length > 0) {
+    if (data && Array.isArray(data)) {
       allData = data;
       updateStats();
       renderFilteredNews();
