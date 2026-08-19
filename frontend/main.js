@@ -1,7 +1,6 @@
 // SaaS Frontend Logic
 const API_ENDPOINTS = [
   '/api/news',
-  'http://localhost:3000/api/news',
   '/data.json'
 ];
 
