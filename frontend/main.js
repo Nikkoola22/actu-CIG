@@ -66,6 +66,16 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.value = '';
     clearSearchBtn.classList.add('hidden');
     renderFilteredNews();
+    searchInput.focus();
+  });
+
+  // Shortcut Ctrl+K / Cmd+K
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      searchInput.focus();
+      searchInput.select();
+    }
   });
 
   // Status Filter Tabs
