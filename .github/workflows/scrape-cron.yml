@@ -1,0 +1,42 @@
+name: Veille CDG Daily Scraper
+
+on:
+  schedule:
+    # Run every day at 06:00 UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Backend Dependencies
+        working-directory: backend
+        run: npm ci || npm install
+
+      - name: Run Scraper
+        working-directory: backend
+        env:
+          NODE_TLS_REJECT_UNAUTHORIZED: '0'
+        run: node scraper.js
+
+      - name: Sync data.json snapshots
+        run: |
+          mkdir -p frontend/public api
+          cp backend/data.json frontend/public/data.json
+          cp backend/data.json api/data.json
+
+      - name: Commit and Push Updated Data
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add backend/data.json frontend/public/data.json api/data.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(data): synchro quotidienne des actualités [skip ci]" && git push)
