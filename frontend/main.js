@@ -93,9 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // State
   let allData = [];
-  let currentFilter = 'all'; // 'all', 'favorites', 'has-news', 'empty'
   let currentView = localStorage.getItem('veille_view_mode') || 'table';
-  let favorites = JSON.parse(localStorage.getItem('veille_cdg_favs') || '[]');
   let activeTopic = null;
 
   // Initialize Theme & View
@@ -346,15 +344,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // ----------------- FAST EVENT DELEGATION -----------------
 
   function setupEventDelegation() {
-    // Grid view delegation
+    // Grid view delegation (Copy button)
     newsContainer.addEventListener('click', (e) => {
-      const favBtn = e.target.closest('.fav-btn');
-      if (favBtn) {
-        e.stopPropagation();
-        toggleFavorite(favBtn.dataset.cdg);
-        return;
-      }
-
       const copyBtn = e.target.closest('.copy-btn');
       if (copyBtn) {
         e.stopPropagation();
@@ -363,15 +354,6 @@ document.addEventListener('DOMContentLoaded', () => {
           navigator.clipboard.writeText(link);
           showToast('Lien copié dans le presse-papier !', 2000);
         }
-      }
-    });
-
-    // Table view delegation
-    tableContainer.addEventListener('click', (e) => {
-      const favBtn = e.target.closest('.fav-btn');
-      if (favBtn) {
-        e.stopPropagation();
-        toggleFavorite(favBtn.dataset.cdg);
       }
     });
   }
@@ -541,12 +523,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const badgeClass = hasNews ? '' : 'empty';
 
       cardsHtml.push(`
-        <div class="cdg-card ${isFav ? 'is-fav' : ''}">
+        <div class="cdg-card">
           <div class="cdg-header">
             <div class="cdg-header-left">
-              <button class="fav-btn ${isFav ? 'active' : ''}" data-cdg="${safeCdgName}" title="${isFav ? 'Retirer des favoris' : 'Ajouter aux favoris'}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="${isFav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              </button>
               <div class="cdg-logo-wrap">${logoHtml}</div>
               <div class="cdg-title-block">
                 <div class="cdg-name">${safeCdgName}</div>
@@ -568,7 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tableContainer.classList.remove('hidden');
 
     if (data.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="4" class="empty-state">Aucun résultat ne correspond à votre recherche.</td></tr>';
+      tableBody.innerHTML = '<tr><td colspan="3" class="empty-state">Aucun résultat ne correspond à votre recherche.</td></tr>';
       return;
     }
 
@@ -578,7 +557,6 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < len; i++) {
       const cdg = data[i];
       const realNews = cdg.filteredNews;
-      const isFav = cdg.isFav;
       const safeCdgName = escapeHTML(cdg.cdg);
       const safeUrl = escapeHTML(cdg.officialUrl || '');
 
@@ -603,11 +581,6 @@ document.addEventListener('DOMContentLoaded', () => {
       rowsHtml.push(`
         <tr>
           <td>
-            <button class="fav-btn ${isFav ? 'active' : ''}" data-cdg="${safeCdgName}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="${isFav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </button>
-          </td>
-          <td>
             <div style="display: flex; align-items: center; gap: 0.65rem;">
               <div class="cdg-logo-wrap table-logo-wrap">${logoImg}<span class="cdg-logo-placeholder">${escapeHTML(cdg.deptCode)}</span></div>
               <strong style="color: var(--text-primary); font-size: 0.95rem;">${safeCdgName}</strong>
@@ -622,20 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tableBody.innerHTML = rowsHtml.join('');
   }
 
-  // ----------------- FAVORITES & SETTINGS -----------------
-
-  function toggleFavorite(cdgName) {
-    if (favorites.includes(cdgName)) {
-      favorites = favorites.filter(f => f !== cdgName);
-      showToast(`Retiré des favoris`);
-    } else {
-      favorites.push(cdgName);
-      showToast(`⭐ Ajouté aux favoris !`);
-    }
-    localStorage.setItem('veille_cdg_favs', JSON.stringify(favorites));
-    updateStats();
-    renderFilteredNews();
-  }
+  // ----------------- SETTINGS & VIEW -----------------
 
   function setViewMode(mode) {
     currentView = mode;
