@@ -444,9 +444,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     for (let i = 0; i < allData.length; i++) {
       const cdg = allData[i];
-      const matchCdgName = searchTerm ? cdg.cdgLower.includes(searchTerm) : false;
       const isFav = favSet.has(cdg.cdg);
+      const hasRealNews = cdg.realNewsCount > 0;
 
+      // 1. Status Filter Tab
+      if (currentFilter === 'favorites' && !isFav) continue;
+      if (currentFilter === 'has-news' && !hasRealNews) continue;
+      if (currentFilter === 'empty' && hasRealNews) continue;
+
+      // Special handling for Empty Tab (displays CDGs without articles)
+      if (currentFilter === 'empty') {
+        if (searchTerm && !cdg.cdgLower.includes(searchTerm)) continue;
+        filtered.push({
+          ...cdg,
+          filteredNews: [],
+          isFav
+        });
+        continue;
+      }
+
+      // 2. Matching articles for other tabs
       let matchingNews = [];
       const newsList = cdg.news;
 
@@ -455,29 +472,27 @@ document.addEventListener('DOMContentLoaded', () => {
           const item = newsList[j];
           if (item.isFallback) continue;
 
-          // Topic filter check (O(1) lookup)
+          // Topic filter check (O(1))
           if (activeTop && !item.matchedTopics.includes(activeTop)) {
             continue;
           }
 
-          // Search term check
-          if (searchTerm && !matchCdgName && !item.titleLower.includes(searchTerm)) {
-            continue;
+          // Search query check
+          if (searchTerm) {
+            const matchTitle = item.titleLower.includes(searchTerm);
+            const matchCdg = cdg.cdgLower.includes(searchTerm);
+            if (!matchTitle && !matchCdg) continue;
           }
 
           matchingNews.push(item);
         }
       }
 
-      const hasMatchingNews = matchingNews.length > 0;
-      const isMatch = (matchCdgName && !activeTop) || hasMatchingNews;
+      // If a topic is selected, only show CDGs with matching articles
+      if (activeTop && matchingNews.length === 0) continue;
 
-      if (!isMatch) continue;
-
-      // Status filter
-      if (currentFilter === 'favorites' && !isFav) continue;
-      if (currentFilter === 'has-news' && !hasMatchingNews) continue;
-      if (currentFilter === 'empty' && hasMatchingNews) continue;
+      // If a search is typed and CDG name doesn't match and no articles match, skip
+      if (searchTerm && !cdg.cdgLower.includes(searchTerm) && matchingNews.length === 0) continue;
 
       filtered.push({
         ...cdg,
