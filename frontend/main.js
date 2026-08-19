@@ -141,17 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Status Filter Tabs
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      const target = e.currentTarget;
-      target.classList.add('active');
-      currentFilter = target.dataset.filter;
-      renderFilteredNews();
-    });
-  });
-
   // Trends & Topics Chips (Instant switch)
   trendChips.forEach(chip => {
     chip.addEventListener('click', (e) => {
@@ -445,25 +434,8 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < allData.length; i++) {
       const cdg = allData[i];
       const isFav = favSet.has(cdg.cdg);
-      const hasRealNews = cdg.realNewsCount > 0;
+      const matchCdg = searchTerm ? cdg.cdgLower.includes(searchTerm) : true;
 
-      // 1. Status Filter Tab
-      if (currentFilter === 'favorites' && !isFav) continue;
-      if (currentFilter === 'has-news' && !hasRealNews) continue;
-      if (currentFilter === 'empty' && hasRealNews) continue;
-
-      // Special handling for Empty Tab (displays CDGs without articles)
-      if (currentFilter === 'empty') {
-        if (searchTerm && !cdg.cdgLower.includes(searchTerm)) continue;
-        filtered.push({
-          ...cdg,
-          filteredNews: [],
-          isFav
-        });
-        continue;
-      }
-
-      // 2. Matching articles for other tabs
       let matchingNews = [];
       const newsList = cdg.news;
 
@@ -480,7 +452,6 @@ document.addEventListener('DOMContentLoaded', () => {
           // Search query check
           if (searchTerm) {
             const matchTitle = item.titleLower.includes(searchTerm);
-            const matchCdg = cdg.cdgLower.includes(searchTerm);
             if (!matchTitle && !matchCdg) continue;
           }
 
@@ -491,8 +462,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // If a topic is selected, only show CDGs with matching articles
       if (activeTop && matchingNews.length === 0) continue;
 
-      // If a search is typed and CDG name doesn't match and no articles match, skip
-      if (searchTerm && !cdg.cdgLower.includes(searchTerm) && matchingNews.length === 0) continue;
+      // If a search query is active and neither the CDG name nor any article matched, skip
+      if (searchTerm && !matchCdg && matchingNews.length === 0) continue;
 
       filtered.push({
         ...cdg,
