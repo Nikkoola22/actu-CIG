@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const exportCsvBtn = document.getElementById('export-csv-btn');
   const exportJsonBtn = document.getElementById('export-json-btn');
 
-  // Stat counters
   const statCdgCount = document.getElementById('stat-cdg-count');
   const statNewsCount = document.getElementById('stat-news-count');
+  const lastUpdatedText = document.getElementById('last-updated-text');
 
   // Trend Topic Definitions
   const TRENDING_TOPICS = {
@@ -97,8 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Setup Event Delegation for Containers (Attached once for ultra-fast performance)
   setupEventDelegation();
 
-  // Load Data
+  // Load Data & Metadata
   fetchNews();
+  fetchMetadata();
 
   // ----------------- EVENT LISTENERS -----------------
 
@@ -281,6 +282,42 @@ document.addEventListener('DOMContentLoaded', () => {
       renderFilteredNews();
     } else if (!silent) {
       newsContainer.innerHTML = '<div class="empty-state">Aucune donnée disponible.</div>';
+    }
+  }
+
+  async function fetchMetadata() {
+    if (!lastUpdatedText) return;
+    try {
+      const endpoints = ['/metadata.json', '/api/metadata.json'];
+      let meta = null;
+      for (const ep of endpoints) {
+        try {
+          const res = await fetch(`${ep}?t=${Date.now()}`);
+          if (res.ok) {
+            meta = await res.json();
+            if (meta && meta.lastUpdated) break;
+          }
+        } catch (e) {}
+      }
+
+      if (meta && meta.lastUpdated) {
+        const d = new Date(meta.lastUpdated);
+        const dateFormatted = d.toLocaleDateString('fr-FR', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+        const timeFormatted = d.toLocaleTimeString('fr-FR', {
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+        lastUpdatedText.textContent = `Mis à jour le ${dateFormatted} à ${timeFormatted}`;
+      } else {
+        const now = new Date();
+        lastUpdatedText.textContent = `Mis à jour le ${now.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}`;
+      }
+    } catch (err) {
+      // Ignore
     }
   }
 

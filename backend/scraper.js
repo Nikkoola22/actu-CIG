@@ -418,8 +418,15 @@ async function runScraper() {
         }
     }
     
+    const metadata = {
+        lastUpdated: new Date().toISOString(),
+        totalCdgs: results.length
+    };
     fs.writeFileSync('data.json', JSON.stringify(results, null, 2));
-    console.log('Scraping completed. Results saved to data.json');
+    try {
+        fs.writeFileSync('metadata.json', JSON.stringify(metadata, null, 2));
+    } catch(e) {}
+    console.log('Scraping completed. Results saved to data.json and metadata.json');
 }
 
 module.exports = {

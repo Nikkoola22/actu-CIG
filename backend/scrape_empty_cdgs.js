@@ -387,12 +387,19 @@ async function runScraperForEmptyCDGs(options = {}) {
     ];
 
     const jsonStr = JSON.stringify(allData, null, 2);
+    const metadataStr = JSON.stringify({
+        lastUpdated: new Date().toISOString(),
+        totalCdgs: allData.length
+    }, null, 2);
+
     for (const target of saveTargets) {
         try {
             const dir = path.dirname(target);
             if (fs.existsSync(dir)) {
                 fs.writeFileSync(target, jsonStr, 'utf8');
-                console.log(`💾 Saved updated data to: ${target}`);
+                const metaPath = path.join(dir, 'metadata.json');
+                fs.writeFileSync(metaPath, metadataStr, 'utf8');
+                console.log(`💾 Saved updated data & metadata to: ${target}`);
             }
         } catch (err) {
             // ignore inaccessible paths

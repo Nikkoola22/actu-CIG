@@ -30,15 +30,19 @@ jobs:
           node scraper.js
           node scrape_empty_cdgs.js
 
-      - name: Sync data.json snapshots
+      - name: Sync data.json and metadata snapshots
         run: |
           mkdir -p frontend/public api
           cp backend/data.json frontend/public/data.json
           cp backend/data.json api/data.json
+          cp backend/data.json data.json
+          cp backend/metadata.json frontend/public/metadata.json || true
+          cp backend/metadata.json api/metadata.json || true
+          cp backend/metadata.json metadata.json || true
 
       - name: Commit and Push Updated Data
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add -f backend/data.json frontend/public/data.json api/data.json
+          git add -f backend/data.json frontend/public/data.json api/data.json data.json backend/metadata.json frontend/public/metadata.json api/metadata.json metadata.json
           git diff --quiet && git diff --staged --quiet || (git commit -m "chore(data): synchro quotidienne des actualités [skip ci]" && git push)
