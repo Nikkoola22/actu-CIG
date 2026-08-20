@@ -6,12 +6,17 @@ on:
     - cron: '0 6 * * *'
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
+permissions:
+  contents: write
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -27,15 +32,15 @@ jobs:
         env:
           NODE_TLS_REJECT_UNAUTHORIZED: '0'
         run: |
-          node scraper.js
-          node scrape_empty_cdgs.js
+          node scraper.js || true
+          node scrape_empty_cdgs.js || true
 
       - name: Sync data.json and metadata snapshots
         run: |
           mkdir -p frontend/public api
-          cp backend/data.json frontend/public/data.json
-          cp backend/data.json api/data.json
-          cp backend/data.json data.json
+          cp backend/data.json frontend/public/data.json || true
+          cp backend/data.json api/data.json || true
+          cp backend/data.json data.json || true
           cp backend/metadata.json frontend/public/metadata.json || true
           cp backend/metadata.json api/metadata.json || true
           cp backend/metadata.json metadata.json || true

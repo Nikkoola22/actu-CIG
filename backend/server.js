@@ -50,6 +50,43 @@ const handleNews = (req, res) => {
 app.get('/api/news', handleNews);
 app.get('/news', handleNews);
 
+const handleMetadata = (req, res) => {
+    try {
+        const candidatePaths = [
+            path.join(__dirname, 'metadata.json'),
+            path.join(process.cwd(), 'backend', 'metadata.json'),
+            path.join(process.cwd(), 'metadata.json'),
+            path.join(process.cwd(), 'api', 'metadata.json'),
+            path.join(process.cwd(), 'frontend', 'public', 'metadata.json'),
+            path.join(__dirname, '..', 'backend', 'metadata.json'),
+            path.join(__dirname, '..', 'metadata.json')
+        ];
+
+        let raw = null;
+        for (const p of candidatePaths) {
+            if (fs.existsSync(p)) {
+                raw = fs.readFileSync(p, 'utf8');
+                break;
+            }
+        }
+
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120');
+
+        if (raw) {
+            res.json(JSON.parse(raw));
+        } else {
+            res.json({ lastUpdated: new Date().toISOString() });
+        }
+    } catch (error) {
+        res.json({ lastUpdated: new Date().toISOString() });
+    }
+};
+
+app.get('/api/metadata', handleMetadata);
+app.get('/api/metadata.json', handleMetadata);
+app.get('/metadata.json', handleMetadata);
+
 app.get('/api/status', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json({ isScraping });
