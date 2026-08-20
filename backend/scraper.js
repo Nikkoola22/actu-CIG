@@ -51,8 +51,36 @@ const KNOWN_URLS = {
     '48': 'https://www.cdg48.fr/toute-lactualite-du-centre-de-gestion/',
     '47': 'https://www.cdg47.fr/actualites.php',
     '46': 'https://www.cdg46.fr/actualites',
-    '40': 'https://www.cdg40.fr/actualites.php'
+    '40': 'https://www.cdg40.fr/actualites.php',
+    '78': 'https://www.cigversailles.fr/actualites',
+    '92': 'https://www.cig929394.fr/actualites'
 };
+
+function getRawHttps(urlStr) {
+    return new Promise((resolve, reject) => {
+        const https = require('https');
+        const parsed = new URL(urlStr);
+        const req = https.request({
+            hostname: parsed.hostname,
+            port: parsed.port || 443,
+            path: parsed.pathname + parsed.search,
+            method: 'GET',
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Host': parsed.hostname
+            },
+            insecureHTTPParser: true,
+            rejectUnauthorized: false
+        }, (res) => {
+            let data = '';
+            res.on('data', chunk => { data += chunk; });
+            res.on('end', () => resolve(data));
+        });
+        req.on('error', err => reject(err));
+        req.end();
+    });
+}
 
 async function getCDGLinks() {
     try {
@@ -69,9 +97,21 @@ async function getCDGLinks() {
                 cdgs.push({ name: text, url: href });
             }
         });
+
+        // Always ensure Interdepartmental CIGs (Grande Couronne Versailles & Petite Couronne 92-93-94) are included
+        cdgs.push({
+            name: '(78) CIG GRANDE COURONNE (VERSAILLES - 78, 91, 95)',
+            url: 'https://www.cigversailles.fr/actualites',
+            directUrl: 'https://www.cigversailles.fr/actualites'
+        });
+        cdgs.push({
+            name: '(92) CIG PETITE COURONNE (92, 93, 94)',
+            url: 'https://www.cig929394.fr/actualites',
+            directUrl: 'https://www.cig929394.fr/actualites'
+        });
         
         // Remove duplicates just in case
-        return [...new Map(cdgs.map(item => [item.url, item])).values()];
+        return [...new Map(cdgs.map(item => [item.name, item])).values()];
     } catch (error) {
         console.error('Error fetching directory:', error.message);
         return [];
@@ -103,6 +143,51 @@ async function scrapeNewsFromWebsite(websiteUrl) {
         const urlObj = new URL(websiteUrl);
 
         // --- SPECIFIC SCRAPERS ---
+        // CIG Grande Couronne (Versailles - 78, 91, 95)
+        if (websiteUrl.includes('cigversailles.fr')) {
+            try {
+                const html = await getRawHttps('https://www.cigversailles.fr/actualites');
+                const $ = cheerio.load(html);
+                const newsVersailles = [];
+                $('.views-row, article.node--type-actualite, .node--type-actualite, .field--name-node-title').each((i, el) => {
+                    const a = $(el).is('a') ? $(el) : $(el).find('a').first();
+                    const title = $(el).find('h2, h3, .field--name-node-title, a').first().text().trim().replace(/\s+/g, ' ');
+                    let href = a.attr('href');
+                    if (href && title && title.length > 8 && !title.includes('Menu') && !title.includes('Accessibilité')) {
+                        if (!href.startsWith('http')) href = 'https://www.cigversailles.fr' + (href.startsWith('/') ? '' : '/') + href;
+                        if (!newsVersailles.find(r => r.link === href)) {
+                            newsVersailles.push({ title, link: href, source: 'HTML (CIG Versailles)' });
+                        }
+                    }
+                });
+                if (newsVersailles.length > 0) return newsVersailles.slice(0, 5);
+            } catch(e) {}
+        }
+
+        // CIG Petite Couronne (92, 93, 94)
+        if (websiteUrl.includes('cig929394.fr') || websiteUrl.includes('bip.cig929394.fr')) {
+            try {
+                const { data } = await axios.get('https://www.cig929394.fr/actualites', {
+                    timeout: 10000,
+                    headers: { 'User-Agent': 'Mozilla/5.0' }
+                });
+                const $ = cheerio.load(data);
+                const news92 = [];
+                $('article, .views-row, .card, h2 a, h3 a, .field-content a').each((i, el) => {
+                    const a = $(el).is('a') ? $(el) : $(el).find('a').first();
+                    const title = $(el).find('h2, h3, .field-content').first().text().trim().replace(/\s+/g, ' ') || a.text().trim().replace(/\s+/g, ' ');
+                    let href = a.attr('href');
+                    if (href && title && title.length > 10 && !title.includes('Menu') && !title.includes('Accueil') && !title.includes('Accessibilité')) {
+                        if (!href.startsWith('http')) href = 'https://www.cig929394.fr' + (href.startsWith('/') ? '' : '/') + href;
+                        if (!news92.find(r => r.link === href)) {
+                            news92.push({ title, link: href, source: 'HTML (CIG Petite Couronne)' });
+                        }
+                    }
+                });
+                if (news92.length > 0) return news92.slice(0, 5);
+            } catch(e) {}
+        }
+
         // CDG 01 (Ain)
         if (websiteUrl.includes('cdg01.fr')) {
             try {

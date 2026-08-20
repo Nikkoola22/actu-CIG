@@ -132,6 +132,16 @@ const SPECIFIC_CDG_CONFIGS = {
         name: '(89) YONNE',
         urls: ['https://www.cdg89.fr/actualites/', 'https://www.cdg89.fr/'],
         feeds: ['https://www.cdg89.fr/feed/']
+    },
+    '78': {
+        name: '(78) CIG GRANDE COURONNE (VERSAILLES - 78, 91, 95)',
+        urls: ['https://www.cigversailles.fr/actualites', 'https://www.cigversailles.fr/'],
+        feeds: []
+    },
+    '92': {
+        name: '(92) CIG PETITE COURONNE (92, 93, 94)',
+        urls: ['https://www.cig929394.fr/actualites', 'https://www.cig929394.fr/'],
+        feeds: ['https://bip.cig929394.fr/actualites-statutaires-focus-de-bip']
     }
 };
 

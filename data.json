@@ -2054,5 +2054,67 @@
         "source": "HTML"
       }
     ]
+  },
+  {
+    "cdg": "(78) CIG GRANDE COURONNE (VERSAILLES - 78, 91, 95)",
+    "officialUrl": "https://www.cigversailles.fr/actualites",
+    "news": [
+      {
+        "title": "Régime indemnitaire de l’encadrement supérieur",
+        "link": "https://www.cigversailles.fr/actualites/regime-indemnitaire-de-lencadrement-superieur",
+        "source": "HTML (CIG Versailles)"
+      },
+      {
+        "title": "Actualités statutaires - le mensuel n° 345",
+        "link": "https://www.cigversailles.fr/actualites/actualites-statutaires-le-mensuel-ndeg-345",
+        "source": "HTML (CIG Versailles)"
+      },
+      {
+        "title": "Congés pour raisons de santé: de nouvelles règles",
+        "link": "https://www.cigversailles.fr/actualites/conges-pour-raisons-de-sante-de-nouvelles-regles",
+        "source": "HTML (CIG Versailles)"
+      },
+      {
+        "title": "La mobilisation d’un agent public en cas de lutte contre les incendies",
+        "link": "https://www.cigversailles.fr/actualites/la-mobilisation-dun-agent-public-en-cas-de-lutte-contre-les-incendies",
+        "source": "HTML (CIG Versailles)"
+      },
+      {
+        "title": "Développer les compétences numériques des agents : un enjeu managérial et collectif",
+        "link": "https://www.cigversailles.fr/actualites/developper-les-competences-numeriques-des-agents-un-enjeu-managerial-et-collectif",
+        "source": "HTML (CIG Versailles)"
+      }
+    ]
+  },
+  {
+    "cdg": "(92) CIG PETITE COURONNE (92, 93, 94)",
+    "officialUrl": "https://www.cig929394.fr/actualites",
+    "news": [
+      {
+        "title": "Retraites, congés de maladie et temps partiel thérapeutique : de nouvelles règles",
+        "link": "https://www.cig929394.fr/actualites/retraites-conges-de-maladie-et-temps-partiel-therapeutique-de-nouvelles-regles/",
+        "source": "HTML (CIG Petite Couronne)"
+      },
+      {
+        "title": "Première rencontre du Club des adhérents d’Analysis RH",
+        "link": "https://www.cig929394.fr/actualites/premiere-rencontre-du-club-des-adherents-danalysis-rh/",
+        "source": "HTML (CIG Petite Couronne)"
+      },
+      {
+        "title": "Retour Webinaire La réforme de la haute fonction publique territoriale – Juillet 2026 – Eléments de présentation",
+        "link": "https://www.cig929394.fr/actualites/retour-webinaire-la-reforme-de-la-haute-fonction-publique-territoriale-juillet-2026-documents-de-presentation/",
+        "source": "HTML (CIG Petite Couronne)"
+      },
+      {
+        "title": "Les modalités d’octroi des autorisations d’absence liées à la famille fixées par décret",
+        "link": "https://www.cig929394.fr/actualites/les-modalites-doctroi-des-autorisations-dabsence-liees-a-la-famille-fixees-par-decret/",
+        "source": "HTML (CIG Petite Couronne)"
+      },
+      {
+        "title": "Un nouveau conseil d’administration issu d’une liste unique pour le CIG Petite Couronne",
+        "link": "https://www.cig929394.fr/actualites/un-nouveau-conseil-dadministration-issu-dune-liste-unique-pour-le-cig-petite-couronne/",
+        "source": "HTML (CIG Petite Couronne)"
+      }
+    ]
   }
 ]
