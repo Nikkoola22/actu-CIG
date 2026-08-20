@@ -35,6 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const infographiesGrid = document.getElementById('infographies-grid');
   const infoPillsBar = document.getElementById('info-pills-bar');
   const badgeInfographiesCount = document.getElementById('badge-infographies-count');
+  const infographyModal = document.getElementById('infography-modal');
+  const modalImg = document.getElementById('modal-img');
+  const modalTitle = document.getElementById('modal-title');
+  const modalDownloadBtn = document.getElementById('modal-download-btn');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
   const themeToggleBtn = document.getElementById('theme-toggle-btn');
   const themeIconMoon = document.getElementById('theme-icon-moon');
   const themeIconSun = document.getElementById('theme-icon-sun');
@@ -393,6 +398,48 @@ document.addEventListener('DOMContentLoaded', () => {
         renderInfographies();
       });
     }
+
+    // Modal Lightbox click on Infography cards
+    if (infographiesGrid) {
+      infographiesGrid.addEventListener('click', (e) => {
+        const visualWrap = e.target.closest('.infography-visual-wrap');
+        if (visualWrap && infographyModal) {
+          const imgSrc = visualWrap.dataset.img;
+          const title = visualWrap.dataset.title;
+          const pdf = visualWrap.dataset.pdf;
+          if (modalImg) modalImg.src = imgSrc;
+          if (modalTitle) modalTitle.textContent = title || 'Aperçu de l\'Infographie';
+          if (modalDownloadBtn) {
+            modalDownloadBtn.href = pdf || imgSrc;
+          }
+          infographyModal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    }
+
+    if (modalCloseBtn && infographyModal) {
+      modalCloseBtn.addEventListener('click', () => {
+        infographyModal.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+    }
+
+    if (infographyModal) {
+      infographyModal.addEventListener('click', (e) => {
+        if (e.target === infographyModal) {
+          infographyModal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && infographyModal && !infographyModal.classList.contains('hidden')) {
+        infographyModal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
   }
 
   // ----------------- DYNAMIC TRENDING TOPICS RENDERER -----------------
@@ -731,11 +778,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const safeTitle = escapeHTML(item.title);
       const safeDesc = escapeHTML(item.description || '');
       const safeCdg = escapeHTML(item.cdg || 'Centre de Gestion');
-      const safeDept = escapeHTML(item.dept || 'CDG');
+      const safeDept = escapeHTML(item.dept || '92');
       const safeLink = escapeHTML(item.link || '#');
       const safePdf = escapeHTML(item.pdfUrl || item.link || '#');
+      const safeImg = escapeHTML(item.imageUrl || '');
       const safeBadge = escapeHTML(item.badge || 'Infographie');
       const icon = item.icon || '📊';
+
+      const visualHtml = safeImg ? `
+        <div class="infography-visual-wrap" data-img="${safeImg}" data-title="${safeTitle}" data-pdf="${safePdf}">
+          <img src="${safeImg}" alt="${safeTitle}" loading="lazy" class="infography-img-preview" />
+          <div class="infography-img-overlay">
+            <span class="btn-zoom-badge">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              <span>Agrandir l'infographie</span>
+            </span>
+          </div>
+        </div>
+      ` : '';
 
       return `
         <article class="infography-card">
@@ -747,6 +807,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="info-dept-pill">${safeDept}</span>
           </div>
           
+          ${visualHtml}
+
           <div class="infography-card-body">
             <div class="info-cdg-source">🏛️ ${safeCdg}</div>
             <h3 class="infography-title">${safeTitle}</h3>
@@ -759,8 +821,8 @@ document.addEventListener('DOMContentLoaded', () => {
               <span>Site Source</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
-            <a href="${safePdf}" target="_blank" rel="noopener noreferrer" class="btn-info-action btn-info-pdf" title="Ouvrir le guide / schéma complet">
-              <span>Consulter</span>
+            <a href="${safePdf}" target="_blank" rel="noopener noreferrer" class="btn-info-action btn-info-pdf" title="Télécharger ou ouvrir le document PDF">
+              <span>Voir le PDF</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
             </a>
           </div>

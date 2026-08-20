@@ -2,13 +2,14 @@
   {
     "id": "cig92-info-1",
     "title": "La procédure de réintégration de l’agent en congé parental – Infographie",
-    "description": "pdf - 936,87 ko",
+    "description": "Schéma des démarches et délais légaux pour la réintégration d'un agent public après un congé parental : demande 2 mois avant, visite médicale de reprise, réaffectation dans l'emploi ou sur un poste équivalent.",
     "category": "Congés & Absences",
     "cdg": "CIG PETITE COURONNE (92-93-94)",
     "dept": "92",
     "date": "2026",
     "link": "https://www.cig929394.fr/publications/la-procedure-de-reintegration-de-lagent-en-conge-parental-infographie/",
     "pdfUrl": "https://www.cig929394.fr/wp-content/uploads/2026/07/Infographie-CIGPC_Procedure_reintegration_agent_suite_conge_parental-1.pdf",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2026/07/Infographie-CIGPC_Procedure_reintegration_agent_suite_conge_parental-pdf.jpg",
     "icon": "🏖️",
     "badge": "Schéma de Procédure",
     "tags": [
@@ -21,13 +22,14 @@
   {
     "id": "cig92-info-2",
     "title": "La procédure de placement en congé parental – Infographie",
-    "description": "Expertise et proximité pour les grands défis RH, aujourd'hui et demain.",
+    "description": "Guide visuel étape par étape : conditions d'ouverture des droits, demande initiale 1 mois avant la date souhaitée, durée par périodes de 2 à 6 mois renouvelables jusqu'aux 3 ans de l'enfant.",
     "category": "Congés & Absences",
     "cdg": "CIG PETITE COURONNE (92-93-94)",
     "dept": "92",
     "date": "2026",
     "link": "https://www.cig929394.fr/publications/la-procedure-de-placement-en-conge-parental-infographie/",
     "pdfUrl": "https://www.cig929394.fr/wp-content/uploads/2026/05/Infographie_CIG-PC_Conge_parental_2026_05-7.pdf",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2026/05/Infographie_CIG-PC_Conge_parental_2026_05-6-pdf.jpg",
     "icon": "🏖️",
     "badge": "Schéma de Procédure",
     "tags": [
@@ -40,13 +42,14 @@
   {
     "id": "cig92-info-3",
     "title": "La procédure de fin de détachement sur emploi fonctionnel de direction à l’initiative de l’employeur – Infographie",
-    "description": "Expertise et proximité pour les grands défis RH, aujourd'hui et demain.",
+    "description": "Procédure complète de décharge de fonctions : entretien préalable, information de l'assemblée délibérante, préavis, indemnité de licenciement ou prise en charge par le CIG/CDG.",
     "category": "Recrutement & Direction",
     "cdg": "CIG PETITE COURONNE (92-93-94)",
     "dept": "92",
     "date": "2026",
     "link": "https://www.cig929394.fr/publications/la-procedure-de-fin-de-detachement-sur-emploi-fonctionnel-de-direction-a-linitiative-de-lemployeur-infographie/",
     "pdfUrl": "https://www.cig929394.fr/wp-content/uploads/2026/03/Infographie_CIG-PC_Fin-Detachement-Emplois-fonctionnels_2026_03_30.pdf",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2026/03/Infographie_CIG-PC_Fin-Detachement-Emplois-fonctionnels_2026_03-1-pdf.jpg",
     "icon": "💼",
     "badge": "Fiche RH Direction",
     "tags": [
@@ -59,13 +62,14 @@
   {
     "id": "cig92-info-4",
     "title": "La procédure de recrutement sur les emplois fonctionnels de direction – Infographie",
-    "description": "Expertise et proximité pour les grands défis RH, aujourd'hui et demain.",
+    "description": "Étapes et formalités obligatoires : déclaration de vacance d'emploi, publication de l'offre, examen des candidatures, audition et transmission au contrôle de légalité.",
     "category": "Recrutement & Direction",
     "cdg": "CIG PETITE COURONNE (92-93-94)",
     "dept": "92",
     "date": "2026",
     "link": "https://www.cig929394.fr/publications/la-procedure-de-recrutement-sur-les-emplois-fonctionnels-de-direction-infographie/",
     "pdfUrl": "https://www.cig929394.fr/wp-content/uploads/2025/12/Infographie_CIG-PC_Recrutement-Emplois-fonctionnels_2026_02.pdf",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/12/Infographie_CIG-PC_Recrutement-Emplois-fonctionnels_2026_02-1-pdf.jpg",
     "icon": "💼",
     "badge": "Fiche RH Direction",
     "tags": [
@@ -78,13 +82,14 @@
   {
     "id": "cig92-info-5",
     "title": "Quand et comment placer un agent en période de préparation au reclassement (PPR) ? – infographie",
-    "description": "pdf - 341,11 ko",
+    "description": "Arbre décisionnel sur la PPR : constatation de l'inaptitude par le Conseil médical, information de l'agent, élaboration du projet personnalisé de reclassement et formation qualifiante sur 1 an maximum.",
     "category": "Santé & Arrêts",
     "cdg": "CIG PETITE COURONNE (92-93-94)",
     "dept": "92",
     "date": "2026",
     "link": "https://www.cig929394.fr/publications/quand-et-comment-placer-un-agent-en-periode-de-preparation-au-reclassement-ppr-infographie/",
     "pdfUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf.pdf",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf.jpg",
     "icon": "🩺",
     "badge": "Arbre Décisionnel",
     "tags": [
@@ -92,19 +97,20 @@
       "CIG 92-93-94",
       "Inaptitude",
       "PPR",
-      "DORS"
+      "CMO"
     ]
   },
   {
     "id": "cig92-info-6",
     "title": "Quand et comment placer un agent en disponibilité pour raison de santé (DORS) ? – infographie",
-    "description": "pdf - 252,22 ko",
+    "description": "Schéma de placement en DORS après épuisement des droits à congés de maladie (CMO, CLM, CLD) : durée, maintien du demi-traitement, indemnités journalières et perspectives de réintégration.",
     "category": "Santé & Arrêts",
     "cdg": "CIG PETITE COURONNE (92-93-94)",
     "dept": "92",
     "date": "2026",
     "link": "https://www.cig929394.fr/publications/quand-et-comment-placer-un-agent-en-disponibilite-pour-raison-de-sante-dors-infographie/",
     "pdfUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/dors_revumk.pdf",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/dors_revumk.jpg",
     "icon": "🩺",
     "badge": "Arbre Décisionnel",
     "tags": [
@@ -112,19 +118,20 @@
       "CIG 92-93-94",
       "Inaptitude",
       "PPR",
-      "DORS"
+      "CMO"
     ]
   },
   {
     "id": "cig92-info-7",
     "title": "Les règles générales de classement à la nomination stagiaire : Catégorie C – infographie",
-    "description": "pdf - 323,84 ko",
+    "description": "Barème et méthode de calcul pour la reprise des services antérieurs (secteur public et secteur privé) lors de la nomination en catégorie C.",
     "category": "Rémunération & Carrière",
     "cdg": "CIG PETITE COURONNE (92-93-94)",
     "dept": "92",
     "date": "2026",
     "link": "https://www.cig929394.fr/publications/les-regles-generales-de-classement-a-la-nomination-stagiaire-categorie-c-infographie/",
     "pdfUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/infog_clsst-catc_2025_02.pdf",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/infog_clsst-catc_2025_02.jpg",
     "icon": "📋",
     "badge": "Guide de Classement",
     "tags": [
@@ -138,13 +145,14 @@
   {
     "id": "cig92-info-8",
     "title": "Les règles générales de classement à la nomination stagiaire : Catégorie B-NES – infographie",
-    "description": "pdf - 358,61 ko",
+    "description": "Guide visuel de classement dans le Nouvel Espace Statutaire (NES) : reprise des années d'expérience professionnelle, diplômes et ancienneté.",
     "category": "Rémunération & Carrière",
     "cdg": "CIG PETITE COURONNE (92-93-94)",
     "dept": "92",
     "date": "2026",
     "link": "https://www.cig929394.fr/publications/les-regles-generales-de-classement-a-la-nomination-stagiaire-categorie-b-nes-infographie/",
     "pdfUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/infog_clsst-catb-nes_2025_02.pdf",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/infog_clsst-catb-nes_2025_02-1-pdf.jpg",
     "icon": "📋",
     "badge": "Guide de Classement",
     "tags": [
@@ -158,13 +166,14 @@
   {
     "id": "cig92-info-9",
     "title": "Les règles générales de classement à la nomination stagiaire : Catégorie A – Attachés territoriaux – infographie",
-    "description": "pdf - 407,37 ko",
+    "description": "Infographie synthétique sur les règles de calcul de l'échelon d'accueil pour le cadre d'emplois des attachés territoriaux.",
     "category": "Rémunération & Carrière",
     "cdg": "CIG PETITE COURONNE (92-93-94)",
     "dept": "92",
     "date": "2026",
     "link": "https://www.cig929394.fr/publications/les-regles-generales-de-classement-a-la-nomination-stagiaire-categorie-a-attaches-territoriaux-infographie/",
     "pdfUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/infog_clsst-cata_2025_02.pdf",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/infog_clsst-cata_2025_02-1-pdf.jpg",
     "icon": "📋",
     "badge": "Guide de Classement",
     "tags": [
@@ -178,13 +187,14 @@
   {
     "id": "cig92-info-10",
     "title": "Les principales règles de classement à la nomination stagiaire – infographie",
-    "description": "Expertise et proximité pour les grands défis RH, aujourd'hui et demain.",
+    "description": "Synthèse transversale des principes généraux applicables à toutes les catégories hiérarchiques (A, B, C) lors de la titularisation.",
     "category": "Rémunération & Carrière",
     "cdg": "CIG PETITE COURONNE (92-93-94)",
     "dept": "92",
     "date": "2026",
     "link": "https://www.cig929394.fr/publications/les-principales-regles-de-classement-a-la-nomination-stagiaire-infographie/",
     "pdfUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/les_regles_de_classement_-_page_1_a_4.pdf",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/les_regles_de_classement_-_page_1_a_4.jpg",
     "icon": "📋",
     "badge": "Guide de Classement",
     "tags": [
@@ -198,30 +208,34 @@
   {
     "id": "cig92-info-11",
     "title": "Le cumul d’activités des agents publics – Infographie",
-    "description": "Expertise et proximité pour les grands défis RH, aujourd'hui et demain.",
-    "category": "Statut & Procédures RH",
+    "description": "Tableau et arbre décisionnel sur le régime des cumuls d'activités : activités accessoires autorisées, création/reprise d'entreprise, saisine du référent déontologue.",
+    "category": "Instances & Déontologie",
     "cdg": "CIG PETITE COURONNE (92-93-94)",
     "dept": "92",
     "date": "2026",
     "link": "https://www.cig929394.fr/se-connecter/",
     "pdfUrl": "https://www.cig929394.fr/se-connecter/",
-    "icon": "📊",
-    "badge": "Infographie Officielle",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/08/seconnecter-1.png",
+    "icon": "⚖️",
+    "badge": "Guide Déontologie",
     "tags": [
       "Infographie",
-      "CIG 92-93-94"
+      "CIG 92-93-94",
+      "Cumul d'activités",
+      "Déontologie"
     ]
   },
   {
     "id": "cig92-info-12",
     "title": "Le congé de maladie ordinaire du fonctionnaire – infographie",
-    "description": "pdf - 748,14 ko",
+    "description": "Schéma complet sur les droits à CMO : décompte à l'année glissante, 3 mois à plein traitement, 9 mois à demi-traitement, jour de carence et obligations de l'agent.",
     "category": "Congés & Absences",
     "cdg": "CIG PETITE COURONNE (92-93-94)",
     "dept": "92",
     "date": "2026",
     "link": "https://www.cig929394.fr/publications/le-conge-de-maladie-ordinaire-du-fonctionnaire-infographie/",
     "pdfUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/infog_cmo_2024_10.pdf",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/infog_cmo_2024_10.jpg",
     "icon": "🏖️",
     "badge": "Schéma de Procédure",
     "tags": [
@@ -229,81 +243,6 @@
       "CIG 92-93-94",
       "Congé parental",
       "Réintégration"
-    ]
-  },
-  {
-    "id": "versailles-info-1",
-    "title": "Procédure de la Rupture Conventionnelle dans la FPT – Schéma pas-à-pas",
-    "description": "Arbre chronologique complet : demande initiale, convocation à l'entretien préalable, délais légaux de rétractation et calcul de l'indemnité.",
-    "category": "Rupture conventionnelle",
-    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
-    "dept": "78",
-    "date": "2026",
-    "link": "https://www.cigversailles.fr/actualites",
-    "pdfUrl": "https://www.cigversailles.fr/actualites",
-    "icon": "⚖️",
-    "badge": "Schéma Officiel",
-    "tags": [
-      "Rupture",
-      "Indemnité",
-      "Procédure"
-    ]
-  },
-  {
-    "id": "cdg35-info-1",
-    "title": "Infographie : Fonctionnement du Conseil Médical & Congés pour Raisons de Santé",
-    "description": "Arbre décisionnel distinguant CMO, CLM, CLD, saisine en formation restreinte/plénière et maintien du demi-traitement.",
-    "category": "Santé & Arrêts",
-    "cdg": "CDG 35 (ILLE-ET-VILAINE)",
-    "dept": "35",
-    "date": "2026",
-    "link": "https://www.cdg35.fr/actualites/",
-    "pdfUrl": "https://www.cdg35.fr/actualites/",
-    "icon": "🩺",
-    "badge": "Arbre Décisionnel",
-    "tags": [
-      "Santé",
-      "Conseil Médical",
-      "CLM",
-      "CLD"
-    ]
-  },
-  {
-    "id": "cdg29-info-1",
-    "title": "Frise Chronologique des Élections Professionnelles 2026",
-    "description": "Calendrier des échéances clés : calcul des effectifs, dépôt des listes syndicales, vote électronique et proclamation.",
-    "category": "Élections professionnelles",
-    "cdg": "CDG 29 (FINISTÈRE)",
-    "dept": "29",
-    "date": "2026",
-    "link": "https://www.cdg29.bzh/actualites",
-    "pdfUrl": "https://www.cdg29.bzh/actualites",
-    "icon": "🗳️",
-    "badge": "Frise Chronologique",
-    "tags": [
-      "Élections 2026",
-      "CST",
-      "CAP",
-      "Vote"
-    ]
-  },
-  {
-    "id": "cdg13-info-1",
-    "title": "Composantes & Modulation du RIFSEEP (IFSE + CIA)",
-    "description": "Synthèse infographique : groupes de fonctions, critères d'attribution de l'IFSE, modulation du Complément Indemnitaire Annuel.",
-    "category": "Rémunération & Carrière",
-    "cdg": "CDG 13 (BOUCHES-DU-RHÔNE)",
-    "dept": "13",
-    "date": "2026",
-    "link": "https://www.cdg13.com/le-cdg13/les-actualites",
-    "pdfUrl": "https://www.cdg13.com/le-cdg13/les-actualites",
-    "icon": "💰",
-    "badge": "Fiche Repère",
-    "tags": [
-      "RIFSEEP",
-      "IFSE",
-      "CIA",
-      "Rémunération"
     ]
   }
 ]

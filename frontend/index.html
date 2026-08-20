@@ -250,6 +250,28 @@
       </footer>
     </div>
 
+    <!-- Infographic Fullscreen Lightbox Modal -->
+    <div id="infography-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <span class="modal-icon">📊</span>
+            <h3 id="modal-title" class="modal-title">Aperçu de l'Infographie</h3>
+          </div>
+          <div class="modal-actions">
+            <a id="modal-download-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn-secondary modal-btn-download">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Télécharger PDF / Original</span>
+            </a>
+            <button id="modal-close-btn" class="btn-icon modal-btn-close" aria-label="Fermer">✕</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <img id="modal-img" src="" alt="Infographie grand format" class="modal-image" />
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="./main.js"></script>
   </body>
 </html>
