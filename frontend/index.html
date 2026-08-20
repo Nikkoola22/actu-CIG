@@ -179,18 +179,34 @@
           <!-- Grid View -->
           <div id="news-container" class="grid-container hidden"></div>
 
-          <!-- Table View -->
+          <!-- Table View (2 colonnes pour diviser la hauteur par 2) -->
           <div id="table-container" class="table-container">
-            <table class="saas-table">
-              <thead>
-                <tr>
-                  <th style="width: 260px;">Centre de Gestion</th>
-                  <th>Actualités & Publications officielles</th>
-                  <th style="width: 140px; text-align: right;">Accès direct</th>
-                </tr>
-              </thead>
-              <tbody id="table-body"></tbody>
-            </table>
+            <div class="table-2col-layout">
+              <div class="table-pane">
+                <table class="saas-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 180px;">Centre de Gestion</th>
+                      <th>Actualités & Publications</th>
+                      <th style="width: 75px; text-align: right;">Accès</th>
+                    </tr>
+                  </thead>
+                  <tbody id="table-body-left"></tbody>
+                </table>
+              </div>
+              <div class="table-pane">
+                <table class="saas-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 180px;">Centre de Gestion</th>
+                      <th>Actualités & Publications</th>
+                      <th style="width: 75px; text-align: right;">Accès</th>
+                    </tr>
+                  </thead>
+                  <tbody id="table-body-right"></tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </main>

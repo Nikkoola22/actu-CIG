@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const statusText = document.getElementById('status-text');
   const newsContainer = document.getElementById('news-container');
   const tableContainer = document.getElementById('table-container');
-  const tableBody = document.getElementById('table-body');
+  const tableBodyLeft = document.getElementById('table-body-left');
+  const tableBodyRight = document.getElementById('table-body-right');
   const loading = document.getElementById('loading');
   const searchInput = document.getElementById('search-input');
   const clearSearchBtn = document.getElementById('clear-search-btn');
@@ -254,7 +255,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!silent) {
       loading.style.display = 'flex';
       newsContainer.innerHTML = '';
-      tableBody.innerHTML = '';
+      if (tableBodyLeft) tableBodyLeft.innerHTML = '';
+      if (tableBodyRight) tableBodyRight.innerHTML = '';
     }
 
     let data = null;
@@ -520,12 +522,15 @@ document.addEventListener('DOMContentLoaded', () => {
     tableContainer.classList.remove('hidden');
 
     if (data.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="3" class="empty-state">Aucun résultat ne correspond à votre recherche.</td></tr>';
+      if (tableBodyLeft) tableBodyLeft.innerHTML = '<tr><td colspan="3" class="empty-state">Aucun résultat.</td></tr>';
+      if (tableBodyRight) tableBodyRight.innerHTML = '<tr><td colspan="3" class="empty-state">Aucun résultat.</td></tr>';
       return;
     }
 
-    const rowsHtml = [];
+    const leftRowsHtml = [];
+    const rightRowsHtml = [];
     const len = data.length;
+    const midpoint = Math.ceil(len / 2);
 
     for (let i = 0; i < len; i++) {
       const cdg = data[i];
@@ -540,32 +545,39 @@ document.addEventListener('DOMContentLoaded', () => {
         let itemsHtml = '';
         for (let j = 0; j < realNews.length; j++) {
           const item = realNews[j];
-          itemsHtml += `<div class="table-actu-row"><a href="${escapeHTML(item.link)}" target="_blank" rel="noopener noreferrer" class="news-item-link" style="font-size: 0.85rem;">• ${escapeHTML(item.title)}</a></div>`;
+          itemsHtml += `<div class="table-actu-row"><a href="${escapeHTML(item.link)}" target="_blank" rel="noopener noreferrer" class="news-item-link" style="font-size: 0.815rem; line-height: 1.35;">• ${escapeHTML(item.title)}</a></div>`;
         }
         actusHtml = `<div class="table-actu-list">${itemsHtml}</div>`;
       } else {
-        actusHtml = '<span style="color: var(--text-muted); font-size: 0.825rem;">Aucune publication</span>';
+        actusHtml = '<span style="color: var(--text-muted); font-size: 0.775rem;">Aucune publication</span>';
       }
 
       const linkHtml = safeUrl
-        ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.75rem;">Visiter ↗</a>`
-        : '<span style="color: var(--text-muted); font-size: 0.75rem;">N/A</span>';
+        ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.725rem;">Visiter ↗</a>`
+        : '<span style="color: var(--text-muted); font-size: 0.725rem;">N/A</span>';
 
-      rowsHtml.push(`
+      const rowHtml = `
         <tr>
           <td>
-            <div style="display: flex; align-items: center; gap: 0.65rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
               <div class="cdg-logo-wrap table-logo-wrap">${logoImg}<span class="cdg-logo-placeholder">${escapeHTML(cdg.deptCode)}</span></div>
-              <strong style="color: var(--text-primary); font-size: 0.95rem;">${safeCdgName}</strong>
+              <strong style="color: var(--text-primary); font-size: 0.875rem;">${safeCdgName}</strong>
             </div>
           </td>
           <td>${actusHtml}</td>
           <td style="text-align: right;">${linkHtml}</td>
         </tr>
-      `);
+      `;
+
+      if (i < midpoint) {
+        leftRowsHtml.push(rowHtml);
+      } else {
+        rightRowsHtml.push(rowHtml);
+      }
     }
 
-    tableBody.innerHTML = rowsHtml.join('');
+    if (tableBodyLeft) tableBodyLeft.innerHTML = leftRowsHtml.join('');
+    if (tableBodyRight) tableBodyRight.innerHTML = rightRowsHtml.join('');
   }
 
   // ----------------- SETTINGS & VIEW -----------------
