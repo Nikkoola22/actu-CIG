@@ -1,5 +1,672 @@
 [
   {
+    "id": "versailles-all-1",
+    "title": "Gestion d'un Congé Maladie Ordinaire des fonctionnaires (infographie)",
+    "description": "08/04/2026",
+    "category": "Santé & Arrêts",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/infographie-le-conseil-medical-1",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/infographie-le-conseil-medical-1",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🩺",
+    "badge": "Conseil Médical / CMO",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Santé",
+      "CMO",
+      "Conseil Médical"
+    ]
+  },
+  {
+    "id": "versailles-all-2",
+    "title": "Octroi de l'allocation temporaire d'invalidité - ATI (infographie)",
+    "description": "08/06/2026",
+    "category": "Instances & Déontologie",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/octroi-de-l-allocation-temporaire-d-invalidite",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/octroi-de-l-allocation-temporaire-d-invalidite",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "⚖️",
+    "badge": "Médiation MPO",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Médiation",
+      "MPO",
+      "Dialogue"
+    ]
+  },
+  {
+    "id": "versailles-all-3",
+    "title": "Procédure de reconnaissance d'une maladie professionnelle (infographie)",
+    "description": "08/06/2026",
+    "category": "Santé & Arrêts",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/procedure-de-reconnaissance-d-une-maladie",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/procedure-de-reconnaissance-d-une-maladie",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🩺",
+    "badge": "Conseil Médical / CMO",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Santé",
+      "CMO",
+      "Conseil Médical"
+    ]
+  },
+  {
+    "id": "versailles-all-4",
+    "title": "Procédure de rechute d'un accident ou d'une maladie professionnelle (infographie)",
+    "description": "08/06/2026",
+    "category": "Santé & Arrêts",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/procedure-de-rechute-d-un-accident-ou-d-une",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/procedure-de-rechute-d-un-accident-ou-d-une",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🩺",
+    "badge": "Conseil Médical / CMO",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Santé",
+      "CMO",
+      "Conseil Médical"
+    ]
+  },
+  {
+    "id": "versailles-all-5",
+    "title": "Procédure de reconnaissance d'un accident de trajet (infographie)",
+    "description": "08/06/2026",
+    "category": "Santé & Arrêts",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/procedure-de-reconnaissance-d-un-accident-de-0",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/procedure-de-reconnaissance-d-un-accident-de-0",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🚑",
+    "badge": "Procédure CITIS",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Accident de service",
+      "Trajet",
+      "CITIS"
+    ]
+  },
+  {
+    "id": "versailles-all-6",
+    "title": "Procédure de reconnaissance d'un accident de service (infographie)",
+    "description": "08/06/2026",
+    "category": "Santé & Arrêts",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/procedure-de-reconnaissance-d-un-accident-de",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/procedure-de-reconnaissance-d-un-accident-de",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🚑",
+    "badge": "Procédure CITIS",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Accident de service",
+      "Trajet",
+      "CITIS"
+    ]
+  },
+  {
+    "id": "versailles-all-7",
+    "title": "Contrôle du CITIS par un médecin agréé (infographie)",
+    "description": "08/06/2026",
+    "category": "Santé & Arrêts",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/controle-du-citis-par-un-medecin-agree",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/controle-du-citis-par-un-medecin-agree",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🚑",
+    "badge": "Procédure CITIS",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Accident de service",
+      "Trajet",
+      "CITIS"
+    ]
+  },
+  {
+    "id": "versailles-all-8",
+    "title": "Révision de l'allocation temporaire d'invalidité - ATI (infographie)",
+    "description": "08/06/2026",
+    "category": "Instances & Déontologie",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/revision-de-l-allocation-temporaire-d-invalidite",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/revision-de-l-allocation-temporaire-d-invalidite",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "⚖️",
+    "badge": "Médiation MPO",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Médiation",
+      "MPO",
+      "Dialogue"
+    ]
+  },
+  {
+    "id": "versailles-all-9",
+    "title": "La fin du CITIS - L'inaptitude physique définitive (infographie)",
+    "description": "07/07/2026",
+    "category": "Santé & Arrêts",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/la-fin-du-citis-l-inaptitude-physique-definitive",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/la-fin-du-citis-l-inaptitude-physique-definitive",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🚑",
+    "badge": "Procédure CITIS",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Accident de service",
+      "Trajet",
+      "CITIS"
+    ]
+  },
+  {
+    "id": "versailles-all-10",
+    "title": "Inaptitude médicale du fonctionnaire à l'issue des droits à congé pour raison de santé (infographie)",
+    "description": "07/07/2026",
+    "category": "Santé & Arrêts",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/inaptitude-medicale-du-fonctionnaire-l-issue-des",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/inaptitude-medicale-du-fonctionnaire-l-issue-des",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🩺",
+    "badge": "Conseil Médical / CMO",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Santé",
+      "CMO",
+      "Conseil Médical"
+    ]
+  },
+  {
+    "id": "versailles-all-11",
+    "title": "Infographie RGPD - Transmission des données",
+    "description": "15/11/2024",
+    "category": "Numérique & RGPD",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/gestion-locale/gouvernance-et-protection-des/infographie-rgpd-transmission-des-donnees",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/gestion-locale/gouvernance-et-protection-des/infographie-rgpd-transmission-des-donnees",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🔒",
+    "badge": "Guide RGPD",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "RGPD",
+      "Données",
+      "Cybersécurité"
+    ]
+  },
+  {
+    "id": "versailles-all-12",
+    "title": "Infographie RGPD - Les 7 droits relatifs au RGPD",
+    "description": "15/11/2024",
+    "category": "Numérique & RGPD",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/gestion-locale/gouvernance-et-protection-des/infographie-rgpd-les-7-droits-relatifs-au-rgpd",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/gestion-locale/gouvernance-et-protection-des/infographie-rgpd-les-7-droits-relatifs-au-rgpd",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🔒",
+    "badge": "Guide RGPD",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "RGPD",
+      "Données",
+      "Cybersécurité"
+    ]
+  },
+  {
+    "id": "versailles-all-13",
+    "title": "Infographie RGPD - La check-list d’une charte informatique",
+    "description": "15/11/2024",
+    "category": "Numérique & RGPD",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/gestion-locale/gouvernance-et-protection-des/infographie-rgpd-la-check-list-d-une-charte",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/gestion-locale/gouvernance-et-protection-des/infographie-rgpd-la-check-list-d-une-charte",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🔒",
+    "badge": "Guide RGPD",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "RGPD",
+      "Données",
+      "Cybersécurité"
+    ]
+  },
+  {
+    "id": "versailles-all-14",
+    "title": "Infographie RGPD - L'information",
+    "description": "15/11/2024",
+    "category": "Numérique & RGPD",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/gestion-locale/gouvernance-et-protection-des/infographie-rgpd-l-information",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/gestion-locale/gouvernance-et-protection-des/infographie-rgpd-l-information",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🔒",
+    "badge": "Guide RGPD",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "RGPD",
+      "Données",
+      "Cybersécurité"
+    ]
+  },
+  {
+    "id": "versailles-all-15",
+    "title": "Infographie - le conseil médical",
+    "description": "13/03/2025",
+    "category": "Santé & Arrêts",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/infographie-le-conseil-medical",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/infographie-le-conseil-medical",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🩺",
+    "badge": "Conseil Médical / CMO",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Santé",
+      "CMO",
+      "Conseil Médical"
+    ]
+  },
+  {
+    "id": "versailles-all-16",
+    "title": "Infographie - les étapes de la médiation",
+    "description": "24/04/2025",
+    "category": "Instances & Déontologie",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/relation-agent-employeur/mediation/infographie-les-etapes-de-la-mediation",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/relation-agent-employeur/mediation/infographie-les-etapes-de-la-mediation",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "⚖️",
+    "badge": "Médiation MPO",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Médiation",
+      "MPO",
+      "Dialogue"
+    ]
+  },
+  {
+    "id": "versailles-all-17",
+    "title": "Le Congé Maladie Ordinaire des contractuels (infographie)",
+    "description": "08/04/2026",
+    "category": "Santé & Arrêts",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/infographie-le-conseil-medical-2",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/infographie-le-conseil-medical-2",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🩺",
+    "badge": "Conseil Médical / CMO",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Santé",
+      "CMO",
+      "Conseil Médical"
+    ]
+  },
+  {
+    "id": "versailles-all-18",
+    "title": "Retraite pour invalidité d'office (infographie)",
+    "description": "06/08/2026",
+    "category": "Retraite & CNRACL",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/retraite-pour-invalidite-d-office-infographie",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/retraite-pour-invalidite-d-office-infographie",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "⏳",
+    "badge": "Barème Retraite",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Retraite",
+      "CNRACL"
+    ]
+  },
+  {
+    "id": "versailles-all-19",
+    "title": "Retraite pour invalidité (infographie)",
+    "description": "06/08/2026",
+    "category": "Retraite & CNRACL",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/retraite-pour-invalidite-infographie",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/retraite-pour-invalidite-infographie",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "⏳",
+    "badge": "Barème Retraite",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Retraite",
+      "CNRACL"
+    ]
+  },
+  {
+    "id": "versailles-all-20",
+    "title": "Le congé longue durée (infographie)",
+    "description": "06/08/2026",
+    "category": "Statut & Procédures RH",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/le-conge-longue-duree-infographie",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/le-conge-longue-duree-infographie",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "📊",
+    "badge": "Schéma Officiel CIG",
+    "tags": [
+      "Infographie",
+      "CIG Versailles"
+    ]
+  },
+  {
+    "id": "versailles-all-21",
+    "title": "Le congé longue maladie (infographie)",
+    "description": "06/08/2026",
+    "category": "Santé & Arrêts",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/le-conge-longue-maladie-infographie",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/le-conge-longue-maladie-infographie",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🩺",
+    "badge": "Conseil Médical / CMO",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Santé",
+      "CMO",
+      "Conseil Médical"
+    ]
+  },
+  {
+    "id": "versailles-all-22",
+    "title": "Le Congé Maladie Ordinaire des fonctionnaires (Infographie)",
+    "description": "06/08/2026",
+    "category": "Santé & Arrêts",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/infographie-le-conseil-medical-0",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/infographie-le-conseil-medical-0",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🩺",
+    "badge": "Conseil Médical / CMO",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Santé",
+      "CMO",
+      "Conseil Médical"
+    ]
+  },
+  {
+    "id": "versailles-all-23",
+    "title": "Qu'est-ce que la médiation ?",
+    "description": "Infographie et guide synthétique officiel publié par le CIG Grande Couronne (Versailles - 78, 91, 95).",
+    "category": "Instances & Déontologie",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/quest-ce-que-la-mediation",
+    "pdfUrl": "https://www.cigversailles.fr/quest-ce-que-la-mediation",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "⚖️",
+    "badge": "Médiation MPO",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Médiation",
+      "MPO",
+      "Dialogue"
+    ]
+  },
+  {
+    "id": "versailles-all-24",
+    "title": "Le déroulement de la médiation",
+    "description": "Infographie et guide synthétique officiel publié par le CIG Grande Couronne (Versailles - 78, 91, 95).",
+    "category": "Instances & Déontologie",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/le-deroulement-de-la-mediation",
+    "pdfUrl": "https://www.cigversailles.fr/le-deroulement-de-la-mediation",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "⚖️",
+    "badge": "Médiation MPO",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Médiation",
+      "MPO",
+      "Dialogue"
+    ]
+  },
+  {
+    "id": "versailles-all-26",
+    "title": "Alcool au volant",
+    "description": "Infographie et guide synthétique officiel publié par le CIG Grande Couronne (Versailles - 78, 91, 95).",
+    "category": "Statut & Procédures RH",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/prevention/prevention-des-risques-profess/alcool-au-volant",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/prevention/prevention-des-risques-profess/alcool-au-volant",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "📊",
+    "badge": "Schéma Officiel CIG",
+    "tags": [
+      "Infographie",
+      "CIG Versailles"
+    ]
+  },
+  {
+    "id": "versailles-all-27",
+    "title": "Le conseil médical",
+    "description": "Infographie et guide synthétique officiel publié par le CIG Grande Couronne (Versailles - 78, 91, 95).",
+    "category": "Santé & Arrêts",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/conseil-medical-unique",
+    "pdfUrl": "https://www.cigversailles.fr/conseil-medical-unique",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🩺",
+    "badge": "Conseil Médical / CMO",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Santé",
+      "CMO",
+      "Conseil Médical"
+    ]
+  },
+  {
+    "id": "versailles-all-28",
+    "title": "Levons le voile sur les rouages du conseil médical",
+    "description": "05/06/2026",
+    "category": "Santé & Arrêts",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/actualites/levons-le-voile-sur-les-rouages-du-conseil-medical",
+    "pdfUrl": "https://www.cigversailles.fr/actualites/levons-le-voile-sur-les-rouages-du-conseil-medical",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "🩺",
+    "badge": "Conseil Médical / CMO",
+    "tags": [
+      "Infographie",
+      "CIG Versailles",
+      "Santé",
+      "CMO",
+      "Conseil Médical"
+    ]
+  },
+  {
+    "id": "versailles-all-31",
+    "title": "Panorama de l'emploi territorial 2022 - 11e édition",
+    "description": "Infographie et guide synthétique officiel publié par le CIG Grande Couronne (Versailles - 78, 91, 95).",
+    "category": "Statut & Procédures RH",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/emploi/analyse-et-prospective-sociale/panorama-de-l-emploi-territori-0",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/emploi/analyse-et-prospective-sociale/panorama-de-l-emploi-territori-0",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "📊",
+    "badge": "Schéma Officiel CIG",
+    "tags": [
+      "Infographie",
+      "CIG Versailles"
+    ]
+  },
+  {
+    "id": "versailles-all-33",
+    "title": "10 groupes d'indicateurs repères pour le pilotage des ressources humaines 2020 - 1re édition",
+    "description": "Infographie et guide synthétique officiel publié par le CIG Grande Couronne (Versailles - 78, 91, 95).",
+    "category": "Statut & Procédures RH",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/emploi/analyse-et-prospective-sociale/dix-groupes-indicateurs-repere",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/emploi/analyse-et-prospective-sociale/dix-groupes-indicateurs-repere",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "📊",
+    "badge": "Schéma Officiel CIG",
+    "tags": [
+      "Infographie",
+      "CIG Versailles"
+    ]
+  },
+  {
+    "id": "versailles-all-34",
+    "title": "Panorama de l'emploi territorial 2023 - 12e édition",
+    "description": "Infographie et guide synthétique officiel publié par le CIG Grande Couronne (Versailles - 78, 91, 95).",
+    "category": "Statut & Procédures RH",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/emploi/analyse-et-prospective-sociale/panorama-de-l-emploi-territori/panorama-de-l-emploi-territorial-2023-12e",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/emploi/analyse-et-prospective-sociale/panorama-de-l-emploi-territori/panorama-de-l-emploi-territorial-2023-12e",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "📊",
+    "badge": "Schéma Officiel CIG",
+    "tags": [
+      "Infographie",
+      "CIG Versailles"
+    ]
+  },
+  {
+    "id": "versailles-all-35",
+    "title": "Panorama de l'emploi territorial - 13e édition",
+    "description": "16/09/2024",
+    "category": "Statut & Procédures RH",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/cig-grande-couronne/publications/panorama-de-l-emploi-territorial-13e-edition",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/cig-grande-couronne/publications/panorama-de-l-emploi-territorial-13e-edition",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "📊",
+    "badge": "Schéma Officiel CIG",
+    "tags": [
+      "Infographie",
+      "CIG Versailles"
+    ]
+  },
+  {
+    "id": "versailles-all-37",
+    "title": "Panorama de l'emploi territorial - 14e édition",
+    "description": "07/10/2025",
+    "category": "Statut & Procédures RH",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/cig-grande-couronne/publications/panorama-de-l-emploi-territorial-14e-edition",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/cig-grande-couronne/publications/panorama-de-l-emploi-territorial-14e-edition",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "📊",
+    "badge": "Schéma Officiel CIG",
+    "tags": [
+      "Infographie",
+      "CIG Versailles"
+    ]
+  },
+  {
+    "id": "versailles-all-38",
+    "title": "Bilan de l'emploi 2024 du CIG Grande Couronne",
+    "description": "06/01/2026",
+    "category": "Statut & Procédures RH",
+    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
+    "dept": "78",
+    "date": "2026",
+    "link": "https://www.cigversailles.fr/ged/espace-documentaire-cig/cig-grande-couronne/publications/bilan-de-l-emploi-2024-du-cig-grande-couronne",
+    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/cig-grande-couronne/publications/bilan-de-l-emploi-2024-du-cig-grande-couronne",
+    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
+    "icon": "📊",
+    "badge": "Schéma Officiel CIG",
+    "tags": [
+      "Infographie",
+      "CIG Versailles"
+    ]
+  },
+  {
     "id": "cdg17-info-1",
     "title": "Les infographies du CDG17 – Fin de détachement sur emploi fonctionnel",
     "description": "Procédure et calendrier de fin de détachement sur emploi fonctionnel de direction à l’initiative de l’autorité territoriale : entretien préalable, préavis, indemnités et accompagnement CDG17.",
@@ -37,126 +704,6 @@
       "CDG 17",
       "Classement",
       "Stagiaire"
-    ]
-  },
-  {
-    "id": "versailles-info-1",
-    "title": "Infographie – Le Conseil Médical Unique (CMU)",
-    "description": "Schéma de saisine en formation restreinte ou plénière, rôle des médecins agréés, délais et arbre des avis pour les congés pour raison de santé.",
-    "category": "Santé & Arrêts",
-    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
-    "dept": "78",
-    "date": "2026",
-    "link": "https://www.cigversailles.fr/recherche?input-search-form=infographie&search_terms=&sort_bef_combine=relevance_DESC",
-    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/infographie-le-conseil-medical",
-    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/09/info_ppr_2024_06_vf-179x252.jpg",
-    "icon": "🩺",
-    "badge": "Schéma Officiel CIG",
-    "tags": [
-      "Infographie",
-      "CIG Versailles",
-      "Conseil Médical",
-      "Santé"
-    ]
-  },
-  {
-    "id": "versailles-info-2",
-    "title": "Infographie – Les étapes de la Médiation Préalable Obligatoire (MPO)",
-    "description": "Arbre chronologique des étapes de la médiation territoriale : saisine, accord des parties, entretiens confidentiels et protocole d'accord.",
-    "category": "Instances & Déontologie",
-    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
-    "dept": "78",
-    "date": "2026",
-    "link": "https://www.cigversailles.fr/recherche?input-search-form=infographie&search_terms=&sort_bef_combine=relevance_DESC",
-    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/relation-agent-employeur/mediation/infographie-les-etapes-de-la-mediation",
-    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/03/Infographie_Cumul_activites_2025_03-1-pdf.jpg",
-    "icon": "⚖️",
-    "badge": "Guide de Procédure",
-    "tags": [
-      "Infographie",
-      "CIG Versailles",
-      "Médiation",
-      "MPO"
-    ]
-  },
-  {
-    "id": "versailles-info-3",
-    "title": "Le Congé Maladie Ordinaire des contractuels (infographie)",
-    "description": "Synthèse des droits selon l'ancienneté de service : plein traitement, demi-traitement, indemnités journalières de sécurité sociale (IJSS) et subrogation.",
-    "category": "Santé & Arrêts",
-    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
-    "dept": "78",
-    "date": "2026",
-    "link": "https://www.cigversailles.fr/recherche?input-search-form=infographie&search_terms=&sort_bef_combine=relevance_DESC",
-    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/infographie-le-conseil-medical-2",
-    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/02/Infographie_CMO_2025_02-1-pdf.jpg",
-    "icon": "🩺",
-    "badge": "Barème Droits Contractuels",
-    "tags": [
-      "Infographie",
-      "CIG Versailles",
-      "Contractuels",
-      "CMO"
-    ]
-  },
-  {
-    "id": "versailles-info-4",
-    "title": "Gestion d'un Congé Maladie Ordinaire des fonctionnaires (infographie)",
-    "description": "Schéma de décompte à l'année glissante des 365 jours, passage à demi-traitement au 91ème jour, avis médical et reprise d'activité.",
-    "category": "Santé & Arrêts",
-    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
-    "dept": "78",
-    "date": "2026",
-    "link": "https://www.cigversailles.fr/recherche?input-search-form=infographie&search_terms=&sort_bef_combine=relevance_DESC",
-    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/infographie-le-conseil-medical-1",
-    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/02/Infographie_CMO_2025_02-1-pdf.jpg",
-    "icon": "🩺",
-    "badge": "Arbre Décisionnel",
-    "tags": [
-      "Infographie",
-      "CIG Versailles",
-      "Fonctionnaires",
-      "CMO"
-    ]
-  },
-  {
-    "id": "versailles-info-5",
-    "title": "Procédure de reconnaissance d'une maladie professionnelle (infographie)",
-    "description": "Démarches déclaratives, enquête administrative, saisine de la commission de réforme/formation plénière du conseil médical et prise en charge CITIS.",
-    "category": "Santé & Arrêts",
-    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
-    "dept": "78",
-    "date": "2026",
-    "link": "https://www.cigversailles.fr/recherche?input-search-form=infographie&search_terms=&sort_bef_combine=relevance_DESC",
-    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/procedure-de-reconnaissance-d-une-maladie",
-    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/07/Infographie-CIGPC_Regles_generales_classement_nomination_stagiaire_Categorie_A_page_1-pdf.jpg",
-    "icon": "🏥",
-    "badge": "Schéma Procédure CITIS",
-    "tags": [
-      "Infographie",
-      "CIG Versailles",
-      "CITIS",
-      "Maladie pro"
-    ]
-  },
-  {
-    "id": "versailles-info-6",
-    "title": "Procédure de reconnaissance d'un accident de trajet (infographie)",
-    "description": "Déclaration sous 48h, certificat médical initial, présomption d'imputabilité, trajet protégé entre domicile et lieu de travail.",
-    "category": "Santé & Arrêts",
-    "cdg": "CIG GRANDE COURONNE (VERSAILLES)",
-    "dept": "78",
-    "date": "2026",
-    "link": "https://www.cigversailles.fr/recherche?input-search-form=infographie&search_terms=&sort_bef_combine=relevance_DESC",
-    "pdfUrl": "https://www.cigversailles.fr/ged/espace-documentaire-cig/expertise-statutaire/conseil-medical-unique-cmu/procedure-de-reconnaissance-d-un-accident-de-0",
-    "imageUrl": "https://www.cig929394.fr/wp-content/uploads/2025/07/Infographie-CIGPC_Regles_generales_classement_nomination_stagiaire_Categorie_B-NES_page_1-pdf.jpg",
-    "icon": "🚑",
-    "badge": "Guide d'Urgence RH",
-    "tags": [
-      "Infographie",
-      "CIG Versailles",
-      "Accident de trajet",
-      "CITIS"
     ]
   },
   {
