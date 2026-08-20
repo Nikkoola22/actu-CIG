@@ -1381,10 +1381,28 @@ button:focus-visible,
   padding: 0.75rem 0.95rem;
   border-bottom: 1px solid var(--border-color-subtle);
   vertical-align: top;
+  transition: background-color 0.15s ease;
 }
 
-.saas-table tr:hover td {
-  background-color: var(--bg-surface-hover);
+/* Alternance des couleurs de lignes (Zebra Striping) pour faciliter la lecture */
+.saas-table tbody tr:nth-child(odd) td {
+  background-color: var(--bg-surface);
+}
+
+.saas-table tbody tr:nth-child(even) td {
+  background-color: #f1f5fa;
+}
+
+[data-theme="dark"] .saas-table tbody tr:nth-child(even) td {
+  background-color: #151e33;
+}
+
+.saas-table tbody tr:hover td {
+  background-color: #e2eeff !important;
+}
+
+[data-theme="dark"] .saas-table tbody tr:hover td {
+  background-color: #1d2a47 !important;
 }
 
 .table-actu-list {
