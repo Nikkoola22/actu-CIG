@@ -609,7 +609,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
           newsListHtml += `
             <li class="news-item">
-              <a href="${safeLink}" target="_blank" rel="noopener noreferrer" class="news-item-link">${safeTitle}</a>
+              <a href="${safeLink}" target="_blank" rel="noopener noreferrer" class="news-item-link" title="Lire l'article : ${safeTitle}">
+                <span class="news-item-title-text">${safeTitle}</span>
+                <svg class="news-item-arrow" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
               <div class="news-meta">
                 <div class="meta-tags">${safeDate}${safeSource}</div>
                 <button class="copy-btn" data-link="${safeLink}" title="Copier le lien">📋 Copier</button>
@@ -648,8 +651,8 @@ document.addEventListener('DOMContentLoaded', () => {
     tableContainer.classList.remove('hidden');
 
     if (data.length === 0) {
-      if (tableBodyLeft) tableBodyLeft.innerHTML = '<tr><td colspan="3" class="empty-state">Aucun résultat.</td></tr>';
-      if (tableBodyRight) tableBodyRight.innerHTML = '<tr><td colspan="3" class="empty-state">Aucun résultat.</td></tr>';
+      if (tableBodyLeft) tableBodyLeft.innerHTML = '<tr><td colspan="2" class="empty-state">Aucun résultat.</td></tr>';
+      if (tableBodyRight) tableBodyRight.innerHTML = '<tr><td colspan="2" class="empty-state">Aucun résultat.</td></tr>';
       return;
     }
 
@@ -671,7 +674,14 @@ document.addEventListener('DOMContentLoaded', () => {
         let itemsHtml = '';
         for (let j = 0; j < realNews.length; j++) {
           const item = realNews[j];
-          itemsHtml += `<div class="table-actu-row"><a href="${escapeHTML(item.link)}" target="_blank" rel="noopener noreferrer" class="news-item-link" style="font-size: 0.815rem; line-height: 1.35;">• ${escapeHTML(item.title)}</a></div>`;
+          itemsHtml += `
+            <div class="table-actu-row">
+              <a href="${escapeHTML(item.link)}" target="_blank" rel="noopener noreferrer" class="table-actu-link" title="Consulter l'article : ${escapeHTML(item.title)}">
+                <span class="table-actu-bullet"></span>
+                <span class="table-actu-text">${escapeHTML(item.title)}</span>
+                <svg class="table-actu-arrow" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>`;
         }
         actusHtml = `<div class="table-actu-list">${itemsHtml}</div>`;
       } else {
@@ -679,19 +689,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const linkHtml = safeUrl
-        ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.725rem;">Visiter ↗</a>`
-        : '<span style="color: var(--text-muted); font-size: 0.725rem;">N/A</span>';
+        ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="btn-table-visit" title="Visiter le site officiel de ${safeCdgName}"><span>Visiter</span> <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>`
+        : '';
 
       const rowHtml = `
         <tr>
           <td>
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <div class="table-cdg-cell">
               <div class="cdg-logo-wrap table-logo-wrap">${logoImg}<span class="cdg-logo-placeholder">${escapeHTML(cdg.deptCode)}</span></div>
-              <strong style="color: var(--text-primary); font-size: 0.875rem;">${safeCdgName}</strong>
+              <div class="table-cdg-meta">
+                <strong class="table-cdg-title">${safeCdgName}</strong>
+                ${linkHtml}
+              </div>
             </div>
           </td>
           <td>${actusHtml}</td>
-          <td style="text-align: right;">${linkHtml}</td>
         </tr>
       `;
 
@@ -851,20 +863,33 @@ document.addEventListener('DOMContentLoaded', () => {
     viewTableBtn.classList.toggle('active', currentView === 'table');
     if (viewInfographiesBtn) viewInfographiesBtn.classList.toggle('active', currentView === 'infographies');
 
+    const searchBox = document.querySelector('.search-box');
+    const trendsBar = document.querySelector('.trends-bar');
+    const commandSection = document.querySelector('.command-section');
+
     if (currentView === 'grid') {
       newsContainer.classList.remove('hidden');
       tableContainer.classList.add('hidden');
       if (infographiesContainer) infographiesContainer.classList.add('hidden');
+      if (searchBox) searchBox.classList.remove('hidden');
+      if (trendsBar) trendsBar.classList.remove('hidden');
+      if (commandSection) commandSection.classList.remove('infographies-mode');
     } else if (currentView === 'infographies') {
       newsContainer.classList.add('hidden');
       tableContainer.classList.add('hidden');
       if (infographiesContainer) infographiesContainer.classList.remove('hidden');
+      if (searchBox) searchBox.classList.add('hidden');
+      if (trendsBar) trendsBar.classList.add('hidden');
+      if (commandSection) commandSection.classList.add('infographies-mode');
       renderInfographies();
     } else {
       // table view
       newsContainer.classList.add('hidden');
       tableContainer.classList.remove('hidden');
       if (infographiesContainer) infographiesContainer.classList.add('hidden');
+      if (searchBox) searchBox.classList.remove('hidden');
+      if (trendsBar) trendsBar.classList.remove('hidden');
+      if (commandSection) commandSection.classList.remove('infographies-mode');
     }
   }
 
