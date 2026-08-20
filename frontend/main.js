@@ -186,9 +186,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function processRawData(data) {
     return data.map(cdg => {
-      const cdgName = cdg.cdg || '';
-      const cdgLower = cdgName.toLowerCase();
-      const deptMatch = cdgName.match(/\d+[A-B]?/) ? cdgName.match(/\d+[A-B]?/)[0] : 'CDG';
+      const rawCdgName = cdg.cdg || '';
+      const deptMatch = rawCdgName.match(/\d+[A-B]?/) ? rawCdgName.match(/\d+[A-B]?/)[0] : 'CDG';
+      // Clean CDG name: remove leading parentheses like "(01) AIN" -> "AIN" or "(2A) CORSE DU SUD" -> "CORSE DU SUD"
+      const cleanName = rawCdgName.replace(/^\s*\(\s*\d+[A-B]?\s*\)\s*-?\s*/i, '').trim();
+      const cdgName = cleanName || rawCdgName;
+      const cdgLower = (rawCdgName + ' ' + cleanName).toLowerCase();
       
       let host = 'Site officiel';
       if (cdg.officialUrl) {
@@ -240,6 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       return {
         cdg: cdgName,
+        rawCdgName,
         cdgLower,
         deptCode: deptMatch,
         officialUrl: cdg.officialUrl || '',
