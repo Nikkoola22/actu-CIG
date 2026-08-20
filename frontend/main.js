@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const loading = document.getElementById('loading');
   const searchInput = document.getElementById('search-input');
   const clearSearchBtn = document.getElementById('clear-search-btn');
-  const trendChips = document.querySelectorAll('.trend-chip');
+  const trendsChipsTrack = document.querySelector('.trends-chips-track');
   const resetTrendBtn = document.getElementById('reset-trend-btn');
   const viewGridBtn = document.getElementById('view-grid-btn');
   const viewTableBtn = document.getElementById('view-table-btn');
@@ -42,45 +42,55 @@ document.addEventListener('DOMContentLoaded', () => {
   const statNewsCount = document.getElementById('stat-news-count');
   const lastUpdatedText = document.getElementById('last-updated-text');
 
-  // Trend Topic Definitions
+  // Dynamic Trending Topics Definitions & Taxonomies
   const TRENDING_TOPICS = {
     rupture: {
       label: 'Rupture conventionnelle',
       icon: '⚖️',
-      keywords: ['rupture', 'conventionnelle', 'conventionnement']
+      keywords: ['rupture', 'conventionnelle', 'conventionnement', 'indemnité de rupture']
     },
     election: {
       label: 'Élections 2026',
       icon: '🗳️',
-      keywords: ['élection', 'election', 'élections', 'elections', 'scrutin', 'pré-liste', 'pre-liste', 'vote', 'syndic']
+      keywords: ['élection', 'election', 'élections', 'elections', 'scrutin', 'pré-liste', 'pre-liste', 'vote', 'syndic', 'représentativité']
+    },
+    retraite: {
+      label: 'Retraite & CNRACL',
+      icon: '⏳',
+      keywords: ['retraite', 'retraites', 'cnracl', 'pension', 'pensions', 'liquidation', 'carrière longue']
     },
     sante: {
       label: 'Santé & Arrêts',
       icon: '🩺',
-      keywords: ['santé', 'sante', 'maladie', 'médical', 'medical', 'thérapeutique', 'therapeutique', 'inaptitude', 'reclassement', 'temps partiel thérapeutique', 'conseil médical']
+      keywords: ['santé', 'sante', 'maladie', 'médical', 'medical', 'thérapeutique', 'therapeutique', 'inaptitude', 'reclassement', 'temps partiel thérapeutique', 'conseil médical', 'cmo', 'clm', 'cld', 'asa']
     },
     conges: {
       label: 'Congés & RSU',
       icon: '🏖️',
-      keywords: ['congé', 'conge', 'congés', 'conges', 'rsu', 'absence', 'report', 'asa', 'données sociales', 'donnees sociales']
+      keywords: ['congé', 'conge', 'congés', 'conges', 'rsu', 'absence', 'report', 'données sociales', 'donnees sociales', 'bilan social']
     },
     emploi: {
-      label: 'Recrutement & Emploi',
+      label: 'Recrutement & Concours',
       icon: '💼',
-      keywords: ['recrutement', 'emploi', 'concours', 'examen', 'candidat', 'lauréat', 'laureat', 'stage', 'apprentissage', 'mobilité', 'mobilite', 'intérim', 'interim', 'contractuel']
+      keywords: ['recrutement', 'emploi', 'concours', 'examen', 'candidat', 'lauréat', 'laureat', 'stage', 'apprentissage', 'mobilité', 'mobilite', 'intérim', 'interim', 'contractuel', 'cdi', 'cdd']
     },
     remuneration: {
-      label: 'SMIC & Rémunération',
+      label: 'Rémunération & Primes',
       icon: '💰',
-      keywords: ['smic', 'rémunération', 'remuneration', 'prime', 'indemnité', 'indemnite', 'salaire', 'cotisation', 'paie', 'rifseep', 'pouvoir d\'achat', 'indice']
+      keywords: ['smic', 'rémunération', 'remuneration', 'prime', 'indemnité', 'indemnite', 'salaire', 'cotisation', 'paie', 'rifseep', 'pouvoir d\'achat', 'indice', 'nbi', 'gipa']
+    },
+    protection: {
+      label: 'Protection Sociale & PSC',
+      icon: '🛡️',
+      keywords: ['psc', 'protection sociale', 'mutuelle', 'prévoyance', 'prevoyance', 'contrat groupe', 'assurance statutaire']
     },
     prevention: {
-      label: 'Canicule & Climat',
+      label: 'Prévention & Canicule',
       icon: '🌡️',
-      keywords: ['canicule', 'chaleur', 'prévention', 'prevention', 'sécurité', 'securite', 'document unique', 'f3sct', 'risques psychosociaux', 'ergonomie', 'fortes chaleurs']
+      keywords: ['canicule', 'chaleur', 'prévention', 'prevention', 'sécurité', 'securite', 'document unique', 'duerp', 'f3sct', 'risques psychosociaux', 'rps', 'ergonomie', 'fortes chaleurs']
     },
     instances: {
-      label: 'Instances & CST',
+      label: 'Instances & Déontologie',
       icon: '🏛️',
       keywords: ['cst', 'cap', 'ccp', 'conseil de discipline', 'instance', 'instances', 'déontologie', 'deontologie', 'laïcité', 'laicite', 'comité social', 'instances consultatives']
     }
@@ -135,28 +145,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Trends & Topics Chips (Instant switch)
-  trendChips.forEach(chip => {
-    chip.addEventListener('click', (e) => {
-      const topic = e.currentTarget.dataset.topic;
-      if (activeTopic === topic) {
-        activeTopic = null;
-        trendChips.forEach(c => c.classList.remove('active'));
-        if (resetTrendBtn) resetTrendBtn.classList.add('hidden');
-      } else {
-        trendChips.forEach(c => c.classList.remove('active'));
-        activeTopic = topic;
-        e.currentTarget.classList.add('active');
-        if (resetTrendBtn) resetTrendBtn.classList.remove('hidden');
-      }
-      renderFilteredNews();
-    });
-  });
-
   if (resetTrendBtn) {
     resetTrendBtn.addEventListener('click', () => {
       activeTopic = null;
-      trendChips.forEach(c => c.classList.remove('active'));
+      if (trendsChipsTrack) {
+        const allChips = trendsChipsTrack.querySelectorAll('.trend-chip');
+        allChips.forEach(c => c.classList.remove('active'));
+      }
       resetTrendBtn.classList.add('hidden');
       renderFilteredNews();
     });
@@ -342,6 +337,61 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
+
+    // Trending Topics delegation (Instant single-listener switch)
+    if (trendsChipsTrack) {
+      trendsChipsTrack.addEventListener('click', (e) => {
+        const chip = e.target.closest('.trend-chip');
+        if (!chip) return;
+        const topic = chip.dataset.topic;
+        if (activeTopic === topic) {
+          activeTopic = null;
+        } else {
+          activeTopic = topic;
+        }
+        
+        // Update active class on all chips in DOM
+        const allChips = trendsChipsTrack.querySelectorAll('.trend-chip');
+        allChips.forEach(c => {
+          c.classList.toggle('active', c.dataset.topic === activeTopic);
+        });
+
+        if (resetTrendBtn) {
+          resetTrendBtn.classList.toggle('hidden', !activeTopic);
+        }
+
+        renderFilteredNews();
+      });
+    }
+  }
+
+  // ----------------- DYNAMIC TRENDING TOPICS RENDERER -----------------
+
+  function renderTrendingChips(topicCounts) {
+    if (!trendsChipsTrack) return;
+
+    // Convert topics to array and dynamically sort by popularity
+    const topicList = Object.keys(TRENDING_TOPICS).map(key => ({
+      key,
+      ...TRENDING_TOPICS[key],
+      count: topicCounts[key] || 0
+    }));
+
+    // Sort descending: highest active articles first
+    topicList.sort((a, b) => b.count - a.count);
+
+    const chipsHtml = topicList.map(topic => {
+      const isActive = activeTopic === topic.key ? 'active' : '';
+      return `
+        <button class="trend-chip ${isActive}" data-topic="${topic.key}">
+          <span class="trend-icon">${topic.icon}</span>
+          <span class="trend-name">${escapeHTML(topic.label)}</span>
+          <span class="trend-badge" data-count-topic="${topic.key}">${topic.count}</span>
+        </button>
+      `;
+    });
+
+    trendsChipsTrack.innerHTML = chipsHtml.join('');
   }
 
   // ----------------- RENDER & STATS FUNCTIONS -----------------
@@ -379,13 +429,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (statCdgCount) statCdgCount.textContent = totalCdgs;
     if (statNewsCount) statNewsCount.textContent = totalArticles;
 
-    // Update Trending Topic Counter Badges
-    Object.keys(TRENDING_TOPICS).forEach(topicKey => {
-      const badge = document.querySelector(`[data-count-topic="${topicKey}"]`);
-      if (badge) {
-        badge.textContent = topicCounts[topicKey] || 0;
-      }
-    });
+    // Dynamically re-render trending chips sorted by current live counts
+    renderTrendingChips(topicCounts);
   }
 
   function getFilteredData() {
