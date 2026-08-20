@@ -87,6 +87,43 @@ app.get('/api/metadata', handleMetadata);
 app.get('/api/metadata.json', handleMetadata);
 app.get('/metadata.json', handleMetadata);
 
+const handleInfographies = (req, res) => {
+    try {
+        const candidatePaths = [
+            path.join(__dirname, 'infographies.json'),
+            path.join(process.cwd(), 'backend', 'infographies.json'),
+            path.join(process.cwd(), 'infographies.json'),
+            path.join(process.cwd(), 'api', 'infographies.json'),
+            path.join(process.cwd(), 'frontend', 'public', 'infographies.json'),
+            path.join(__dirname, '..', 'backend', 'infographies.json'),
+            path.join(__dirname, '..', 'infographies.json')
+        ];
+
+        let raw = null;
+        for (const p of candidatePaths) {
+            if (fs.existsSync(p)) {
+                raw = fs.readFileSync(p, 'utf8');
+                break;
+            }
+        }
+
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120');
+
+        if (raw) {
+            res.json(JSON.parse(raw));
+        } else {
+            res.json([]);
+        }
+    } catch (error) {
+        res.json([]);
+    }
+};
+
+app.get('/api/infographies', handleInfographies);
+app.get('/api/infographies.json', handleInfographies);
+app.get('/infographies.json', handleInfographies);
+
 app.get('/api/status', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json({ isScraping });

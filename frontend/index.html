@@ -96,6 +96,11 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
                 <span>Tableau</span>
               </button>
+              <button id="view-infographies-btn" class="view-btn" title="Infographies & Guides Visuels RH">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+                <span>Infographies</span>
+                <span id="badge-infographies-count" class="badge-counter-pill">12</span>
+              </button>
             </div>
           </div>
 
@@ -168,43 +173,67 @@
           </div>
         </div>
 
-        <!-- Loading State Indicator -->
-        <div id="loading" class="loading-state" style="display: none;">
-          <div class="spinner"></div>
-          <p>Indexation des actualités territoriales en cours...</p>
-        </div>
-        
-        <!-- Results Container (Grid or Table) -->
-        <div id="results-wrapper">
-          <!-- Grid View -->
-          <div id="news-container" class="grid-container hidden"></div>
+        <!-- Dynamic Views Area -->
+        <div id="view-wrapper" class="view-wrapper">
+          <!-- Loading State Indicator -->
+          <div id="loading" class="loading-state" style="display: none;">
+            <div class="spinner"></div>
+            <p>Indexation des actualités territoriales en cours...</p>
+          </div>
+          
+          <!-- Results Container (Grid or Table) -->
+          <div id="results-wrapper">
+            <!-- Grid View -->
+            <div id="news-container" class="grid-container hidden"></div>
 
-          <!-- Table View (2 colonnes pour diviser la hauteur par 2) -->
-          <div id="table-container" class="table-container">
-            <div class="table-2col-layout">
-              <div class="table-pane">
-                <table class="saas-table">
-                  <thead>
-                    <tr>
-                      <th style="width: 180px;">Centre de Gestion</th>
-                      <th>Actualités & Publications</th>
-                      <th style="width: 75px; text-align: right;">Accès</th>
-                    </tr>
-                  </thead>
-                  <tbody id="table-body-left"></tbody>
-                </table>
+            <!-- Table View (2 colonnes pour diviser la hauteur par 2) -->
+            <div id="table-container" class="table-container">
+              <div class="table-2col-layout">
+                <div class="table-pane">
+                  <table class="saas-table">
+                    <thead>
+                      <tr>
+                        <th style="width: 180px;">Centre de Gestion</th>
+                        <th>Actualités & Publications</th>
+                        <th style="width: 75px; text-align: right;">Accès</th>
+                      </tr>
+                    </thead>
+                    <tbody id="table-body-left"></tbody>
+                  </table>
+                </div>
+                <div class="table-pane">
+                  <table class="saas-table">
+                    <thead>
+                      <tr>
+                        <th style="width: 180px;">Centre de Gestion</th>
+                        <th>Actualités & Publications</th>
+                        <th style="width: 75px; text-align: right;">Accès</th>
+                      </tr>
+                    </thead>
+                    <tbody id="table-body-right"></tbody>
+                  </table>
+                </div>
               </div>
-              <div class="table-pane">
-                <table class="saas-table">
-                  <thead>
-                    <tr>
-                      <th style="width: 180px;">Centre de Gestion</th>
-                      <th>Actualités & Publications</th>
-                      <th style="width: 75px; text-align: right;">Accès</th>
-                    </tr>
-                  </thead>
-                  <tbody id="table-body-right"></tbody>
-                </table>
+            </div>
+
+            <!-- Infographies View (Nouvelle section dédiée) -->
+            <div id="infographies-container" class="infographies-container hidden">
+              <div class="infographies-banner">
+                <div class="banner-text">
+                  <div class="banner-title-row">
+                    <span class="banner-icon">📊</span>
+                    <h2>Infographies & Guides Visuels RH</h2>
+                    <span class="banner-tag">FPT & CIG</span>
+                  </div>
+                  <p>Retrouvez les fiches repères infographiques, arbres décisionnels, schémas de procédures et synthèses illustrées publiés par les Centres de Gestion.</p>
+                </div>
+                <div class="info-pills-bar" id="info-pills-bar">
+                  <!-- Dynamically populated categories -->
+                </div>
+              </div>
+
+              <div id="infographies-grid" class="infographies-grid">
+                <!-- Dynamically populated cards -->
               </div>
             </div>
           </div>

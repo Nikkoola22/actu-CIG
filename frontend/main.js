@@ -30,6 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const resetTrendBtn = document.getElementById('reset-trend-btn');
   const viewGridBtn = document.getElementById('view-grid-btn');
   const viewTableBtn = document.getElementById('view-table-btn');
+  const viewInfographiesBtn = document.getElementById('view-infographies-btn');
+  const infographiesContainer = document.getElementById('infographies-container');
+  const infographiesGrid = document.getElementById('infographies-grid');
+  const infoPillsBar = document.getElementById('info-pills-bar');
+  const badgeInfographiesCount = document.getElementById('badge-infographies-count');
   const themeToggleBtn = document.getElementById('theme-toggle-btn');
   const themeIconMoon = document.getElementById('theme-icon-moon');
   const themeIconSun = document.getElementById('theme-icon-sun');
@@ -41,6 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const statCdgCount = document.getElementById('stat-cdg-count');
   const statNewsCount = document.getElementById('stat-news-count');
   const lastUpdatedText = document.getElementById('last-updated-text');
+
+  // Infographies State
+  let infographiesData = [];
+  let activeInfographyCategory = null;
 
   // Dynamic Trending Topics Definitions & Taxonomies
   const TRENDING_TOPICS = {
@@ -108,9 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Setup Event Delegation for Containers (Attached once for ultra-fast performance)
   setupEventDelegation();
 
-  // Load Data & Metadata
+  // Load Data, Metadata & Infographies
   fetchNews();
   fetchMetadata();
+  fetchInfographies();
 
   // ----------------- EVENT LISTENERS -----------------
 
@@ -125,14 +135,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     clearTimeout(searchDebounceTimer);
     searchDebounceTimer = setTimeout(() => {
-      renderFilteredNews();
+      if (currentView === 'infographies') {
+        renderInfographies();
+      } else {
+        renderFilteredNews();
+      }
     }, 40);
   });
 
   clearSearchBtn.addEventListener('click', () => {
     searchInput.value = '';
     clearSearchBtn.classList.add('hidden');
-    renderFilteredNews();
+    if (currentView === 'infographies') {
+      renderInfographies();
+    } else {
+      renderFilteredNews();
+    }
     searchInput.focus();
   });
 
@@ -160,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // View Switcher
   viewGridBtn.addEventListener('click', () => setViewMode('grid'));
   viewTableBtn.addEventListener('click', () => setViewMode('table'));
+  if (viewInfographiesBtn) viewInfographiesBtn.addEventListener('click', () => setViewMode('infographies'));
 
   // Theme Toggle
   themeToggleBtn.addEventListener('click', toggleTheme);
@@ -361,6 +380,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         renderFilteredNews();
+      });
+    }
+
+    // Infographies Category Pills delegation
+    if (infoPillsBar) {
+      infoPillsBar.addEventListener('click', (e) => {
+        const pill = e.target.closest('.info-pill');
+        if (!pill) return;
+        const category = pill.dataset.category;
+        activeInfographyCategory = category === 'Toutes' ? null : category;
+        renderInfographies();
       });
     }
   }
@@ -629,22 +659,150 @@ document.addEventListener('DOMContentLoaded', () => {
     if (tableBodyRight) tableBodyRight.innerHTML = rightRowsHtml.join('');
   }
 
+  // ----------------- INFOGRAPHIES FUNCTIONS -----------------
+
+  async function fetchInfographies() {
+    try {
+      const endpoints = ['/infographies.json', '/api/infographies.json', '/api/infographies'];
+      let data = null;
+      for (const ep of endpoints) {
+        try {
+          const res = await fetch(`${ep}?t=${Date.now()}`);
+          if (res.ok) {
+            data = await res.json();
+            if (Array.isArray(data) && data.length > 0) break;
+          }
+        } catch(e) {}
+      }
+
+      if (data && Array.isArray(data)) {
+        infographiesData = data;
+        if (badgeInfographiesCount) {
+          badgeInfographiesCount.textContent = infographiesData.length;
+        }
+        if (currentView === 'infographies') {
+          renderInfographies();
+        }
+      }
+    } catch(err) {}
+  }
+
+  function renderInfographies() {
+    if (!infographiesGrid) return;
+    const searchTerm = searchInput.value.toLowerCase().trim();
+
+    // Extract unique categories
+    const rawCategories = infographiesData.map(d => d.category).filter(Boolean);
+    const uniqueCategories = ['Toutes', ...new Set(rawCategories)];
+
+    // Render Category Pills
+    if (infoPillsBar) {
+      const pillsHtml = uniqueCategories.map(cat => {
+        const isAct = (activeInfographyCategory === cat || (!activeInfographyCategory && cat === 'Toutes')) ? 'active' : '';
+        const catCount = cat === 'Toutes' ? infographiesData.length : infographiesData.filter(d => d.category === cat).length;
+        return `<button class="info-pill ${isAct}" data-category="${escapeHTML(cat)}">${escapeHTML(cat)} <span class="pill-badge">${catCount}</span></button>`;
+      }).join('');
+      infoPillsBar.innerHTML = pillsHtml;
+    }
+
+    // Filter infographies
+    const filtered = infographiesData.filter(item => {
+      const matchCat = !activeInfographyCategory || activeInfographyCategory === 'Toutes' || item.category === activeInfographyCategory;
+      if (!matchCat) return false;
+
+      if (searchTerm) {
+        const matchSearch = (item.title && item.title.toLowerCase().includes(searchTerm)) ||
+                            (item.description && item.description.toLowerCase().includes(searchTerm)) ||
+                            (item.cdg && item.cdg.toLowerCase().includes(searchTerm)) ||
+                            (item.dept && item.dept.toLowerCase().includes(searchTerm)) ||
+                            (item.tags && item.tags.some(t => t.toLowerCase().includes(searchTerm)));
+        if (!matchSearch) return false;
+      }
+      return true;
+    });
+
+    if (filtered.length === 0) {
+      infographiesGrid.innerHTML = '<div class="empty-state" style="grid-column: 1 / -1;">Aucune infographie ne correspond à votre filtre.</div>';
+      return;
+    }
+
+    const cardsHtml = filtered.map(item => {
+      const tagsHtml = (item.tags || []).map(t => `<span class="info-tag">#${escapeHTML(t)}</span>`).join('');
+      const safeTitle = escapeHTML(item.title);
+      const safeDesc = escapeHTML(item.description || '');
+      const safeCdg = escapeHTML(item.cdg || 'Centre de Gestion');
+      const safeDept = escapeHTML(item.dept || 'CDG');
+      const safeLink = escapeHTML(item.link || '#');
+      const safePdf = escapeHTML(item.pdfUrl || item.link || '#');
+      const safeBadge = escapeHTML(item.badge || 'Infographie');
+      const icon = item.icon || '📊';
+
+      return `
+        <article class="infography-card">
+          <div class="infography-card-top">
+            <div class="info-card-header-left">
+              <span class="info-card-icon">${icon}</span>
+              <span class="info-card-badge">${safeBadge}</span>
+            </div>
+            <span class="info-dept-pill">${safeDept}</span>
+          </div>
+          
+          <div class="infography-card-body">
+            <div class="info-cdg-source">🏛️ ${safeCdg}</div>
+            <h3 class="infography-title">${safeTitle}</h3>
+            <p class="infography-description">${safeDesc}</p>
+            <div class="infography-tags-wrap">${tagsHtml}</div>
+          </div>
+
+          <div class="infography-card-footer">
+            <a href="${safeLink}" target="_blank" rel="noopener noreferrer" class="btn-info-action btn-info-source" title="Consulter la publication sur le site officiel">
+              <span>Site Source</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="${safePdf}" target="_blank" rel="noopener noreferrer" class="btn-info-action btn-info-pdf" title="Ouvrir le guide / schéma complet">
+              <span>Consulter</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            </a>
+          </div>
+        </article>
+      `;
+    });
+
+    infographiesGrid.innerHTML = cardsHtml.join('');
+  }
+
   // ----------------- SETTINGS & VIEW -----------------
 
   function setViewMode(mode) {
     currentView = mode;
     localStorage.setItem('veille_view_mode', mode);
     initViewMode();
-    renderFilteredNews();
+    if (mode === 'infographies') {
+      renderInfographies();
+    } else {
+      renderFilteredNews();
+    }
   }
 
   function initViewMode() {
+    viewGridBtn.classList.toggle('active', currentView === 'grid');
+    viewTableBtn.classList.toggle('active', currentView === 'table');
+    if (viewInfographiesBtn) viewInfographiesBtn.classList.toggle('active', currentView === 'infographies');
+
     if (currentView === 'grid') {
-      viewGridBtn.classList.add('active');
-      viewTableBtn.classList.remove('active');
+      newsContainer.classList.remove('hidden');
+      tableContainer.classList.add('hidden');
+      if (infographiesContainer) infographiesContainer.classList.add('hidden');
+    } else if (currentView === 'infographies') {
+      newsContainer.classList.add('hidden');
+      tableContainer.classList.add('hidden');
+      if (infographiesContainer) infographiesContainer.classList.remove('hidden');
+      renderInfographies();
     } else {
-      viewTableBtn.classList.add('active');
-      viewGridBtn.classList.remove('active');
+      // table view
+      newsContainer.classList.add('hidden');
+      tableContainer.classList.remove('hidden');
+      if (infographiesContainer) infographiesContainer.classList.add('hidden');
     }
   }
 
